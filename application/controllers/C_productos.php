@@ -26,14 +26,8 @@ class C_productos extends CI_Controller
 		$data = array(
 			'cbox_unidad_medida' => $this->M_cbox->cbox_unidad_medida(),
 			'cbox_grupo' => $this->M_cbox->cbox_grupo(),
-			'cbox_familia' => $this->M_cbox->cbox_familia(),
-			'cbox_clase' => $this->M_cbox->cbox_clase(),
-			'cbox_sub_clase' => $this->M_cbox->cbox_sub_clase(),
-			'cbox_sub_clase_dos' => $this->M_cbox->cbox_sub_clase_dos(),
 			'cbox_marca_productos' => $this->M_cbox->cbox_marca_productos(),
 			'cbox_moneda' => $this->M_cbox->cbox_moneda(),
-			'cbox_cta_vta' => $this->M_cbox->cbox_cta_vta(),
-			'cbox_cta_ent' => $this->M_cbox->cbox_cta_ent(),
 			'cbox_codigos_sunat' => $this->M_cbox->cbox_codigos_sunat(),
 			'cbox_almacen' => $this->M_cbox->cbox_almacen(),
 		);
@@ -58,13 +52,9 @@ class C_productos extends CI_Controller
 		$rentabilidad = $this->input->post("rentabilidad");
 		$id_moneda = $this->input->post("id_moneda");
 		$id_grupo = $this->input->post("id_grupo");
-		$id_familia = $this->input->post("id_familia");
-		$id_clase = $this->input->post("id_clase");
-		$id_sub_clase = $this->input->post("id_sub_clase");
-		$id_sub_clase_dos = $this->input->post("id_sub_clase_dos");
+
 		$id_marca_producto = $this->input->post("id_marca_producto");
-		$id_cta_vta = $this->input->post("id_cta_vta");
-		$id_cta_ent = $this->input->post("id_cta_ent");
+
 		$id_sunat = $this->input->post("id_sunat");
 		$resultado_campo = $this->input->post("resultado_campo");
 
@@ -86,14 +76,8 @@ class C_productos extends CI_Controller
 				$rentabilidad,
 				$id_unidad_medida,
 				$id_grupo,
-				$id_familia,
-				$id_clase,
-				$id_sub_clase,
-				$id_sub_clase_dos,
 				$id_marca_producto,
 				$id_moneda,
-				$id_cta_vta,
-				$id_cta_ent,
 				$id_sunat,
 				$id_almacen,
 				$id_trabajador,
@@ -117,14 +101,10 @@ class C_productos extends CI_Controller
 				$rentabilidad,
 				$id_unidad_medida,
 				$id_grupo,
-				$id_familia,
-				$id_clase,
-				$id_sub_clase,
-				$id_sub_clase_dos,
+
 				$id_marca_producto,
 				$id_moneda,
-				$id_cta_vta,
-				$id_cta_ent,
+
 				$id_sunat,
 				$id_almacen,
 				$id_trabajador,
@@ -149,14 +129,10 @@ class C_productos extends CI_Controller
 			'enlace_actualizar' => $this->M_productos->enlace_actualizar($id_producto),
 			'cbox_unidad_medida' => $this->M_cbox->cbox_unidad_medida(),
 			'cbox_grupo' => $this->M_cbox->cbox_grupo(),
-			'cbox_familia' => $this->M_cbox->cbox_familia(),
-			'cbox_clase' => $this->M_cbox->cbox_clase(),
-			'cbox_sub_clase' => $this->M_cbox->cbox_sub_clase(),
-			'cbox_sub_clase_dos' => $this->M_cbox->cbox_sub_clase_dos(),
+
 			'cbox_marca_productos' => $this->M_cbox->cbox_marca_productos(),
 			'cbox_moneda' => $this->M_cbox->cbox_moneda(),
-			'cbox_cta_vta' => $this->M_cbox->cbox_cta_vta(),
-			'cbox_cta_ent' => $this->M_cbox->cbox_cta_ent(),
+
 			'cbox_codigos_sunat' => $this->M_cbox->cbox_codigos_sunat(),
 			'cbox_almacen' => $this->M_cbox->cbox_almacen(),
 
@@ -192,14 +168,7 @@ class C_productos extends CI_Controller
 		$id_moneda = $this->input->post("id_moneda");
 
 		$id_grupo = $this->input->post("id_grupo");
-		$id_familia = $this->input->post("id_familia");
-		$id_clase = $this->input->post("id_clase");
-		$id_sub_clase = $this->input->post("id_sub_clase");
-		$id_sub_clase_dos = $this->input->post("id_sub_clase_dos");
 		$id_marca_producto = $this->input->post("id_marca_producto");
-
-		$id_cta_vta = $this->input->post("id_cta_vta");
-		$id_cta_ent = $this->input->post("id_cta_ent");
 
 		$id_sunat = $this->input->post("id_sunat");
 
@@ -215,14 +184,8 @@ class C_productos extends CI_Controller
 			$rentabilidad,
 			$id_unidad_medida,
 			$id_grupo,
-			$id_familia,
-			$id_clase,
-			$id_sub_clase,
-			$id_sub_clase_dos,
 			$id_marca_producto,
 			$id_moneda,
-			$id_cta_vta,
-			$id_cta_ent,
 			$id_sunat,
 			$id_almacen
 		));

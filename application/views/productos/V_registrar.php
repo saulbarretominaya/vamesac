@@ -158,6 +158,7 @@
               </div>
               <div class="card-body">
                 <div class="form-group row">
+
                   <div class="col-sm-4">
                     <label>Grupo</label>
                     <select class="form-select select2" id="id_grupo" style="width: 100%;">
@@ -171,53 +172,6 @@
                   </div>
 
                   <div class="col-sm-4">
-                    <label>Familia</label>
-                    <select class="form-select select2" id="id_familia" style="width: 100%;">
-                      <option value="0">Seleccionar</option>
-                      <?php foreach ($cbox_familia as $cbox_familia) : ?>
-                        <option value="<?php echo $cbox_familia->id_dmultitabla; ?>">
-                          <?php echo $cbox_familia->descripcion; ?>
-                        </option>
-                      <?php endforeach; ?>
-                    </select>
-                  </div>
-
-                  <div class="col-sm-4">
-                    <label>Clase</label>
-                    <select class="form-select select2" id="id_clase" style="width: 100%;">
-                      <option value="0">Seleccionar</option>
-                      <?php foreach ($cbox_clase as $cbox_clase) : ?>
-                        <option value="<?php echo $cbox_clase->id_dmultitabla; ?>">
-                          <?php echo $cbox_clase->descripcion; ?>
-                        </option>
-                      <?php endforeach; ?>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-sm-4">
-                    <label>Sub Clase</label>
-                    <select class="form-select select2" id="id_sub_clase" style="width: 100%;">
-                      <option value="0">Seleccionar</option>
-                      <?php foreach ($cbox_sub_clase as $cbox_sub_clase) : ?>
-                        <option value="<?php echo $cbox_sub_clase->id_dmultitabla; ?>">
-                          <?php echo $cbox_sub_clase->descripcion; ?>
-                        </option>
-                      <?php endforeach; ?>
-                    </select>
-                  </div>
-                  <div class="col-sm-4">
-                    <label>Sub Clase 2</label>
-                    <select class="form-select select2" id="id_sub_clase_dos" style="width: 100%;">
-                      <option value="0">Seleccionar</option>
-                      <?php foreach ($cbox_sub_clase_dos as $cbox_sub_clase_dos) : ?>
-                        <option value="<?php echo $cbox_sub_clase_dos->id_dmultitabla; ?>">
-                          <?php echo $cbox_sub_clase_dos->descripcion; ?>
-                        </option>
-                      <?php endforeach; ?>
-                    </select>
-                  </div>
-                  <div class="col-sm-4">
                     <label>Marca Producto</label>
                     <select class="form-control select2" id="id_marca_producto" style="width: 100%;">
                       <option value="0">Seleccionar</option>
@@ -228,49 +182,14 @@
                       <?php endforeach; ?>
                     </select>
                   </div>
+
+
                 </div>
+
               </div>
             </div>
           </div>
 
-          <div class="col-md-12">
-            <div class="card card-primary collapsed-card">
-              <div class="card-header">
-                <h3 class="card-title">Datos Cuentas Sunat</h3>
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="form-group row">
-                  <div class="col-sm-6">
-                    <label>Cta vta</label>
-                    <select class="form-select select2" id="id_cta_vta">
-                      <option value="0">Seleccionar</option>
-                      <?php foreach ($cbox_cta_vta as $cbox_cta_vta) : ?>
-                        <option value="<?php echo $cbox_cta_vta->id_dmultitabla; ?>">
-                          <?php echo $cbox_cta_vta->descripcion; ?>
-                        </option>
-                      <?php endforeach; ?>
-                    </select>
-                  </div>
-                  <div class="col-sm-6">
-                    <label>Cta ent</label>
-                    <select class="form-select select2" id="id_cta_ent">
-                      <option value="0">Seleccionar</option>
-                      <?php foreach ($cbox_cta_ent as $cbox_cta_ent) : ?>
-                        <option value="<?php echo $cbox_cta_ent->id_dmultitabla; ?>">
-                          <?php echo $cbox_cta_ent->descripcion; ?>
-                        </option>
-                      <?php endforeach; ?>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
         </div>
       </div>

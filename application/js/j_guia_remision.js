@@ -69,21 +69,7 @@ $(document).on("click", ".js_lupa_guia_remision_productos", function () {
 		}
 	});
 });
-$(document).on("click", ".js_lupa_guia_remision_tableros", function () {
-	debugger;
-	valor_id = $(this).val();
-	$.ajax({
-		url: base_url + "C_guia_remision/index_modal_tableros",
-		type: "POST",
-		dataType: "html",
-		data: {
-			id_guia_remision: valor_id
-		},
-		success: function (data) {
-			$("#id_target_guia_remision_tableros .modal-content").html(data);
-		}
-	});
-});
+
 
 
 $("#registrar").on("click", function () {

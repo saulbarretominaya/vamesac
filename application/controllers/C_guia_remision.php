@@ -16,7 +16,6 @@ class C_guia_remision extends CI_Controller
 	{
 		$data = array(
 			'index' => $this->M_guia_remision->index(),
-			'index_2' => $this->M_guia_remision->index_2()
 		);
 
 		$this->load->view('plantilla/V_header');
@@ -330,18 +329,5 @@ class C_guia_remision extends CI_Controller
 		);
 
 		$this->load->view("guia_remision/V_index_modal_productos", $data);
-	}
-
-
-	public function index_modal_tableros()
-	{
-		$id_guia_remision = $this->input->post("id_guia_remision");
-
-		$data = array(
-			"index_modal_cabecera_tableros" => $this->M_guia_remision->index_modal_cabecera_tableros($id_guia_remision),
-			"index_modal_detalle_tableros" => $this->M_guia_remision->index_modal_detalle_tableros($id_guia_remision),
-		);
-
-		$this->load->view("guia_remision/V_index_modal_tableros", $data);
 	}
 }

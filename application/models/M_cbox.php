@@ -248,48 +248,13 @@ class M_cbox extends CI_Model
     }
 
     //21
-    public function cbox_equipo_tablero()
-    {
-        $resultados = $this->db->query("
-             SELECT a.*,b.* FROM multitablas a 
-             INNER JOIN detalle_multitablas b ON b.id_multitabla=a.id_multitabla 
-             WHERE b.id_multitabla='21' AND b.id_estado_dmultitabla='1'
-             ");
-        return $resultados->result();
-    }
 
     //22
-    public function cbox_placa_tablero()
-    {
-        $resultados = $this->db->query("
-             SELECT a.*,b.* FROM multitablas a 
-             INNER JOIN detalle_multitablas b ON b.id_multitabla=a.id_multitabla 
-             WHERE b.id_multitabla='22' AND b.id_estado_dmultitabla='1'
-             ");
-        return $resultados->result();
-    }
 
     //23
-    public function cbox_modelo_tableros()
-    {
-        $resultados = $this->db->query("
-            SELECT a.*,b.* FROM multitablas a 
-            INNER JOIN detalle_multitablas b ON b.id_multitabla=a.id_multitabla 
-            WHERE b.id_multitabla='23' AND b.id_estado_dmultitabla='1'
-            ");
-        return $resultados->result();
-    }
 
     //24
-    public function cbox_serie_tablero()
-    {
-        $resultados = $this->db->query("
-           SELECT a.*,b.* FROM multitablas a 
-            INNER JOIN detalle_multitablas b ON b.id_multitabla=a.id_multitabla 
-            WHERE b.id_multitabla='24' AND b.id_estado_dmultitabla='1'
-            ");
-        return $resultados->result();
-    }
+
 
     //25
     public function cbox_tipo_ingresos()
@@ -580,15 +545,6 @@ class M_cbox extends CI_Model
     }
 
     //52
-    public function cbox_marca_tableros()
-    {
-        $resultados = $this->db->query("
-            SELECT a.*,b.* FROM multitablas a 
-            INNER JOIN detalle_multitablas b ON b.id_multitabla=a.id_multitabla 
-            WHERE b.id_multitabla='52' AND b.id_estado_dmultitabla='1'
-            ");
-        return $resultados->result();
-    }
 
     //53
     public function cbox_leyenda()

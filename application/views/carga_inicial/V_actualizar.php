@@ -338,89 +338,7 @@
                           </div>
                         </div>
                         <!-- Fin Producto -->
-                        <!-- Tableros -->
-                        <div class="col-md-2">
-                          <div class="form-check">
-                            <button type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target="#opcion_target_tablero">
-                            </button>
-                            <label class="form-check-label">Tableros</label>
-                            <div class="modal fade" id="opcion_target_tablero" tabindex="-1">
-                              <div class="modal-dialog modal-dialog-centered modal-xl">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h4 class="modal-title">Tableros</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <table id="id_datatable_tableros" class="table table-bordered table-sm table-hover table-responsive">
-                                      <thead>
-                                        <tr>
-                                          <th></th>
-                                          <th id="dtable_ds_almacen_tablero">Almacen</th>
-                                          <th id="dtable_codigo_tablero">Codigo</th>
-                                          <th id="dtable_descripcion_producto_tablero">Descripcion</th>
-                                          <th id="dtable_cantidad_tablero">Cant Tablero</th>
-                                          <th id="dtable_ds_marca_producto_tablero">Marca</th>
-                                          <th id="dtable_ds_grupo_tablero">Modelo</th>
-                                          <th id="dtable_ds_moneda_tablero">Moneda</th>
-                                          <th id="dtable_precio_unitario_por_tablero">Precio Unitario</th>
-                                          <th></th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <?php if (!empty($index_tableros)) : ?>
-                                          <?php foreach ($index_tableros as $index_tableros) : ?>
-                                            <tr>
-                                              <td>
-                                                <?php $split_tableros =
-                                                  $index_tableros->id_tablero . "*" .
-                                                  $index_tableros->id_general . "*" .
-                                                  $index_tableros->codigo_tablero . "*" .
-                                                  $index_tableros->descripcion_tablero . "*" .
-                                                  $index_tableros->cantidad_tablero . "*" .
-                                                  $index_tableros->id_marca_tablero . "*" .
-                                                  $index_tableros->ds_marca_tablero . "*" .
-                                                  $index_tableros->id_moneda . "*" .
-                                                  $index_tableros->ds_moneda . "*" .
-                                                  $index_tableros->precio_unitario_por_tablero;
-                                                ?>
-                                                <button type="button" class="btn btn-outline-success btn-sm js_seleccionar_modal_tablero" value="<?php echo $split_tableros; ?>" data-toggle="modal" data-target="#opcion_target_tablero"><span class="fa fa-check"></span></button>
-                                              </td>
-                                              <td><?php echo $index_tableros->ds_almacen; ?></td>
-                                              <td><?php echo $index_tableros->codigo_tablero; ?></td>
-                                              <td><?php echo $index_tableros->descripcion_tablero; ?></td>
-                                              <td><?php echo $index_tableros->cantidad_tablero; ?></td>
-                                              <td><?php echo $index_tableros->ds_marca_tablero; ?></td>
-                                              <td><?php echo $index_tableros->ds_modelo_tablero; ?></td>
-                                              <td><?php echo $index_tableros->ds_moneda; ?></td>
-                                              <td><?php echo $index_tableros->precio_unitario_por_tablero; ?></td>
-                                              <td>
-                                                <button type="button" class="btn btn-info btn-sm js_seleccionar_modal_detalle_tablero " value="<?php echo $index_tableros->id_tablero; ?>" data-toggle="modal" data-target="#opcion_target_detalle_tablero"><span class="fas fa-search-plus"></span>
-                                                </button>
-                                              </td>
-                                            </tr>
-                                          <?php endforeach; ?>
-                                        <?php endif; ?>
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                  <div class="modal-footer justify-content-between">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="modal fade" id="opcion_target_detalle_tablero" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered modal-xl">
-                              <div class="modal-content">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- Fin de Tableros -->
+
                         <!-- Comodin -->
                         <div class="col-md-2">
                           <div class="form-check">
@@ -501,7 +419,6 @@
                       </div>
                       <input type="hidden" id="hidden_id_producto">
                       <input type="hidden" id="hidden_id_general">
-                      <input type="hidden" id="hidden_id_tablero">
                       <input type="hidden" id="hidden_id_comodin">
                       <input type="hidden" id="hidden_codigo_producto">
                       <input type="hidden" id="hidden_id_unidad_medida">

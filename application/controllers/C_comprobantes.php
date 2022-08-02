@@ -16,7 +16,6 @@ class C_comprobantes extends CI_Controller
 	{
 		$data = array(
 			'index' => $this->M_comprobantes->index(),
-			'index_2' => $this->M_comprobantes->index_2(),
 		);
 
 		$this->load->view('plantilla/V_header');
@@ -359,17 +358,6 @@ class C_comprobantes extends CI_Controller
 		$this->load->view("comprobantes/V_index_modal_productos", $data);
 	}
 
-	public function index_modal_tableros()
-	{
-		$id_comprobante = $this->input->post("id_comprobante");
-
-		$data = array(
-			"index_modal_cabecera_tableros" => $this->M_comprobantes->index_modal_cabecera_tableros($id_comprobante),
-			//index_modal_detalle_tableros" => $this->M_parciales_completas->index_modal_detalle_tableros($id_parcial_completa),
-		);
-
-		$this->load->view("comprobantes/V_index_modal_tableros", $data);
-	}
 
 	public function emitir_comprobantes_electronicos()
 	{
@@ -387,7 +375,7 @@ class C_comprobantes extends CI_Controller
 			"operacion"                         => "generar_comprobante",
 			"tipo_de_comprobante"               => "1",
 			"serie"                             => "FFF1",
-			"numero"                            => "60",
+			"numero"                            => "62",
 			"sunat_transaction"                 => "1",
 			"cliente_tipo_de_documento"         => "6",
 			"cliente_numero_de_documento"       => "20600695771",
@@ -396,7 +384,7 @@ class C_comprobantes extends CI_Controller
 			"cliente_email"                     => "",
 			"cliente_email_1"                   => "",
 			"cliente_email_2"                   => "",
-			"fecha_de_emision"                  => "27/04/2022",
+			"fecha_de_emision"                  => "01/08/2022",
 			"fecha_de_vencimiento"              => "",
 			"moneda"                            => "1",
 			"tipo_de_cambio"                    => "",

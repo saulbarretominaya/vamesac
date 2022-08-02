@@ -47,13 +47,7 @@ $("#registrar").on("click", function () {
 		var ganancia_unidad = $("#ganancia_unidad").val();
 		var ganancia_unidad_replace = ganancia_unidad.replaceAll(",", "");
 		var id_grupo = $("#id_grupo").val();
-		var id_familia = $("#id_familia").val();
-		var id_clase = $("#id_clase").val();
-		var id_sub_clase = $("#id_sub_clase").val();
-		var id_sub_clase_dos = $("#id_sub_clase_dos").val();
 		var id_marca_producto = $("#id_marca_producto").val();
-		var id_cta_vta = $("#id_cta_vta").val();
-		var id_cta_ent = $("#id_cta_ent").val();
 		var id_sunat = $("#id_sunat").val();
 		var id_trabajador = $("#id_trabajador").val();
 		var ds_nombre_trabajador = $("#ds_nombre_trabajador").val();
@@ -80,13 +74,7 @@ $("#registrar").on("click", function () {
 				id_moneda: id_moneda,
 				ganancia_unidad: ganancia_unidad_replace,
 				id_grupo: id_grupo,
-				id_familia: id_familia,
-				id_clase: id_clase,
-				id_sub_clase: id_sub_clase,
-				id_sub_clase_dos: id_sub_clase_dos,
 				id_marca_producto: id_marca_producto,
-				id_cta_vta: id_cta_vta,
-				id_cta_ent: id_cta_ent,
 				id_sunat: id_sunat,
 				resultado_campo: resultado_campo,
 				id_trabajador: id_trabajador,
@@ -121,13 +109,7 @@ $("#actualizar").on("click", function () {
 		var id_moneda = $("#id_moneda").val();
 		var ganancia_unidad = $("#ganancia_unidad").val();
 		var id_grupo = $("#id_grupo").val();
-		var id_familia = $("#id_familia").val();
-		var id_clase = $("#id_clase").val();
-		var id_sub_clase = $("#id_sub_clase").val();
-		var id_sub_clase_dos = $("#id_sub_clase_dos").val();
 		var id_marca_producto = $("#id_marca_producto").val();
-		var id_cta_vta = $("#id_cta_vta").val();
-		var id_cta_ent = $("#id_cta_ent").val();
 		var id_sunat = $("#id_sunat").val();
 
 
@@ -149,13 +131,7 @@ $("#actualizar").on("click", function () {
 				id_moneda: id_moneda,
 				ganancia_unidad, ganancia_unidad,
 				id_grupo: id_grupo,
-				id_familia: id_familia,
-				id_clase: id_clase,
-				id_sub_clase: id_sub_clase,
-				id_sub_clase_dos: id_sub_clase_dos,
 				id_marca_producto: id_marca_producto,
-				id_cta_vta: id_cta_vta,
-				id_cta_ent: id_cta_ent,
 				id_sunat: id_sunat,
 			},
 			success: function (data) {

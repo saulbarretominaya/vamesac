@@ -68,20 +68,7 @@ $(document).on("click", ".js_lupa_cotizacion_productos", function () {
 		}
 	});
 });
-$(document).on("click", ".js_lupa_cotizacion_tableros", function () {
-	valor_id = $(this).val();
-	$.ajax({
-		url: base_url + "C_cotizacion/index_modal_tableros",
-		type: "POST",
-		dataType: "html",
-		data: {
-			id_cotizacion: valor_id
-		},
-		success: function (data) {
-			$("#id_target_cotizacion_tableros .modal-content").html(data);
-		}
-	});
-});
+
 $(document).on("click", ".js_lupa_orden_despacho_productos", function () {
 	debugger;
 	valor_id = $(this).val();
@@ -97,20 +84,7 @@ $(document).on("click", ".js_lupa_orden_despacho_productos", function () {
 		}
 	});
 });
-$(document).on("click", ".js_lupa_orden_despacho_tableros", function () {
-	valor_id = $(this).val();
-	$.ajax({
-		url: base_url + "C_orden_despacho/index_modal_tableros",
-		type: "POST",
-		dataType: "html",
-		data: {
-			id_orden_despacho: valor_id
-		},
-		success: function (data) {
-			$("#id_target_orden_despacho_tableros .modal-content").html(data);
-		}
-	});
-});
+
 $("#registrar").on("click", function () {
 
 	validar_registrar();
@@ -153,7 +127,7 @@ $("#registrar").on("click", function () {
 
 		//Detalle cotizacion
 		var id_producto = Array.prototype.slice.call(document.getElementsByName("id_producto[]")).map((o) => o.value);
-		var id_tablero = Array.prototype.slice.call(document.getElementsByName("id_tablero[]")).map((o) => o.value);
+
 		var id_comodin = Array.prototype.slice.call(document.getElementsByName("id_comodin[]")).map((o) => o.value);
 		var codigo_producto = Array.prototype.slice.call(document.getElementsByName("codigo_producto[]")).map((o) => o.value);
 		var descripcion_producto = Array.prototype.slice.call(document.getElementsByName("descripcion_producto[]")).map((o) => o.value);
@@ -227,7 +201,7 @@ $("#registrar").on("click", function () {
 
 				//Detalle cotizacion
 				id_producto: id_producto,
-				id_tablero: id_tablero,
+
 				id_comodin: id_comodin,
 				codigo_producto: codigo_producto,
 				descripcion_producto: descripcion_producto,
@@ -388,31 +362,6 @@ $(document).on("click", ".js_seleccionar_modal_producto", function () {
 	$("#opcion_target_producto").modal("hide");
 	aplicar_tipo_cambio();
 });
-$(document).on("click", ".js_seleccionar_modal_tablero", function () {
-	limpiar_campos();
-	tableros = $(this).val();
-	split_tableros = tableros.split("*");
-	$("#hidden_id_tablero").val(split_tableros[0]);
-	$("#hidden_id_general").val(split_tableros[1]);
-	$("#hidden_codigo_producto").val(split_tableros[2]);
-	$("#descripcion_producto").val(split_tableros[3]);
-	debugger;
-	$("#cantidad").val(split_tableros[4]);
-	$("#cantidad").attr("readonly", true);
-	$("#hidden_id_marca_producto").val(split_tableros[5]);
-	$("#hidden_ds_marca_producto").val(split_tableros[6]);
-	$("#hidden_id_moneda").val(split_tableros[7]);
-	$("#tipo_moneda_origen").val(split_tableros[8]);
-	var simbolo_moneda = split_tableros[8];
-	if (simbolo_moneda == "SOLES") {
-		$("#simbolo_moneda").val("S/");
-	} else if (simbolo_moneda == "DOLARES") {
-		$("#simbolo_moneda").val("$");
-	}
-	$("#precio_unitario").val(split_tableros[9]);
-	$("#opcion_target_tablero").modal("hide");
-	aplicar_tipo_cambio();
-});
 $(document).on("click", ".js_seleccionar_modal_comodin", function () {
 	limpiar_campos();
 	comodin = $(this).val();
@@ -434,22 +383,7 @@ $(document).on("click", ".js_seleccionar_modal_comodin", function () {
 		$("#simbolo_moneda").val("$");
 	}
 	$("#precio_unitario").val(split_comodin[10]);
-	$("#opcion_target_tablero").modal("hide");
 	aplicar_tipo_cambio();
-});
-$(document).on("click", ".js_seleccionar_modal_detalle_tablero", function () {
-	valor_id = $(this).val();
-	$.ajax({
-		url: base_url + "C_tableros/index_modal",
-		type: "POST",
-		dataType: "html",
-		data: {
-			id_tablero: valor_id
-		},
-		success: function (data) {
-			$("#opcion_target_detalle_tablero .modal-content").html(data);
-		}
-	});
 });
 $(document).ready(function () {
 
@@ -603,73 +537,6 @@ $(document).ready(function () {
 	/*Fin Modal 2 */
 
 
-	/*Modal 3 */
-	$("#id_datatable_tableros thead #dtable_ds_almacen_tablero").each(function () {
-		var title = $(this).text();
-		$(this).html('<input type="text" class="border-0" style="width:150px;" placeholder="' + title + '" /> ');
-	});
-	$("#id_datatable_tableros thead #dtable_codigo_tablero").each(function () {
-		var title = $(this).text();
-		$(this).html('<input type="text" class="border-0" style="width:150px;" placeholder="' + title + '" /> ');
-	});
-	$("#id_datatable_tableros thead #dtable_descripcion_producto_tablero").each(function () {
-		var title = $(this).text();
-		$(this).html('<input type="text" class="border-0" style="width:350px;" placeholder="' + title + '" /> ');
-	});
-	$("#id_datatable_tableros thead #dtable_cantidad_tablero").each(function () {
-		var title = $(this).text();
-		$(this).html('<input type="text" class="border-0" style="width:100px;" placeholder="' + title + '" /> ');
-	});
-	$("#id_datatable_tableros thead #dtable_ds_marca_producto_tablero").each(function () {
-		var title = $(this).text();
-		$(this).html('<input type="text" class="border-0" style="width:100px;" placeholder="' + title + '" /> ');
-	});
-	$("#id_datatable_tableros thead #dtable_ds_grupo_tablero").each(function () {
-		var title = $(this).text();
-		$(this).html('<input type="text" class="border-0" style="width:100px;" placeholder="' + title + '" /> ');
-	});
-	$("#id_datatable_tableros thead #dtable_ds_moneda_tablero").each(function () {
-		var title = $(this).text();
-		$(this).html('<input type="text" class="border-0" style="width:100px;" placeholder="' + title + '" /> ');
-	});
-	$("#id_datatable_tableros thead #dtable_precio_unitario_por_tablero").each(function () {
-		var title = $(this).text();
-		$(this).html('<input type="text" class="border-0" style="width:150px;" placeholder="' + title + '" /> ');
-	});
-	$("#id_datatable_tableros").dataTable({
-
-		initComplete: function () {
-			this.api()
-				.columns()
-				.every(function () {
-					var that = this;
-
-					$("input", this.header()).on("keyup change clear", function () {
-						if (that.search() !== this.value) {
-							that.search(this.value).draw();
-						}
-					});
-				});
-		},
-
-		language: {
-			lengthMenu: "Mostrar _MENU_ registros por pagina",
-			zeroRecords: "No se encontraron resultados en su busqueda",
-			searchPlaceholder: "Buscar registros",
-			info: "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
-			infoEmpty: "No existen registros",
-			infoFiltered: "(filtrado de un total de _MAX_ registros)",
-			search: "Buscar:",
-			paginate: {
-				first: "Primero",
-				last: "Último",
-				next: "Siguiente",
-				previous: "Anterior",
-			},
-		},
-		"ordering": false
-	});
-	/*Fin Modal 3*/
 
 
 	/*Modal 4 */
@@ -763,7 +630,6 @@ $("#id_agregar_cotizacion").on("click", function (e) {
 	var id_general = $("#hidden_id_general").val();
 
 	var id_producto = $("#hidden_id_producto").val();
-	var id_tablero = $("#hidden_id_tablero").val();
 	var id_comodin = $("#hidden_id_comodin").val();
 
 	if (id_producto != "") {
@@ -801,7 +667,6 @@ $("#id_agregar_cotizacion").on("click", function (e) {
 		html += "<td width='70px'><input type='text'   name='item[]'		value='" + item + "'       id='item' class='form-control' readonly=''></td>";
 		html += "    <input type='hidden' name='id_general[]' 				value='" + id_general + "' id='id_general' >";
 		html += "    <input type='hidden' name='id_producto[]' 				value='" + id_producto + "' id='id_producto' >";
-		html += "    <input type='hidden' name='id_tablero[]' 				value='" + id_tablero + "'>";
 		html += "    <input type='hidden' name='id_comodin[]' 				value='" + id_comodin + "'>";
 		html += "<td><input type='hidden' name='codigo_producto[]'			value='" + codigo_producto + "'>" + codigo_producto + "</td>";
 		html += "<td><input type='hidden' name='descripcion_producto[]' 	value='" + descripcion_producto + "'>" + descripcion_producto + "</td>";
@@ -861,12 +726,11 @@ $("#tipo_moneda_cambio").on("change", function () {
 	var precio_unitario = $("#precio_unitario").val();
 	var simbolo_moneda = $("#precio_unitario").val();
 	var tipo_moneda_cambio = $('#tipo_moneda_cambio option:selected').text();
-	var id_tablero = $("#hidden_id_tablero").val();
 
 	debugger;
 
 	if (descripcion_producto == "") {
-		alert("Seleccione un producto, tablero o comodin");
+		alert("Seleccione un producto o comodin");
 		$("#tipo_moneda_cambio").val(0);
 		$("#cantidad").val("");
 		$("#g").val("");
@@ -884,37 +748,20 @@ $("#tipo_moneda_cambio").on("change", function () {
 		$("#g").val("");
 	}
 	else if (tipo_moneda_cambio == "Seleccionar") {
-		if (id_tablero == "") {
-			$("#convertidor_unitario").val("");
-			$("#cantidad").val("");
-			$("#valor_venta_sin_d").val("");
-			$("#valor_venta_con_d").val("");
-			$("#precio_inicial").val("");
-			$("#precio_ganancia").val("");
-			$("#g").val("");
-			$("#g_unidad").val("");
-			$("#g_cant_total").val("");
-			$("#precio_ganancia_visor").val("");
-			$("#precio_descuento").val("");
-			$("#d").val("");
-			$("#d_unidad").val("");
-			$("#d_cant_total").val("");
-		} else {
-			$("#convertidor_unitario").val("");
-			// $("#cantidad").val("");
-			$("#valor_venta_sin_d").val("");
-			$("#valor_venta_con_d").val("");
-			$("#precio_inicial").val("");
-			$("#precio_ganancia").val("");
-			$("#g").val("");
-			$("#g_unidad").val("");
-			$("#g_cant_total").val("");
-			$("#precio_ganancia_visor").val("");
-			$("#precio_descuento").val("");
-			$("#d").val("");
-			$("#d_unidad").val("");
-			$("#d_cant_total").val("");
-		}
+		$("#convertidor_unitario").val("");
+		$("#cantidad").val("");
+		$("#valor_venta_sin_d").val("");
+		$("#valor_venta_con_d").val("");
+		$("#precio_inicial").val("");
+		$("#precio_ganancia").val("");
+		$("#g").val("");
+		$("#g_unidad").val("");
+		$("#g_cant_total").val("");
+		$("#precio_ganancia_visor").val("");
+		$("#precio_descuento").val("");
+		$("#d").val("");
+		$("#d_unidad").val("");
+		$("#d_cant_total").val("");
 	} else {
 		aplicar_tipo_cambio();
 	}
@@ -928,7 +775,7 @@ $("#cantidad").on("keyup", function () {
 	var cantidad = $("#cantidad").val();
 
 	if (descripcion_producto == "") {
-		alert("Seleccione un producto, tablero o comodin");
+		alert("Seleccione un producto o comodin");
 		$("#cantidad").val("");
 	}
 	else if (precio_unitario == "") {
@@ -980,7 +827,7 @@ $("#g").on("keyup", function () {
 	var g = $("#g").val();
 
 	if (descripcion_producto == "") {
-		alert("Seleccione un producto, tablero o comodin");
+		alert("Seleccione un producto o comodin");
 		$("#g").val("");
 	}
 	else if (precio_unitario == "") {
@@ -1029,7 +876,7 @@ $("#d").on("keyup", function () {
 	var d = $("#d").val();
 
 	if (descripcion_producto == "") {
-		alert("Seleccione un producto, tablero o comodin");
+		alert("Seleccione un producto o comodin");
 		$("#d").val("");
 	}
 	else if (precio_unitario == "") {
@@ -1207,99 +1054,59 @@ function aplicar_tipo_cambio() {
 	var tipo_moneda_origen = $("#tipo_moneda_origen").val();
 	var tipo_moneda_cambio = $('#tipo_moneda_cambio option:selected').text();
 	var convertidor_unitario = 0;
-	var id_tablero = $("#hidden_id_tablero").val();
 
 	//Si ambas monedas son iguales
 	debugger;
 	if (tipo_moneda_origen == tipo_moneda_cambio) {
 		convertidor_unitario = Number(precio_unitario);
 		$("#convertidor_unitario").val(convertidor_unitario.toFixed(5));
-		if (id_tablero == "") {
-		} else {
-			calcular_valor_venta();
-		}
+		calcular_valor_venta();
 	}
 
 	else if (tipo_moneda_cambio == "Seleccionar") {
-		if (id_tablero == "") {
-			$("#tipo_moneda_cambio").val(0);
-			$("#cantidad").val("");
-			$("#convertidor_unitario").val("");
-			$("#valor_venta_sin_d").val("");
-			$("#valor_venta_con_d").val("");
-			$("#precio_inicial").val("");
-			$("#precio_ganancia").val("");
-		} else {
-			$("#tipo_moneda_cambio").val(0);
-			// $("#cantidad").val("");
-			$("#convertidor_unitario").val("");
-			$("#valor_venta_sin_d").val("");
-			$("#valor_venta_con_d").val("");
-			$("#precio_inicial").val("");
-			$("#precio_ganancia").val("");
-		}
+		$("#tipo_moneda_cambio").val(0);
+		$("#cantidad").val("");
+		$("#convertidor_unitario").val("");
+		$("#valor_venta_sin_d").val("");
+		$("#valor_venta_con_d").val("");
+		$("#precio_inicial").val("");
+		$("#precio_ganancia").val("");
 	}
 	else if (tipo_moneda_origen == "SOLES") {
-		if (id_tablero == "") {
-			convertidor_unitario = precio_unitario / valor_cambio;
-			$("#convertidor_unitario").val(convertidor_unitario.toFixed(5));
-			$("#cantidad").val("");
-			$("#valor_venta_sin_d").val("");
-			$("#valor_venta_con_d").val("");
-			$("#precio_inicial").val("");
-			$("#precio_ganancia").val("");
-			$("#g").val("");
-			$("#g_unidad").val("");
-			$("#g_cant_total").val("");
-			$("#precio_ganancia_visor").val("");
-			$("#precio_descuento").val("");
-			$("#d").val("");
-			$("#d_unidad").val("");
-			$("#d_cant_total").val("");
-		} else {
-			convertidor_unitario = precio_unitario / valor_cambio;
-			$("#convertidor_unitario").val(convertidor_unitario.toFixed(5));
-			calcular_valor_venta();
-			$("#g").val("");
-			$("#g_unidad").val("");
-			$("#g_cant_total").val("");
-			$("#precio_ganancia_visor").val("");
-			$("#precio_descuento").val("");
-			$("#d").val("");
-			$("#d_unidad").val("");
-			$("#d_cant_total").val("");
-		}
+		convertidor_unitario = precio_unitario / valor_cambio;
+		$("#convertidor_unitario").val(convertidor_unitario.toFixed(5));
+		$("#cantidad").val("");
+		$("#valor_venta_sin_d").val("");
+		$("#valor_venta_con_d").val("");
+		$("#precio_inicial").val("");
+		$("#precio_ganancia").val("");
+		$("#g").val("");
+		$("#g_unidad").val("");
+		$("#g_cant_total").val("");
+		$("#precio_ganancia_visor").val("");
+		$("#precio_descuento").val("");
+		$("#d").val("");
+		$("#d_unidad").val("");
+		$("#d_cant_total").val("");
+
 	}
 	else if (tipo_moneda_origen == "DOLARES") {
-		if (id_tablero == "") {
-			convertidor_unitario = precio_unitario * valor_cambio;
-			$("#convertidor_unitario").val(convertidor_unitario.toFixed(5));
-			$("#cantidad").val("");
-			$("#valor_venta_sin_d").val("");
-			$("#valor_venta_con_d").val("");
-			$("#precio_inicial").val("");
-			$("#precio_ganancia").val("");
-			$("#g").val("");
-			$("#g_unidad").val("");
-			$("#g_cant_total").val("");
-			$("#precio_ganancia_visor").val("");
-			$("#precio_descuento").val("");
-			$("#d").val("");
-			$("#d_unidad").val("");
-			$("#d_cant_total").val("");
-		} else {
-			convertidor_unitario = precio_unitario * valor_cambio;
-			$("#convertidor_unitario").val(convertidor_unitario.toFixed(5));
-			calcular_valor_venta();
-			$("#g").val("");
-			$("#g_unidad").val("");
-			$("#g_cant_total").val("");
-			$("#precio_ganancia_visor").val("");
-			$("#precio_descuento").val("");
-			$("#d").val("");
-			$("#d_unidad").val("");
-			$("#d_cant_total").val("");
-		}
+		convertidor_unitario = precio_unitario * valor_cambio;
+		$("#convertidor_unitario").val(convertidor_unitario.toFixed(5));
+		$("#cantidad").val("");
+		$("#valor_venta_sin_d").val("");
+		$("#valor_venta_con_d").val("");
+		$("#precio_inicial").val("");
+		$("#precio_ganancia").val("");
+		$("#g").val("");
+		$("#g_unidad").val("");
+		$("#g_cant_total").val("");
+		$("#precio_ganancia_visor").val("");
+		$("#precio_descuento").val("");
+		$("#d").val("");
+		$("#d_unidad").val("");
+		$("#d_cant_total").val("");
+
 	}
 
 }
@@ -1383,12 +1190,11 @@ function validar_detalle_cotizacion() {
 	var tipo_moneda_cambio = $('#tipo_moneda_cambio option:selected').text();
 	var cantidad = $("#cantidad").val();
 	var id_producto = $("#hidden_id_producto").val();
-	var id_tablero = $("#hidden_id_tablero").val();
 	var id_comodin = $("#hidden_id_comodin").val();
 
 
 	if (descripcion_producto == "") {
-		alert("Seleccione un producto, tablero o comodin")
+		alert("Seleccione un producto o comodin")
 		resultado_campo = false;
 	}
 	else if (precio_unitario == "") {
@@ -1417,18 +1223,6 @@ function validar_detalle_cotizacion() {
 			$("#tipo_moneda_cambio").attr("disabled", false);
 		}
 
-		if (id_producto != "") {
-			$("#btn_id_tablero").attr("disabled", true);
-		}
-
-		if (id_tablero != "") {
-			$("#btn_id_producto").attr("disabled", true);
-			$("#btn_id_comodin").attr("disabled", true);
-		}
-
-		if (id_comodin != "") {
-			$("#btn_id_tablero").attr("disabled", true);
-		}
 
 	}
 };
@@ -1498,7 +1292,6 @@ function limpiar_campos() {
 
 	$("#hidden_id_general").val("");
 	$("#hidden_id_producto").val("");
-	$("#hidden_id_tablero").val("");
 	$("#hidden_id_comodin").val("");
 	$("#hidden_codigo_producto").val("");
 	$("#descripcion_producto").val("");
@@ -1537,7 +1330,6 @@ function limpiar_campos() {
 		$("#igv").val("");
 		$("#precio_venta").val("");
 		$("#btn_id_producto").attr("disabled", false);
-		$("#btn_id_tablero").attr("disabled", false);
 		$("#btn_id_comodin").attr("disabled", false);
 	}
 }

@@ -126,19 +126,5 @@ $(document).on("click", ".js_lupa_parciales_completas_productos", function () {
 		}
 	});
 });
-$(document).on("click", ".js_lupa_parciales_completas_tableros", function () {
-	debugger;
-	valor_id = $(this).val();
-	$.ajax({
-		url: base_url + "C_parciales_completas/index_modal_tableros",
-		type: "POST",
-		dataType: "html",
-		data: {
-			id_parcial_completa: valor_id
-		},
-		success: function (data) {
-			$("#id_target_parciales_completas_tableros .modal-content").html(data);
-		}
-	});
-});
+
 

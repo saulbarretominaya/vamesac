@@ -59,24 +59,6 @@
 
           <li class="nav-item">
             <a href="" class="nav-link">
-              <i class="fas fa-luggage-cart"></i>
-              <p>
-                Logistica
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url() . "C_orden_compras" ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Orden de compra</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item">
-            <a href="" class="nav-link">
               <i class="fas fa-truck"></i>
               <p>
                 Almacen
@@ -96,12 +78,7 @@
                   <p>Salida Productos</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url() . "C_tableros" ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tableros</p>
-                </a>
-              </li>
+
               <li class="nav-item">
                 <a href="<?php echo base_url() . "C_carga_inicial" ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -111,23 +88,6 @@
             </ul>
           </li>
 
-          <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="fas fa-chart-line"></i>
-              <p>
-                Finanzas
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url() . "C_compras_cobranzas" ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Compras / Cobranzas</p>
-                </a>
-              </li>
-            </ul>
-          </li>
 
           <li class="nav-item">
             <a href="" class="nav-link">

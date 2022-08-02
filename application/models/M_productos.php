@@ -30,20 +30,8 @@ class M_productos extends CI_Model
         a.rentabilidad,
         a.id_grupo,
         (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_grupo) AS ds_grupo,
-        a.id_familia,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_familia) AS ds_familia,
-        a.id_clase,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_clase) AS ds_clase,
-        a.id_sub_clase,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_sub_clase) AS ds_sub_clase,
-        a.id_sub_clase_dos,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_sub_clase_dos) AS ds_sub_clase_dos,
         a.id_marca_producto,
         (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_marca_producto) AS ds_marca_producto,
-        a.id_cta_vta,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_cta_vta) AS ds_cta_vta,
-        a.id_cta_ent,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_cta_ent) AS ds_cta_ent,
         a.stock
         FROM productos a
         WHERE a.id_empresa='$id_empresa'
@@ -99,14 +87,10 @@ class M_productos extends CI_Model
         $rentabilidad,
         $id_unidad_medida,
         $id_grupo,
-        $id_familia,
-        $id_clase,
-        $id_sub_clase,
-        $id_sub_clase_dos,
+
         $id_marca_producto,
         $id_moneda,
-        $id_cta_vta,
-        $id_cta_ent,
+
         $id_sunat,
         $id_almacen,
         $id_trabajador,
@@ -120,16 +104,16 @@ class M_productos extends CI_Model
         (
             id_producto,codigo_producto,descripcion_producto,
             precio_costo,precio_unitario,porcentaje,ganancia_unidad,stock,rentabilidad,
-            id_unidad_medida,id_grupo,id_familia,id_clase,id_sub_clase,id_sub_clase_dos, 
-            id_marca_producto,id_moneda,id_cta_vta,id_cta_ent,id_sunat,id_almacen,
+            id_unidad_medida,id_grupo, 
+            id_marca_producto,id_moneda,id_sunat,id_almacen,
             id_trabajador,ds_nombre_trabajador,id_producto_empresa,id_empresa
         )
         VALUES
         (
             '','$codigo_producto','$descripcion_producto',
             '$precio_costo','$precio_unitario','$porcentaje','$ganancia_unidad','0','$rentabilidad',
-            '$id_unidad_medida','$id_grupo','$id_familia','$id_clase','$id_sub_clase','$id_sub_clase_dos',
-            '$id_marca_producto','$id_moneda','$id_cta_vta','$id_cta_ent','$id_sunat','$id_almacen',
+            '$id_unidad_medida','$id_grupo',
+            '$id_marca_producto','$id_moneda','$id_sunat','$id_almacen',
             '$id_trabajador','$ds_nombre_trabajador','$id_producto_empresa','$id_empresa'
         )"
         );
@@ -157,21 +141,7 @@ class M_productos extends CI_Model
         precio_unitario,
         rentabilidad,
         id_grupo,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=id_grupo) AS ds_grupo,
-        id_familia,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=id_familia) AS ds_familia,
-        id_clase,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=id_clase) AS ds_clase,
-        id_sub_clase,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=id_sub_clase) AS ds_sub_clase,
-        id_sub_clase_dos,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=id_sub_clase_dos) AS ds_sub_clase_dos,
         id_marca_producto,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=id_marca_producto) AS ds_marca_producto,
-        id_cta_vta,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=id_cta_vta) AS ds_cta_vta,
-        id_cta_ent,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=id_cta_ent) AS ds_cta_ent,
         stock
         FROM productos where id_producto='$id_producto'");
         return $resultados->row();
@@ -189,14 +159,10 @@ class M_productos extends CI_Model
         $rentabilidad,
         $id_unidad_medida,
         $id_grupo,
-        $id_familia,
-        $id_clase,
-        $id_sub_clase,
-        $id_sub_clase_dos,
+
         $id_marca_producto,
         $id_moneda,
-        $id_cta_vta,
-        $id_cta_ent,
+
         $id_sunat,
         $id_almacen
     ) {
@@ -211,14 +177,8 @@ class M_productos extends CI_Model
         rentabilidad='$rentabilidad',
         id_unidad_medida='$id_unidad_medida',
         id_grupo='$id_grupo',
-        id_familia='$id_familia',
-        id_clase='$id_clase',
-        id_sub_clase='$id_sub_clase',
-        id_sub_clase_dos='$id_sub_clase_dos',
         id_marca_producto='$id_marca_producto',
         id_moneda='$id_moneda',
-        id_cta_vta='$id_cta_vta',
-        id_cta_ent='$id_cta_ent',
         id_sunat='$id_sunat',
         id_almacen='$id_almacen'
         WHERE id_producto='$id_producto'");

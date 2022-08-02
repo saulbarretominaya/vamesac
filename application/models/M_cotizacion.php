@@ -38,37 +38,6 @@ class M_cotizacion extends CI_Model
         return $resultados->result();
     }
 
-    public function index_2()
-    {
-        $id_empresa = $this->session->userdata("id_empresa");
-
-        $resultados = $this->db->query(
-            "
-            SELECT
-            a.id_cotizacion,
-            a.id_cotizacion_empresa,
-            DATE_FORMAT(a.fecha_cotizacion,'%d/%m/%Y') AS fecha_cotizacion,
-            (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_moneda) AS ds_moneda,
-            a.ds_nombre_cliente_proveedor,
-            a.ds_condicion_pago,
-            a.ds_nombre_trabajador,
-            a.precio_venta,
-            (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_estado_cotizacion) AS ds_estado_cotizacion,
-            b.id_orden_despacho,
-            b.id_orden_despacho_empresa,
-            DATE_FORMAT(b.fecha_orden_despacho,'%d/%m/%Y') AS fecha_orden_despacho,
-            (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=id_estado_orden_despacho) AS ds_estado_orden_despacho
-            FROM
-            cotizacion a
-            LEFT JOIN orden_despacho b ON b.id_cotizacion=a.id_cotizacion
-            LEFT JOIN detalle_cotizacion c ON c.id_cotizacion=a.id_cotizacion
-            where a.categoria='TABLEROS' AND a.id_empresa='$id_empresa'
-            GROUP BY a.id_cotizacion
-            ORDER BY a.id_cotizacion desc;
-            "
-        );
-        return $resultados->result();
-    }
 
     public function registrar_grupo_vame_cotizacion()
     {
@@ -172,7 +141,6 @@ class M_cotizacion extends CI_Model
     public function registrar_detalle_cotizacion(
         $id_cotizacion,
         $id_producto,
-        $id_tablero,
         $id_comodin,
         $codigo_producto,
         $descripcion_producto,
@@ -204,7 +172,7 @@ class M_cotizacion extends CI_Model
             INSERT INTO detalle_cotizacion
             (
             id_dcotizacion,
-            id_cotizacion,id_producto,id_tablero,id_comodin,
+            id_cotizacion,id_producto,id_comodin,
             codigo_producto,descripcion_producto,
             id_unidad_medida,ds_unidad_medida,id_marca_producto,ds_marca_producto,
             cantidad,
@@ -216,7 +184,7 @@ class M_cotizacion extends CI_Model
             VALUES
             (
             '', 
-            '$id_cotizacion','$id_producto','$id_tablero','$id_comodin',
+            '$id_cotizacion','$id_producto','$id_comodin',
             '$codigo_producto','$descripcion_producto',
             '$id_unidad_medida','$ds_unidad_medida','$id_marca_producto','$ds_marca_producto',
             '$cantidad',
@@ -318,20 +286,9 @@ class M_cotizacion extends CI_Model
         a.rentabilidad,
         a.id_grupo,
         (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_grupo) AS ds_grupo,
-        a.id_familia,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_familia) AS ds_familia,
-        a.id_clase,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_clase) AS ds_clase,
-        a.id_sub_clase,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_sub_clase) AS ds_sub_clase,
-        a.id_sub_clase_dos,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_sub_clase_dos) AS ds_sub_clase_dos,
         a.id_marca_producto,
         (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_marca_producto) AS ds_marca_producto,
-        a.id_cta_vta,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_cta_vta) AS ds_cta_vta,
-        a.id_cta_ent,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_cta_ent) AS ds_cta_ent,
+        
         a.stock
         FROM productos a
         where a.id_empresa='$id_empresa'
@@ -340,36 +297,6 @@ class M_cotizacion extends CI_Model
         return $resultados->result();
     }
 
-    public function index_tableros()
-    {
-        $id_empresa = $this->session->userdata("id_empresa");
-
-        $resultados = $this->db->query(
-            "
-        SELECT 
-        a.id_tablero,
-        CONCAT('TAB',a.id_tablero) AS id_general,
-        a.codigo_tablero,
-        a.id_almacen,
-        a.cantidad_tablero,
-        a.precio_unitario_por_tablero,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_almacen) AS ds_almacen,
-        id_sunat,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_sunat) AS ds_codigo_sunat,
-        LEFT(a.descripcion_tablero,30) AS descripcion_tablero,
-        a.id_moneda,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_moneda) AS ds_moneda,
-        a.id_marca_tablero,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_marca_tablero) AS ds_marca_tablero,
-        a.id_modelo_tablero,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_modelo_tablero) AS ds_modelo_tablero
-        FROM tableros a
-        where a.id_empresa='$id_empresa'
-        ORDER BY a.id_tablero ASC
-        "
-        );
-        return $resultados->result();
-    }
 
     public function index_comodin()
     {
@@ -602,62 +529,6 @@ class M_cotizacion extends CI_Model
             FROM 
             detalle_cotizacion a
             WHERE a.id_cotizacion='$id_cotizacion'
-        "
-        );
-        return $resultados->result();
-    }
-
-    public function index_modal_cabecera_tableros($id_cotizacion)
-    {
-        $resultados = $this->db->query(
-            "
-            SELECT
-            DATE_FORMAT(a.fecha_cotizacion,'%d/%m/%Y') AS fecha_emision,a.validez_oferta_cotizacion,
-            DATE_FORMAT(a.fecha_vencimiento_validez_oferta,'%d/%m/%Y') AS fecha_vencimiento_validez_oferta,
-            (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=id_moneda) AS ds_moneda,
-            a.ds_condicion_pago,a.ds_nombre_cliente_proveedor,
-            b.num_documento,b.direccion_fiscal,lugar_entrega,a.ds_nombre_trabajador,
-            c.celular,c.email,a.observacion,a.valor_venta_total_sin_d,a.valor_venta_total_con_d,a.descuento_total,a.igv,a.precio_venta,a.clausula,a.nombre_encargado
-            FROM
-            cotizacion a
-            LEFT JOIN clientes_proveedores b ON b.id_cliente_proveedor=a.id_cliente_proveedor
-            LEFT JOIN trabajadores c ON c.id_trabajador=a.id_trabajador
-            where a.id_cotizacion='$id_cotizacion'
-            
-        "
-        );
-        return $resultados->row();
-    }
-
-    public function index_modal_detalle_tableros($id_cotizacion)
-    {
-        $resultados = $this->db->query(
-            "
-        SELECT
-        a.item as item_tablero_cabecera,
-        a.id_tablero,
-        '-------',
-        b.cantidad_tablero AS cantidad_tablero_cabecera,
-        b.codigo_tablero AS codigo_tablero_cabecera,
-        b.descripcion_tablero AS descripcion_tablero_cabecera,
-        (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=b.id_marca_tablero) AS marca_tablero_cabecera,
-        a.precio_ganancia AS precio_u_tablero_cabecera,
-        a.d AS porcentaje_descuento_tablero_cabecera,
-        a.precio_descuento AS precio_u_d_tablero_cabecera,
-        a.valor_venta_con_d AS valor_venta_tablero_cabecera,
-        a.dias_entrega as dias_entrega_tablero_cabecera,
-        '-------',
-        c.cantidad_unitaria AS cantidad_unitaria_componente,
-        c.cantidad_total_producto AS cantidad_total_componente,
-        c.codigo_producto AS codigo_componente,
-        c.descripcion_producto AS descripcion_componente,
-        c.ds_marca_producto AS marca_componente,
-        c.ds_unidad_medida AS unidad_medida_componente
-        FROM 
-        detalle_cotizacion a
-        LEFT JOIN tableros b ON b.id_tablero=a.id_tablero
-        LEFT JOIN detalle_tableros c ON c.id_tablero=b.id_tablero
-        WHERE a.id_cotizacion='$id_cotizacion'
         "
         );
         return $resultados->result();

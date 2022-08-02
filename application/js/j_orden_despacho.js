@@ -62,20 +62,7 @@ $(document).on("click", ".js_lupa_orden_despacho_productos", function () {
 		}
 	});
 });
-$(document).on("click", ".js_lupa_orden_despacho_tableros", function () {
-	valor_id = $(this).val();
-	$.ajax({
-		url: base_url + "C_orden_despacho/index_modal_tableros",
-		type: "POST",
-		dataType: "html",
-		data: {
-			id_orden_despacho: valor_id
-		},
-		success: function (data) {
-			$("#id_target_orden_despacho_tableros .modal-content").html(data);
-		}
-	});
-});
+
 /*Fin CRUD*/
 
 /*Evento */

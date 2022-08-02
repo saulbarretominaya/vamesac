@@ -17,7 +17,6 @@ class C_elaborar_pc extends CI_Controller
 	{
 		$data = array(
 			'index' => $this->M_elaborar_pc->index(),
-			'index_2' => $this->M_elaborar_pc->index_2(),
 		);
 
 		$this->load->view('plantilla/V_header');
@@ -43,23 +42,6 @@ class C_elaborar_pc extends CI_Controller
 		$this->load->view('elaborar_pc/V_registrar_productos', $data);
 	}
 
-	public function enlace_registrar_tableros()
-
-	{
-
-		$id_orden_despacho = $this->input->get("id_orden_despacho");
-		$id_parcial_completa = $this->input->get("id_parcial_completa");
-
-
-		$data = array(
-			'enlace_actualizar_cabecera_tableros' => $this->M_elaborar_pc->enlace_actualizar_cabecera_tableros($id_orden_despacho),
-			'enlace_actualizar_detalle_tableros' => $this->M_elaborar_pc->enlace_actualizar_detalle_tableros($id_orden_despacho, $id_parcial_completa)
-		);
-
-		$this->load->view('plantilla/V_header');
-		$this->load->view('plantilla/V_aside');
-		$this->load->view('elaborar_pc/V_registrar_tableros', $data);
-	}
 
 	public function registrar()
 	{
@@ -199,17 +181,5 @@ class C_elaborar_pc extends CI_Controller
 		);
 
 		$this->load->view("elaborar_pc/V_index_modal_productos", $data);
-	}
-
-	public function index_modal_tableros()
-	{
-		$id_orden_despacho = $this->input->post("id_orden_despacho");
-
-		$data = array(
-			"index_modal_cabecera_tableros" => $this->M_elaborar_pc->index_modal_cabecera_tableros($id_orden_despacho),
-			"index_modal_detalle_tableros" => $this->M_elaborar_pc->index_modal_detalle_tableros($id_orden_despacho),
-		);
-
-		$this->load->view("elaborar_pc/V_index_modal_tableros", $data);
 	}
 }
