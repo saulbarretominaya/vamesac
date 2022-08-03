@@ -30,7 +30,7 @@
                   <th>Paterno</th>
                   <th>Materno</th>
                   <th>Celular</th>
-                  <th>Trabaja RRHH</th>
+                  <th>Empresa</th>
                   <th>Sucursal</th>
                   <th>Cargo</th>
                   <th></th>

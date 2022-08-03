@@ -375,7 +375,7 @@ class C_comprobantes extends CI_Controller
 			"operacion"                         => "generar_comprobante",
 			"tipo_de_comprobante"               => "1",
 			"serie"                             => "FFF1",
-			"numero"                            => "62",
+			"numero"                            => "65",
 			"sunat_transaction"                 => "1",
 			"cliente_tipo_de_documento"         => "6",
 			"cliente_numero_de_documento"       => "20600695771",

@@ -215,7 +215,8 @@
             </ul>
           </li>
 
-          <li class="nav-item">
+          
+           <li class="nav-item">
             <a href="" class="nav-link">
               <i class="fas fa-file-medical-alt"></i>
               <p>
@@ -225,9 +226,33 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo base_url() . "#" ?>" class="nav-link">
+                <a href="<?php echo base_url() . "C_reportes_nivel_productividad" ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Reportes</p>
+                  <p>Nivel de productividad</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo base_url() . "C_reportes_porcentaje_ventas" ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>% De Crecimiento de Ventas</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo base_url() . "C_reportes_comprobantes_generados" ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Comprobantes_generados</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo base_url() . "C_reporte_productos" ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Productos</p>
                 </a>
               </li>
             </ul>
