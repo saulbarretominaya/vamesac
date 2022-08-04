@@ -20,7 +20,6 @@ $(document).on("click", ".js_lupa_cliente_proveedor", function () {
 		dataType: "html",
 		data: { id_cliente_proveedor: valor_id },
 		success: function (data) {
-			$("#modal-clientes .modal-body").html(data);
 			$("#id_target_cliente_proveedor .modal-content").html(data);
 		},
 	});
