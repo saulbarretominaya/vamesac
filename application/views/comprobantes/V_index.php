@@ -48,17 +48,9 @@
                         <th>Tipo Orden</th>
                         <th>Estado Guia</th>
                         <th>Estado Comprobante</th>
-                        <th>Estado Sunat</th>
-                        <th>Consultar Estado Sunat</th>
-                        <th>aaaa</th>
-                        <th>bbb</th>
-                        <th>ccc</th>
-                        <th class="table-primary">PDF</th>
-                        <th class="table-primary"> XML</th>
-                        <th class="table-primary">CDR</th>
-                        <th>Anular</th>
-                        <th class="table-danger">PDF</th>
-                        <th class="table-danger"> XML</th>
+                        <th></th>
+                        <th></th>
+
 
                       </tr>
                     </thead>
@@ -90,33 +82,14 @@
                             case "PENDIENTE":
                               $ds_estado_comprobante = '<div><span class="badge bg-warning">PENDIENTE</span></div>';
                               break;
-                            case "PENDIENTE POR EMITIR":
-                              $ds_estado_comprobante = '<div><span class="badge bg-dark">PENDIENTE POR EMITIR</span></div>';
+                            case "PENDIENTE POR ALMACEN":
+                              $ds_estado_comprobante = '<div><span class="badge bg-dark">PENDIENTE POR ALMACEN</span></div>';
                               break;
-                            case "EMITIDO A SUNAT":
-                              $ds_estado_comprobante = '<div><span class="badge bg-info">EMITIDO A SUNAT</span></div>';
+                            case "ORDEN DESPACHADA":
+                              $ds_estado_comprobante = '<div><span class="badge bg-info">ORDEN DESPACHADA</span></div>';
                               break;
                             default:
                               $ds_estado_comprobante = '<div><span class="badge bg-warning">PENDIENTE</span></div>';
-                              break;
-                          }
-
-                          switch ($index->ds_estado_sunat) {
-
-                            case "0":
-                              $ds_estado_sunat = '<div><span class="badge bg-danger">RECHAZADO</span></div>';
-                              break;
-                            case "1":
-                              $ds_estado_sunat = '<div><span class="badge bg-success">ACEPTADO</span></div>';
-                              break;
-                            case "2":
-                              $ds_estado_sunat = '<div><span class="badge bg-secondary">PENDIENTE POR PROVEEDOR</span></div>';
-                              break;
-                            case "3":
-                              $ds_estado_sunat = '<div><span class="badge bg-dark">ANULADO</span></div>';
-                              break;
-                            default:
-                              $ds_estado_sunat = '<div><span class="badge bg-warning">NO EMITIDO</span></div>';
                               break;
                           }
 
@@ -143,84 +116,22 @@
                             <td><?php echo $ds_estado_tipo_orden_parcial_completa; ?></td>
                             <td><?php echo $ds_estado_guia_remision; ?></td>
                             <td><?php echo $ds_estado_comprobante; ?></td>
-                            <td><?php echo $ds_estado_sunat; ?></td>
 
-                            <?php if ($index->id_comprobante != "" and $index->ds_estado_comprobante == "PENDIENTE POR EMITIR") { ?>
-                              <td></td>
-                              <td><button type="button" class="btn btn-outline-success btn-sm js_generar_comprobantes_electronicos"><span class="fas fa-cloud-upload-alt"></span></button></td>
+
+                            <?php if ($index->id_comprobante != "" and $index->ds_estado_comprobante == "PENDIENTE POR ALMACEN") { ?>
                               <td><button type="button" class="btn btn-outline-info btn-sm js_lupa_comprobantes_productos" value="<?php echo $index->id_comprobante; ?>" data-toggle="modal" data-target="#id_target_comprobantes_productos"><span class="fas fa-search-plus"></span></button></td>
                               <td><a href=" <?php echo base_url(); ?>C_comprobantes/enlace_actualizar/<?php echo $index->id_comprobante; ?>" class="btn btn btn-outline-warning btn-sm"><span class="far fa-edit"></span></a></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
 
 
-                            <?php } else if ($index->id_comprobante != "" and $index->ds_estado_comprobante == "EMITIDO A SUNAT") { ?>
 
-                              <!-- CONSULTAR ESTADO SUNAT, LUPA Y CHECK -->
-                              <?php if ($index->ds_estado_sunat == "1" || $index->ds_estado_sunat == "3") { ?>
-                                <td><button type="button" class="btn btn-outline-info btn-sm js_consultar_comprobantes_electronicos" value="<?php echo $index->id_comprobante; ?>" data-toggle="modal" data-target="#id_target_consultar_comprobantes_electronicos"><span class="fas fa-search-plus"></span></button></td>
-                              <?php } else if ($index->ds_estado_sunat == "2") { ?>
-                                <td>
-                                  <button type="button" class="btn btn-outline-info btn-sm js_lupa_comprobantes_productos" value="<?php echo $index->id_comprobante; ?>" data-toggle="modal" data-target="#id_target_comprobantes_productos"><span class="fas fa-search-plus"></span></button>
-                                  <button type="button" class="btn btn-outline-success btn-sm js_actualizar_estado_sunat"><span class="fas fa-check-circle"></span></button>
-                                </td>
-                              <?php } else { ?>
-                                <td></td>
-                              <?php } ?>
-                              <!-- FIN CONSULTAR ESTADO SUNAT, LUPA Y CHECK -->
-
-
-                              <!-- NUBE,LUPA,EDITAR, PDF,XML -->
-                              <td><button type="button" class="btn btn-outline-success btn-sm" disabled><span class="fas fa-cloud-upload-alt"></span></button></td>
+                            <?php } else if ($index->id_comprobante != "" and $index->ds_estado_comprobante == "ORDEN DESPACHADA") { ?>
                               <td><button type="button" class="btn btn-outline-info btn-sm js_lupa_comprobantes_productos" value="<?php echo $index->id_comprobante; ?>" data-toggle="modal" data-target="#id_target_comprobantes_productos"><span class="fas fa-search-plus"></span></button></td>
-                              <td><button type="button" class="btn btn-outline-warning btn-sm" disabled><span class="far fa-edit"></span></button></td>
-                              <td><a href="<?php echo $index->enlace_del_pdf_comprobante_emitido ?>" class="btn btn-outline-danger btn-sm" download="" target="_blank"><span class="fas fa-file-pdf"></span></a></td>
-                              <td><a href="<?php echo $index->enlace_del_xml_comprobante_emitido ?>" class="btn btn-outline-secondary btn-sm" download="" target="_blank"><span class="fas fa-file-archive"></span></a></td>
-                              <!-- FIN NUBE,LUPA,EDITAR, PDF,XML -->
-
-
-                              <!-- CDR -->
-                              <?php if ($index->ds_estado_sunat == "1") { ?>
-                                <td><a href="<?php echo $index->enlace_del_cdr_comprobante_emitido ?>" class="btn btn-outline-secondary btn-sm" download="" target="_blank"><span class="fas fa-file-archive"></span></a></td>
-                              <?php } else { ?>
-                                <td></td>
-                              <?php } ?>
-                              <!-- FIN CDR -->
-
-
-                              <!-- ANULAR, PDF Y XML -->
-                              <?php if ($index->ds_estado_sunat == "1") { ?>
-                                <td><button type="button" class="btn btn-outline-danger btn-sm js_anular_comprobantes_electronicos"><span class="fas fa-times-circle"></span></button></td>
-                                <td></td>
-                                <td></td>
-                              <?php } else if ($index->ds_estado_sunat == "3") { ?>
-                                <td></td>
-                                <td><a href="<?php echo $index->enlace_del_pdf_comprobante_anulado ?>" class="btn btn-outline-danger btn-sm" download="" target="_blank"><span class="fas fa-file-archive"></span></a></td>
-                                <td><a href="<?php echo $index->enlace_del_xml_comprobante_anulado ?>" class="btn btn-outline-secondary btn-sm" download="" target="_blank"><span class="fas fa-file-pdf"></span></a></td>
-                              <?php } else { ?>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                              <?php } ?>
-                              <!-- FIN ANULAR, PDF Y XML -->
-
+                              <td><a class="btn btn btn-outline-warning btn-sm"><span class="far fa-edit"></span></a></td>
 
 
                             <?php } else { ?>
-                              <td></td>
-                              <td><button type="button" class="btn btn-outline-success btn-sm" disabled><span class="fas fa-cloud-upload-alt"></span></button></td>
                               <td><button type="button" class="btn btn-outline-info btn-sm" disabled><span class="fas fa-search-plus"></span></button></td>
                               <td><a href=" <?php echo base_url(); ?>C_comprobantes/enlace_registrar/<?php echo $index->id_guia_remision; ?>" class="btn btn btn-outline-warning btn-sm"><span class="far fa-edit"></span></a></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
                             <?php } ?>
                           </tr>
                         <?php endforeach; ?>
