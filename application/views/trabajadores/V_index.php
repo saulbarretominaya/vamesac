@@ -35,7 +35,6 @@
                   <th>Cargo</th>
                   <th></th>
                   <th></th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -54,7 +53,6 @@
                       <td><?php echo $index->ds_cargo_trabajador; ?></td>
                       <td><button type="button" class="btn btn-outline-info js_lupa_trabajador btn-sm" value="<?php echo $index->id_trabajador; ?>" data-toggle="modal" data-target="#id_target_trabajador"><span class="fa fa-search"></span></button></td>
                       <td><a href="<?php echo base_url(); ?>C_trabajadores/enlace_actualizar/<?php echo $index->id_trabajador; ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit "></span></a></td>
-                      <td><a href="<?php echo base_url(); ?>C_trabajadores/eliminar/<?php echo $index->id_trabajador; ?>" class="btn btn-outline-danger btn-remove btn-sm"><span class="fa fa-trash"></a></td>
                     </tr>
                   <?php endforeach; ?>
                 <?php endif; ?>

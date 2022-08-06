@@ -699,4 +699,11 @@ class C_comprobantes extends CI_Controller
 
 		$this->load->view("comprobantes/V_index_modal_consultar_compr_elect", $data);
 	}
+
+	public function anular_estado()
+	{
+		$id_comprobante = $this->input->post("id_comprobante");
+		$this->M_comprobantes->anular_estado($id_comprobante);
+		echo json_encode($id_comprobante);
+	}
 }

@@ -62,6 +62,7 @@ class C_elaborar_pc extends CI_Controller
 
 		//Detalle Update (estado_elaboracion_pc - Elaboracion PC)
 		$id_dcotizacion = $this->input->post("id_dcotizacion");
+		$id_producto = $this->input->post("id_producto");
 		$salida_prod = $this->input->post("salida_prod");
 		$pendiente_prod = $this->input->post("pendiente_prod");
 		$d_cant_total = $this->input->post("d_cant_total");
@@ -109,6 +110,7 @@ class C_elaborar_pc extends CI_Controller
 		$this->registrar_detalle_parciales_completas(
 			$id_parcial_completa,
 			$id_dcotizacion,
+			$id_producto,
 			$salida_prod,
 			$pendiente_prod,
 			$d_cant_total,
@@ -138,6 +140,7 @@ class C_elaborar_pc extends CI_Controller
 	protected function registrar_detalle_parciales_completas(
 		$id_parcial_completa,
 		$id_dcotizacion,
+		$id_producto,
 		$salida_prod,
 		$pendiente_prod,
 		$d_cant_total,
@@ -149,6 +152,7 @@ class C_elaborar_pc extends CI_Controller
 			$this->M_elaborar_pc->registrar_detalle_parciales_completas(
 				$id_parcial_completa,
 				$id_dcotizacion[$i],
+				$id_producto[$i],
 				$salida_prod[$i],
 				$pendiente_prod[$i],
 				$d_cant_total[$i],

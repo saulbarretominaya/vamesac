@@ -256,6 +256,36 @@ $(document).on("click", ".js_generar_comprobantes_electronicos", function () {
 	}
 });
 
+$(document).on("click", ".btn_anular_estado", function () {
+
+	debugger;
+
+	var id_comprobante = $(this).closest('tr').find('#id_comprobante').val();
+	var estado_orden = $(this).parents("tr").find("td")[16].innerText;
+
+
+	if (estado_orden == "ORDEN DESPACHADA") {
+		alertify.confirm("Esta seguro que desea anular",
+			function () {
+				$.ajax({
+					async: false,
+					url: base_url + "C_comprobantes/anular_estado",
+					type: "POST",
+					dataType: "json",
+					data: {
+						id_comprobante: id_comprobante,
+					},
+					success: function (data) {
+						window.location.href = base_url + "C_comprobantes";
+					},
+				});
+			});
+	} else if (estado_orden == "ORDEN DESPACHADA") {
+		alert("Ya fue Despachada");
+	}
+
+});
+
 
 
 $(document).on("click", ".js_consultar_comprobantes_electronicos", function () {

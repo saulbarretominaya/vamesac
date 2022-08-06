@@ -91,7 +91,7 @@ class M_elaborar_pc extends CI_Model
         a.codigo_producto,a.descripcion_producto,
         a.ds_unidad_medida,a.ds_marca_producto,
         a.precio_ganancia,
-        a.d_unidad,a.d_cant_total,d.stock,
+        a.d_unidad,a.d_cant_total,d.id_producto,d.stock,
         CASE WHEN a.precio_descuento =0 THEN a.precio_ganancia WHEN a.precio_descuento !=0 THEN a.precio_descuento END AS precio_descuento,      
         CASE WHEN b.pendiente_prod IS NULL THEN a.cantidad  WHEN b.pendiente_prod IS NOT NULL THEN b.pendiente_prod END  AS cantidad_por_despachar,
         CASE WHEN b.valor_venta_con_d IS NULL THEN a.valor_venta_con_d WHEN b.valor_venta_con_d IS NOT NULL THEN (a.valor_venta_con_d - b.valor_venta_con_d) END AS valor_venta_con_d
@@ -106,8 +106,6 @@ class M_elaborar_pc extends CI_Model
         ");
         return $resultados->result();
     }
-
-
 
     public function registrar_grupo_vame_parciales_completas()
     {
@@ -183,6 +181,7 @@ class M_elaborar_pc extends CI_Model
     public function registrar_detalle_parciales_completas(
         $id_parcial_completa,
         $id_dcotizacion,
+        $id_producto,
         $salida_prod,
         $pendiente_prod,
         $d_cant_total,
@@ -196,14 +195,14 @@ class M_elaborar_pc extends CI_Model
         (
         id_dparcial_completa,
         id_dcotizacion,
-        id_parcial_completa,salida_prod,pendiente_prod,
+        id_parcial_completa,id_producto,salida_prod,pendiente_prod,
         d_cant_total,valor_venta_sin_d,valor_venta_con_d,item
         )
         VALUES
         (
         '',
         '$id_dcotizacion',
-        '$id_parcial_completa','$salida_prod','$pendiente_prod',
+        '$id_parcial_completa','$id_producto','$salida_prod','$pendiente_prod',
         '$d_cant_total','$valor_venta_sin_d','$valor_venta_con_d','$item'
         )
         "

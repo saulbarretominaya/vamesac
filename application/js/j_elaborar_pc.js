@@ -89,6 +89,7 @@ $("#registrar").on("click", function () {
 
 		//Detalle parciales y completas
 		var id_dcotizacion = Array.prototype.slice.call(document.getElementsByName("id_dcotizacion[]")).map((o) => o.value);
+		var id_producto = Array.prototype.slice.call(document.getElementsByName("id_producto[]")).map((o) => o.value);
 		var salida_prod = Array.prototype.slice.call(document.getElementsByName("salida_prod[]")).map((o) => o.value);
 		var pendiente_prod = Array.prototype.slice.call(document.getElementsByName("pendiente_prod[]")).map((o) => o.value);
 		var d_cant_total = Array.prototype.slice.call(document.getElementsByName("d_cant_total[]")).map((o) => o.value);
@@ -97,6 +98,7 @@ $("#registrar").on("click", function () {
 		var id_estado_elaborar_pc = Array.prototype.slice.call(document.getElementsByName("id_estado_elaborar_pc[]")).map((o) => o.value);
 		var item = Array.prototype.slice.call(document.getElementsByName("item[]")).map((o) => o.value);
 
+		debugger;
 
 		$.ajax({
 			async: false,
@@ -120,6 +122,7 @@ $("#registrar").on("click", function () {
 
 				//Detalle Update (id_estado_elaborar_pc - Elaboracion PC)
 				id_dcotizacion: id_dcotizacion,
+				id_producto: id_producto, //Se agrego ultimo, faltaba hacer match
 				salida_prod: salida_prod,
 				pendiente_prod: pendiente_prod,
 				d_cant_total: d_cant_total,

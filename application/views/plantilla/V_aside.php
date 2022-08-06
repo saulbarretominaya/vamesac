@@ -205,18 +205,10 @@
                 </a>
               </li>
             </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url() . "C_comprobantes" ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Notas Credito / Debito</p>
-                </a>
-              </li>
-            </ul>
           </li>
 
-          
-           <li class="nav-item">
+
+          <li class="nav-item">
             <a href="" class="nav-link">
               <i class="fas fa-file-medical-alt"></i>
               <p>
@@ -226,7 +218,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo base_url() . "C_reportes_nivel_productividad" ?>" class="nav-link">
+                <a href="<?php echo base_url() . "C_nivel_productividad" ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Nivel de productividad</p>
                 </a>
@@ -234,9 +226,9 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo base_url() . "C_reportes_porcentaje_ventas" ?>" class="nav-link">
+                <a href="<?php echo base_url() . "C_porcentaje_ventas" ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>% De Crecimiento de Ventas</p>
+                  <p>Porcentaje crecimiento de ventas</p>
                 </a>
               </li>
             </ul>
