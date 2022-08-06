@@ -706,4 +706,15 @@ class M_comprobantes extends CI_Model
             "
         );
     }
+
+    public function anular_estado($id_comprobante)
+    {
+        return $this->db->query(
+            "
+            UPDATE comprobantes
+            set id_estado_comprobante='968'
+            where id_comprobante='$id_comprobante'
+            "
+        );
+    }
 }

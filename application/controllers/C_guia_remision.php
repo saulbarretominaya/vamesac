@@ -316,6 +316,13 @@ class C_guia_remision extends CI_Controller
 	{
 		$id_guia_remision = $this->input->post("id_guia_remision");
 		$this->M_guia_remision->aprobar_estado($id_guia_remision);
+
+		$data = $this->M_guia_remision->traer_data($id_guia_remision);
+
+		foreach ($data as $index) {
+			$this->M_guia_remision->actualizar_stock_productos($index->id_producto, $index->nuevo_stock);
+		}
+
 		echo json_encode($id_guia_remision);
 	}
 

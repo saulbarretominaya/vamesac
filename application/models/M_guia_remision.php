@@ -517,4 +517,42 @@ class M_guia_remision extends CI_Model
         );
         return $resultados->result();
     }
+
+
+    public function traer_data($id_guia_remision)
+    {
+        $resultados = $this->db->query(
+            "
+            SELECT
+            a.item,
+            d.id_guia_remision,
+            a.id_dparcial_completa,
+            a.salida_prod,
+            b.descripcion_producto,
+            '||',
+            e.id_producto,
+            e.stock,
+            (e.stock-a.salida_prod) AS nuevo_stock
+            FROM
+            detalle_parciales_completas a
+            LEFT JOIN detalle_cotizacion b ON b.id_dcotizacion=a.id_dcotizacion
+            LEFT JOIN parciales_completas c ON c.id_parcial_completa=a.id_parcial_completa
+            LEFT JOIN guia_remision d ON d.id_parcial_completa=c.id_parcial_completa
+            LEFT JOIN productos e ON e.id_producto=a.id_producto
+            WHERE d.id_guia_remision='$id_guia_remision' AND a.salida_prod > '0'
+        "
+        );
+        return $resultados->result();
+    }
+
+    public function actualizar_stock_productos($id_producto, $nuevo_stock)
+    {
+        return $this->db->query(
+            "
+            UPDATE productos
+            set stock='$nuevo_stock'
+            where id_producto='$id_producto'
+            "
+        );
+    }
 }

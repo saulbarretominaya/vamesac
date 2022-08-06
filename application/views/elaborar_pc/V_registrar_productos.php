@@ -261,6 +261,7 @@
                                       <td><?php echo $index->d_cant_total; ?></td>
                                       <td><?php echo $index->cantidad_por_despachar; ?></td>
                                       <td><?php echo $index->valor_venta_con_d; ?> </td>
+                                      <input type="hidden" value="<?php echo $index->id_producto; ?>" name="id_producto[]">
                                       <td class="table-info"><?php echo $index->stock; ?> </td>
                                       <td class="table-info"><input type="text" class="form-control" id="salida_prod" name="salida_prod[]"> </td>
                                       <td class="table-info"><input type="text" class="form-control" id="pendiente_prod" value="" name="pendiente_prod[]" readonly></td>
