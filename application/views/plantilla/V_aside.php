@@ -29,14 +29,6 @@
                 </a>
               </li>
             </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url() . "C_clientes_proveedores" ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Clientes - Proveedores</p>
-                </a>
-              </li>
-            </ul>
           </li>
 
           <li class="nav-item">
@@ -101,7 +93,7 @@
               <li class="nav-item">
                 <a href="<?php echo base_url() . "C_tipo_cambio" ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Tipo de cambio</p>
+                  <p>T.C</p>
                 </a>
               </li>
             </ul>
@@ -117,6 +109,14 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo base_url() . "C_clientes_proveedores" ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Clientes - Proveedores</p>
+                </a>
+              </li>
+            </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo base_url() . "C_cotizacion" ?>" class="nav-link">
