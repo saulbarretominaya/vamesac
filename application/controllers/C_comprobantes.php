@@ -352,7 +352,7 @@ class C_comprobantes extends CI_Controller
 
 		$data = array(
 			"index_modal_cabecera_productos" => $this->M_comprobantes->index_modal_cabecera_productos($id_comprobante),
-			//"index_modal_detalle_productos" => $this->M_comprobantes->index_modal_detalle_productos($id_comprobante),
+			"index_modal_detalle_productos" => $this->M_comprobantes->index_modal_detalle_productos($id_comprobante),
 		);
 
 		$this->load->view("comprobantes/V_index_modal_productos", $data);

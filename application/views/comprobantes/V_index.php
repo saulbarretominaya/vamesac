@@ -33,11 +33,11 @@
                       <tr>
                         <th>Num. O. Despacho</th>
                         <th>Num. Orden</th>
-                        <th>Num. Guia</th>
                         <th>Serie Guia</th>
+                        <th>Num. Guia</th>
                         <th>Tienda</th>
-                        <th>Num. Comprobante</th>
                         <th>Serie Comprobante</th>
+                        <th>Num. Comprobante</th>
                         <th>Tipo Comprobante </th>
                         <th>Fecha Comprobante</th>
                         <th>Cliente</th>
@@ -97,14 +97,14 @@
 
                             <td><?php echo $index->id_orden_despacho; ?></td>
                             <td><?php echo $index->id_parcial_completa; ?></td>
-                            <td><?php echo $index->id_tienda; ?></td>
                             <td><?php echo $index->ds_serie_guia_remision; ?></td>
+                            <td><?php echo $index->id_tienda; ?></td>
                             <td><?php echo $index->ds_sucursal_trabajador; ?></td>
                             <input type="hidden" id="id_comprobante" value="<?php echo $index->id_comprobante; ?>">
                             <input type="hidden" id="ds_estado_comprobante" value="<?php echo $index->ds_estado_comprobante; ?>">
                             <input type="hidden" id="ds_estado_sunat" value="<?php echo $index->ds_estado_sunat; ?>">
-                            <td><?php echo $index->num_comprobante;  ?></td>
                             <td><?php echo $index->ds_serie_comprobante;  ?></td>
+                            <td><?php echo $index->num_comprobante;  ?></td>
                             <td><?php echo $index->ds_tipo_comprobante;  ?></td>
                             <td><?php echo $index->fecha_comprobante;  ?></td>
                             <td><?php echo $index->ds_nombre_cliente_proveedor; ?></td>

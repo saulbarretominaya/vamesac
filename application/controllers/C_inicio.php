@@ -43,9 +43,12 @@ class C_inicio extends CI_Controller
                 'ds_accesos_empresas' => $res->ds_accesos_empresas,
                 'ds_nombre_trabajador' => $res->ds_nombre_trabajador,
                 'ds_cargo_trabajador' => $res->ds_cargo_trabajador,
+                'ds_rol_usuario' => $res->ds_rol_usuario,
                 'login' => TRUE
+
             );
             $this->session->set_userdata($data);
+            var_dump($data);
             redirect(base_url() . "C_menu");
         }
     }

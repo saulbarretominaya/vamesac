@@ -480,6 +480,10 @@ class M_comprobantes extends CI_Model
             a.ds_nombre_cliente_proveedor,
             a.ds_nombre_trabajador,
             a.ds_condicion_pago,
+            a.lugar_entrega,
+            a.nombre_encargado,
+            a.observacion,
+            a.clausula,
             (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_moneda) AS ds_moneda,
             b.id_orden_despacho,
             c.id_parcial_completa,
@@ -495,7 +499,11 @@ class M_comprobantes extends CI_Model
             (SELECT serie FROM detalle_multitablas WHERE id_dmultitabla=e.id_tipo_comprobante) AS ds_serie_comprobante,
             e.id_num_comprobante AS num_comprobante,
             DATE_FORMAT(e.fecha_emision,'%d/%m/%Y') AS fecha_comprobante,
-            (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=f.id_almacen) AS ds_sucursal_trabajador
+            (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=f.id_almacen) AS ds_sucursal_trabajador,
+            f.celular,
+            f.email,
+            g.num_documento,
+            g.direccion_fiscal
             FROM cotizacion a
             LEFT JOIN orden_despacho b ON b.id_cotizacion=a.id_cotizacion
             LEFT JOIN parciales_completas c ON c.id_orden_despacho=b.id_orden_despacho
@@ -509,6 +517,33 @@ class M_comprobantes extends CI_Model
         return $resultados->row();
     }
 
+    public function index_modal_detalle_productos($id_comprobante)
+    {
+        $resultados = $this->db->query(
+            "
+            SELECT
+            a.item,
+            a.id_parcial_completa,
+            a.salida_prod AS cantidad,
+            b.ds_unidad_medida,
+            b.codigo_producto,
+            descripcion_producto,
+            ds_marca_producto,
+            b.precio_ganancia AS precio_u,
+            b.d,
+            b.precio_descuento AS precio_u_d,
+            a.valor_venta_con_d AS valor_venta
+            FROM
+            detalle_parciales_completas a
+            LEFT JOIN detalle_cotizacion b ON b.id_dcotizacion=a.id_dcotizacion
+            LEFT JOIN parciales_completas c ON c.id_parcial_completa=a.id_parcial_completa
+            LEFT JOIN guia_remision d ON d.id_parcial_completa=c.id_parcial_completa
+            LEFT JOIN comprobantes e ON e.id_guia_remision=d.id_guia_remision
+            WHERE e.id_comprobante='$id_comprobante' AND a.salida_prod > '0'
+        "
+        );
+        return $resultados->result();
+    }
 
     public function emitir_comprobantes_electronicos(
         $id_comprobante,
