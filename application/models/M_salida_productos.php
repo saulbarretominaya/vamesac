@@ -21,7 +21,8 @@ class M_salida_productos extends CI_Model
             c.id_parcial_completa,
             (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=c.id_tipo_orden_parcial_completa) AS ds_estado_tipo_orden_parcial_completa,
             (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=d.id_estado_guia_remision) AS ds_estado_guia_remision,
-            (SELECT abreviatura FROM detalle_multitablas WHERE id_dmultitabla=e.id_estado_comprobante) AS ds_estado_comprobante,   
+            (SELECT abreviatura FROM detalle_multitablas WHERE id_dmultitabla=e.id_estado_comprobante) AS ds_estado_comprobante,
+            (SELECT abreviatura FROM detalle_multitablas WHERE id_dmultitabla=f.id_estado_salida_producto) AS ds_estado_salida_producto,     
             c.precio_venta,
             d.id_guia_remision,
             d.id_tienda,
@@ -38,6 +39,7 @@ class M_salida_productos extends CI_Model
             LEFT JOIN parciales_completas c ON c.id_orden_despacho=b.id_orden_despacho
             RIGHT JOIN guia_remision d ON d.id_parcial_completa=c.id_parcial_completa
             RIGHT JOIN comprobantes e ON e.id_guia_remision=d.id_guia_remision
+            LEFT JOIN salida_productos f ON f.id_comprobante=e.id_comprobante
             "
         );
         return $resultados->result();
@@ -48,10 +50,17 @@ class M_salida_productos extends CI_Model
     {
         return $this->db->query(
             "
-            UPDATE comprobantes
-            set id_estado_comprobante='902'
-            where id_comprobante='$id_comprobante'
-            "
+        INSERT INTO salida_productos
+        (
+        id_salida_producto,
+        fecha_salida_producto,id_estado_salida_producto,id_comprobante
+        )
+        VALUES
+        (
+        '',
+        NOW(),'970','$id_comprobante'
+        )
+        "
         );
     }
 }

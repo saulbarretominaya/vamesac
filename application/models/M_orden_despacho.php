@@ -164,7 +164,7 @@ class M_orden_despacho extends CI_Model
             a.precio_ganancia AS precio_u,
             a.d,
             a.precio_descuento AS precio_u_d,
-            a.valor_venta_con_d AS valor_venta,
+            FORMAT(a.valor_venta_con_d,2) AS valor_venta,
             a.dias_entrega
             FROM 
             detalle_cotizacion a

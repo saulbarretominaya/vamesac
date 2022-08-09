@@ -27,9 +27,6 @@
                 <li class="nav-item">
                   <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Datos Generales</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Detalle Guia Remision</a>
-                </li>
               </ul>
             </div>
 
@@ -369,50 +366,6 @@
                   </div>
                 </div>
 
-
-                <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="card card-primary">
-                        <div class="card-header">
-                          <h3 class="card-title">Detalle Guia Remision</h3>
-                        </div>
-                        <form class="form-horizontal">
-                          <div class="card-body" style="overflow-x:auto;">
-                            <table id="id_table_detalle_cotizacion">
-                              <thead>
-                                <tr>
-                                  <th>Item</th>
-                                  <th>Cantidad</th>
-                                  <th>Codigo</th>
-                                  <th>Descripcion</th>
-                                  <th>Marca</th>
-                                  <th>U.M</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                              </tbody>
-                              <?php if (!empty($enlace_actualizar_detalle)) : ?>
-                                <?php foreach ($enlace_actualizar_detalle as $index) : ?>
-                                  <tr>
-                                    <td><?php echo $index->item; ?></td>
-                                    <td><?php echo $index->salida_prod; ?></td>
-                                    <td><?php echo $index->codigo_producto; ?></td>
-                                    <td><?php echo $index->descripcion_producto; ?></td>
-                                    <td><?php echo $index->ds_marca_producto; ?></td>
-                                    <td><?php echo $index->ds_unidad_medida; ?></td>
-                                  </tr>
-                                <?php endforeach; ?>
-                              <?php endif; ?>
-                              </tbody>
-                            </table>
-                          </div>
-                        </form>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

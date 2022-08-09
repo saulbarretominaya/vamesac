@@ -27,7 +27,7 @@
                   <th>Fecha Comprobante</th>
                   <th>Cliente</th>
                   <th>Vendedor</th>
-                  <th>Estado Comprobante</th>
+                  <th>Estado Almacen</th>
                   <th></th>
                   <th></th>
                 </tr>
@@ -36,21 +36,15 @@
                 <?php if (!empty($index)) : ?>
                   <?php foreach ($index as $index) :
 
-                    switch ($index->ds_estado_comprobante) {
+                    switch ($index->ds_estado_salida_producto) {
                       case "PENDIENTE":
-                        $ds_estado_comprobante = '<div><span class="badge bg-warning">PENDIENTE</span></div>';
+                        $ds_estado_salida_producto = '<div><span class="badge bg-warning">PENDIENTE</span></div>';
                         break;
-                      case "PENDIENTE POR ALMACEN":
-                        $ds_estado_comprobante = '<div><span class="badge bg-dark">PENDIENTE POR ALMACEN</span></div>';
-                        break;
-                      case "ORDEN DESPACHADA":
-                        $ds_estado_comprobante = '<div><span class="badge bg-info">ORDEN DESPACHADA</span></div>';
-                        break;
-                      case "ANULADO":
-                        $ds_estado_comprobante = '<div><span class="badge bg-danger">ANULADO</span></div>';
+                      case "DESPACHADO":
+                        $ds_estado_salida_producto = '<div><span class="badge bg-info">DESPACHADO</span></div>';
                         break;
                       default:
-                        $ds_estado_comprobante = '<div><span class="badge bg-warning">PENDIENTE</span></div>';
+                        $ds_estado_salida_producto = '<div><span class="badge bg-warning">PENDIENTE</span></div>';
                         break;
                     }
 
@@ -66,18 +60,13 @@
                       <td><?php echo $index->fecha_comprobante;  ?></td>
                       <td><?php echo $index->ds_nombre_cliente_proveedor; ?></td>
                       <td><?php echo $index->ds_nombre_trabajador; ?></td>
-                      <td><?php echo $ds_estado_comprobante; ?></td>
-                      <?php if ($index->id_comprobante != "" and $index->ds_estado_comprobante == "PENDIENTE POR ALMACEN") { ?>
-                        <td><button type="button" class="btn btn-outline-info btn-sm js_lupa_comprobantes_productos" value="<?php echo $index->id_comprobante; ?>" data-toggle="modal" data-target="#id_target_comprobantes_productos"><span class="fas fa-search-plus"></span></button></td>
-                        <td><button type="button" class="btn btn-outline-success btn-sm btn_aprobar_estado" value="<?php echo $index->id_comprobante; ?>"><span class="fas fa-check-circle"></span></button></td>
-
-                      <?php } else if ($index->id_comprobante != "" and $index->ds_estado_comprobante == "ORDEN DESPACHADA") { ?>
+                      <td><?php echo $ds_estado_salida_producto; ?></td>
+                      <?php if ($index->id_comprobante != "" and $index->ds_estado_salida_producto == "DESPACHADO") { ?>
                         <td><button type="button" class="btn btn-outline-info btn-sm js_lupa_comprobantes_productos" value="<?php echo $index->id_comprobante; ?>" data-toggle="modal" data-target="#id_target_comprobantes_productos"><span class="fas fa-search-plus"></span></button></td>
                         <td><button type="button" class="btn btn-outline-secondary btn-sm" disabled><span class="fas fa-check-circle"></span></button></td>
-
-                      <?php } else if ($index->id_comprobante != "" and $index->ds_estado_comprobante == "ANULADO") { ?>
+                      <?php } else { ?>
                         <td><button type="button" class="btn btn-outline-info btn-sm js_lupa_comprobantes_productos" value="<?php echo $index->id_comprobante; ?>" data-toggle="modal" data-target="#id_target_comprobantes_productos"><span class="fas fa-search-plus"></span></button></td>
-                        <td><button type="button" class="btn btn btn-outline-secondary btn-sm" disabled><span class="far fa-trash-alt"></span></button></td>
+                        <td><button type="button" class="btn btn-outline-success btn-sm btn_aprobar_estado" value="<?php echo $index->id_comprobante; ?>"><span class="fas fa-check-circle"></span></button></td>
 
                       <?php } ?>
 

@@ -264,7 +264,7 @@ $(document).on("click", ".btn_anular_estado", function () {
 	var estado_orden = $(this).parents("tr").find("td")[16].innerText;
 
 
-	if (estado_orden == "ORDEN DESPACHADA") {
+	if (estado_orden == "APROBADO") {
 		alertify.confirm("Esta seguro que desea anular",
 			function () {
 				$.ajax({

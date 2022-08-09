@@ -51,8 +51,6 @@
                         <th></th>
                         <th></th>
                         <th></th>
-
-
                       </tr>
                     </thead>
                     <tbody>
@@ -83,11 +81,8 @@
                             case "PENDIENTE":
                               $ds_estado_comprobante = '<div><span class="badge bg-warning">PENDIENTE</span></div>';
                               break;
-                            case "PENDIENTE POR ALMACEN":
-                              $ds_estado_comprobante = '<div><span class="badge bg-dark">PENDIENTE POR ALMACEN</span></div>';
-                              break;
-                            case "ORDEN DESPACHADA":
-                              $ds_estado_comprobante = '<div><span class="badge bg-info">ORDEN DESPACHADA</span></div>';
+                            case "APROBADO":
+                              $ds_estado_comprobante = '<div><span class="badge bg-success">APROBADO</span></div>';
                               break;
                             case "ANULADO":
                               $ds_estado_comprobante = '<div><span class="badge bg-danger">ANULADO</span></div>';
@@ -122,25 +117,18 @@
                             <td><?php echo $ds_estado_comprobante; ?></td>
 
 
-                            <?php if ($index->id_comprobante != "" and $index->ds_estado_comprobante == "PENDIENTE POR ALMACEN") { ?>
+                            <?php if ($index->id_comprobante != "" and $index->ds_estado_comprobante == "APROBADO") { ?>
                               <td><button type="button" class="btn btn-outline-info btn-sm js_lupa_comprobantes_productos" value="<?php echo $index->id_comprobante; ?>" data-toggle="modal" data-target="#id_target_comprobantes_productos"><span class="fas fa-search-plus"></span></button></td>
                               <td><a href=" <?php echo base_url(); ?>C_comprobantes/enlace_actualizar/<?php echo $index->id_comprobante; ?>" class="btn btn btn-outline-warning btn-sm"><span class="far fa-edit"></span></a></td>
-                              <td><button type="button" class="btn btn btn-outline-secondary btn-sm" disabled><span class="far fa-trash-alt"></span></button></td>
-
-
-                            <?php } else if ($index->id_comprobante != "" and $index->ds_estado_comprobante == "ORDEN DESPACHADA") { ?>
-                              <td><button type="button" class="btn btn-outline-info btn-sm js_lupa_comprobantes_productos" value="<?php echo $index->id_comprobante; ?>" data-toggle="modal" data-target="#id_target_comprobantes_productos"><span class="fas fa-search-plus"></span></button></td>
-                              <td><button type="button" class="btn btn btn-outline-secondary btn-sm" disabled><span class="far fa-edit"></span></button></td>
                               <td><button type="button" class="btn btn btn-outline-danger btn-sm btn_anular_estado"><span class="far fa-trash-alt"></span></button></td>
 
                             <?php } else if ($index->id_comprobante != "" and $index->ds_estado_comprobante == "ANULADO") { ?>
                               <td><button type="button" class="btn btn-outline-info btn-sm js_lupa_comprobantes_productos" value="<?php echo $index->id_comprobante; ?>" data-toggle="modal" data-target="#id_target_comprobantes_productos"><span class="fas fa-search-plus"></span></button></td>
                               <td><button type="button" class="btn btn btn-outline-secondary btn-sm" disabled><span class="far fa-edit"></span></button></td>
-                              <td><button type="button" class="btn btn btn-outline-danger btn-sm" disabled><span class="far fa-trash-alt"></span></button></td>
-
+                              <td><button type="button" class="btn btn btn-outline-secondary btn-sm" disabled><span class="far fa-trash-alt"></span></button></td>
 
                             <?php } else { ?>
-                              <td><button type="button" class="btn btn-outline-info btn-sm" disabled><span class="fas fa-search-plus"></span></button></td>
+                              <td><button type="button" class="btn btn-outline-secondary btn-sm" disabled><span class="fas fa-search-plus"></span></button></td>
                               <td><a href=" <?php echo base_url(); ?>C_comprobantes/enlace_registrar/<?php echo $index->id_guia_remision; ?>" class="btn btn btn-outline-warning btn-sm"><span class="far fa-edit"></span></a></td>
                               <td><button type="button" class="btn btn btn-outline-secondary btn-sm" disabled><span class="far fa-check-circle"></span></button></td>
                             <?php } ?>

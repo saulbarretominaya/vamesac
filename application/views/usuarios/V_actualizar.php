@@ -96,15 +96,15 @@
                   </div>
 
                   <div class="col-md-3">
-                    <label>Trabaja RRHH</label>
+                    <!-- <label>Trabaja RRHH</label> -->
                     <div class="input-group">
-                      <input class="form-control" type="text" class="form-control" id="ds_empresa" value="<?php echo $enlace_actualizar->ds_trabaja_rrhh; ?>" readonly>
+                      <input class="form-control" type="hidden" class="form-control" id="ds_empresa" value="<?php echo $enlace_actualizar->ds_trabaja_rrhh; ?>" readonly>
                     </div>
                   </div>
                   <div class="col-md-3">
-                    <label>Sucursal</label>
+                    <!-- <label>Sucursal</label> -->
                     <div class="input-group">
-                      <input class="form-control" type="text" class="form-control" id="ds_almacen" value="<?php echo $enlace_actualizar->ds_sucursal; ?>" readonly>
+                      <input class="form-control" type="hidden" class="form-control" id="ds_almacen" value="<?php echo $enlace_actualizar->ds_sucursal; ?>" readonly>
                     </div>
                   </div>
 
@@ -136,7 +136,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <div class="col-md-8">
-                        <label for="">Accesos Empresas</label>
+                        <label for="">Empresa</label>
                         <select class="form-select " id="id_empresa">
                           <option value="0" selected>Seleccionar</option>
                           <?php foreach ($cbox_empresa as $cbox_empresa) : ?>

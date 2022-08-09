@@ -48,7 +48,7 @@ $(document).on("click", ".btn_aprobar_estado", function () {
 	var estado_orden = $(this).parents("tr").find("td")[9].innerText;
 
 
-	if (estado_orden == "PENDIENTE POR ALMACEN") {
+	if (estado_orden == "PENDIENTE") {
 		alertify.confirm("Esta seguro que desea aprobarlo",
 			function () {
 				$.ajax({

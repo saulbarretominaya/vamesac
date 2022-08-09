@@ -345,7 +345,7 @@ class M_elaborar_pc extends CI_Model
             a.precio_ganancia AS precio_u,
             a.d,
             a.precio_descuento AS precio_u_d,
-            a.valor_venta_con_d AS valor_venta,
+            FORMAT(a.valor_venta_con_d,2) AS valor_venta,
             a.dias_entrega,
             (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_estado_elaborar_pc) AS ds_estado_elaborar_pc
             FROM 
