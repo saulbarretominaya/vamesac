@@ -176,12 +176,57 @@ class M_carga_inicial extends CI_Model
         );
     }
 
+    public function actualizar(
+        $id_carga_inicial,
+        $id_trabajador,
+        $ds_nombre_trabajador,
+        $fecha_carga_inicial,
+        $id_tipo_ingreso,
+        $id_moneda,
+        $tipo_cambio,
+        $id_cliente_proveedor,
+        $ds_nombre_cliente_proveedor,
+        $num_guia,
+        $num_orden_compra,
+        $id_tipo_comprobante,
+        $fecha_comprobante,
+        $num_comprobante,
+        $observacion,
+        $monto_total,
+        $id_carga_inicial_empresa,
+        $id_empresa
+    ) {
+        return $this->db->query(
+            "
+            UPDATE carga_inicial SET
+            id_trabajador='$id_trabajador',
+            ds_nombre_trabajador='$ds_nombre_trabajador',
+            fecha_carga_inicial='$fecha_carga_inicial',
+            id_tipo_ingreso='$id_tipo_ingreso',
+            id_moneda='$id_moneda',
+            tipo_cambio='$tipo_cambio',
+            id_cliente_proveedor='$id_cliente_proveedor',
+            ds_nombre_cliente_proveedor='$ds_nombre_cliente_proveedor',
+            num_guia='$num_guia',
+            num_orden_compra='$num_orden_compra',
+            id_tipo_comprobante='$id_tipo_comprobante',
+            fecha_comprobante='$fecha_comprobante',
+            num_comprobante='$num_comprobante',
+            observacion='$observacion',
+            monto_total='$monto_total',
+            id_carga_inicial_empresa='$id_carga_inicial_empresa',
+            id_empresa='$id_empresa'
+            WHERE id_carga_inicial='$id_carga_inicial'
+            "
+        );
+    }
+
     public function lastID()
     {
         return $this->db->insert_id();
     }
 
-    public function registrar_detalle_carga_inicial(
+    public function registrar_detalle(
         $id_carga_inicial,
         $item,
         $id_almacen,
@@ -207,7 +252,8 @@ class M_carga_inicial extends CI_Model
             id_carga_inicial,item,id_almacen,ds_almacen,id_producto,
             codigo_producto,descripcion_producto,
             id_unidad_medida,ds_unidad_medida,id_marca_producto,ds_marca_producto,
-            stock_actual,nueva_cantidad,total_stock,precio_unitario,valor_total
+            stock_actual,nueva_cantidad,total_stock,precio_unitario,valor_total,
+            id_estado_carga_inicial,fecha_carga_inicial
             )
             VALUES
             (
@@ -215,9 +261,32 @@ class M_carga_inicial extends CI_Model
             '$id_carga_inicial','$item','$id_almacen','$ds_almacen','$id_producto',
             '$codigo_producto','$descripcion_producto',
             '$id_unidad_medida','$ds_unidad_medida','$id_marca_producto','$ds_marca_producto',
-            '$stock_actual','$nueva_cantidad','$total_stock','$precio_unitario','$valor_total'
+            '$stock_actual','$nueva_cantidad','$total_stock','$precio_unitario','$valor_total',
+            '974',NOW()
             )
         "
+        );
+    }
+
+    public function actualizar_detalle($id_dcarga_inicial_actualizar, $item_actualizar)
+    {
+        return $this->db->query(
+            "
+            UPDATE detalle_carga_inicial SET
+            item='$item_actualizar'
+            WHERE id_dcarga_inicial='$id_dcarga_inicial_actualizar'
+            "
+        );
+    }
+    public function eliminar_detalle($id_dcarga_inicial_eliminar)
+    {
+        return $this->db->query(
+            "
+            UPDATE detalle_carga_inicial SET
+            id_estado_carga_inicial='975',
+            fecha_carga_inicial=NOW()
+            WHERE id_dcarga_inicial='$id_dcarga_inicial_eliminar'
+            "
         );
     }
 
@@ -275,8 +344,48 @@ class M_carga_inicial extends CI_Model
             a.valor_total
             FROM 
             detalle_carga_inicial a
-            WHERE a.id_carga_inicial ='$id_carga_inicial'
+            WHERE a.id_carga_inicial ='$id_carga_inicial' and a.id_estado_carga_inicial='974' 
         "
+        );
+        return $resultados->result();
+    }
+
+    public function enlace_actualizar_cabecera($id_carga_inicial)
+    {
+        $resultados = $this->db->query(
+            "
+            SELECT
+            a.id_carga_inicial,
+            a.fecha_carga_inicial,
+            a.id_cliente_proveedor,
+            a.ds_nombre_cliente_proveedor,
+            a.num_guia,num_orden_compra,a.num_comprobante,
+            a.observacion,a.monto_total,observacion,
+            a.id_tipo_ingreso,
+            a.id_moneda,
+            a.tipo_cambio,
+            a.id_tipo_comprobante,
+            a.fecha_comprobante,
+            (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=id_tipo_ingreso) AS ds_tipo_ingreso,
+            (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=id_moneda) AS ds_moneda
+            FROM 
+            carga_inicial a
+            WHERE a.id_carga_inicial='$id_carga_inicial'
+            "
+        );
+        return $resultados->row();
+    }
+
+    public function enlace_actualizar_detalle($id_carga_inicial)
+    {
+        $resultados = $this->db->query(
+            "
+            SELECT 
+            a.*,
+            (select descripcion from detalle_multitablas where id_dmultitabla=a.id_almacen) as ds_almacen
+            FROM detalle_carga_inicial a
+            WHERE a.id_carga_inicial='$id_carga_inicial' and a.id_estado_carga_inicial='974'
+            "
         );
         return $resultados->result();
     }
