@@ -232,22 +232,7 @@
                 </a>
               </li>
             </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url() . "C_reportes_comprobantes_generados" ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Comprobantes_generados</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url() . "C_reporte_productos" ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Productos</p>
-                </a>
-              </li>
-            </ul>
+           
           </li>
 
           <li class="nav-item">
