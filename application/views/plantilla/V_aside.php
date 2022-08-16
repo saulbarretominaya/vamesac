@@ -270,73 +270,7 @@
             </li>
           <?php } ?>
 
-<<<<<<< HEAD
-          <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="fas fa-tasks"></i>
-              <p>
-                Comprobantes
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url() . "C_comprobantes" ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Comprobantes</p>
-                </a>
-              </li>
-            </ul>
-          </li>
 
-
-          <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="fas fa-file-medical-alt"></i>
-              <p>
-                Reportes
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url() . "C_nivel_productividad" ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Nivel de productividad</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url() . "C_porcentaje_ventas" ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Porcentaje crecimiento de ventas</p>
-                </a>
-              </li>
-            </ul>
-           
-          </li>
-
-          <li class="nav-item">
-            <a href="" class="nav-link">
-
-              <i class="fas fa-users-cog"></i>
-              <p>
-                Administracion
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url() . "C_usuarios" ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Usuarios</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-=======
->>>>>>> 9161568ebb733c84c36460a4f4c8547f62237ba4
 
         </ul>
       </nav>
