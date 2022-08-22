@@ -225,6 +225,27 @@ class C_cotizacion extends CI_Controller
 		echo json_encode($serie_cotizacion);
 	}
 
+	public function enlace_actualizar($id_cotizacion)
+
+	{
+
+		$data = array(
+			'index_clientes_proveedores' => $this->M_cotizacion->index_clientes_proveedores(),
+			'index_productos' => $this->M_cotizacion->index_productos(),
+			'index_comodin' => $this->M_cotizacion->index_comodin(),
+			'cbox_condicion_pago_cotizacion' => $this->M_cbox->cbox_condicion_pago_cotizacion(),
+			'tipo_cambio' => $this->M_cotizacion->tipo_cambio(),
+			'cbox_moneda' => $this->M_cbox->cbox_moneda(),
+			'cbox_estado_cotizacion' => $this->M_cbox->cbox_estado_cotizacion(),
+			'enlace_actualizar_cabecera' => $this->M_cotizacion->enlace_actualizar_cabecera($id_cotizacion),
+			'enlace_actualizar_detalle' => $this->M_cotizacion->enlace_actualizar_detalle($id_cotizacion),
+		);
+
+		$this->load->view('plantilla/V_header');
+		$this->load->view('plantilla/V_aside');
+		$this->load->view('cotizacion/V_actualizar', $data);
+	}
+
 	protected function registrar_detalle_cotizacion(
 		$id_cotizacion,
 		$id_producto,
@@ -347,24 +368,7 @@ class C_cotizacion extends CI_Controller
 		echo json_encode($id_cotizacion);
 	}
 
-	public function enlace_actualizar($id_cotizacion)
 
-	{
-
-		$data = array(
-			'index_clientes_proveedores' => $this->M_cotizacion->index_clientes_proveedores(),
-			'index_productos' => $this->M_cotizacion->index_productos(),
-			'index_comodin' => $this->M_cotizacion->index_comodin(),
-			'cbox_condicion_pago' => $this->M_cbox->cbox_condicion_pago(),
-			'tipo_cambio' => $this->M_cotizacion->tipo_cambio(),
-			'cbox_moneda' => $this->M_cbox->cbox_moneda(),
-			'cbox_estado_cotizacion' => $this->M_cbox->cbox_estado_cotizacion()
-		);
-
-		$this->load->view('plantilla/V_header');
-		$this->load->view('plantilla/V_aside');
-		$this->load->view('cotizacion/V_actualizar', $data);
-	}
 
 	public function index_modal_productos()
 	{

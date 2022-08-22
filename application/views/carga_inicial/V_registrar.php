@@ -237,7 +237,7 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group row">
-                        <div class="col-md-10">
+                        <div class="col-md-12">
                           <div class="card card-primary">
                             <!-- <div class="card card-primary collapsed-card"> -->
                             <div class="card-header">
@@ -250,13 +250,101 @@
                             </div>
                             <div class="card-body">
                               <div class="form-group row">
-                                <div class="col-md-8">
+                                <div class="col-md-2">
+                                  <div class="form-group clearfix">
+                                    <div class="icheck-success d-inline">
+                                      <input type="checkbox" id="aumentar" checked>
+                                      <label for="aumentar">Aumentar</label>
+                                    </div>
+                                    <div class="icheck-success d-inline">
+                                      <input type="checkbox" id="disminuir" disabled>
+                                      <label for="disminuir">Disminuir</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Producto -->
+                                <div class="col-md-2">
+                                  <label class="form-check-label">Productos</label>
+                                  <div class="form-check">
+                                    <button type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target="#opcion_target_producto">
+                                    </button>
+                                    <div class="modal fade" id="opcion_target_producto" tabindex="-1">
+                                      <div class="modal-dialog modal-dialog-centered modal-xl">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h4 class="modal-title">Productos</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <table id="id_datatable_productos" class="table table-bordered table-sm table-hover table-responsive">
+                                              <thead>
+                                                <tr>
+                                                  <th></th>
+                                                  <th id="dtable_ds_almacen">Almacen</th>
+                                                  <th id="dtable_codigo">Codigo</th>
+                                                  <th id="dtable_descripcion_producto">Nombre del Producto</th>
+                                                  <th id="dtable_ds_unidad_medida">U.M</th>
+                                                  <th id="dtable_ds_marca_producto">Marca</th>
+                                                  <th id="dtable_ds_grupo">Grupo</th>
+                                                  <th id="dtable_stock">Stock</th>
+                                                  <th id="dtable_ds_moneda">Moneda</th>
+                                                  <th id="dtable_precio_unitario">Precio Unitario</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                <?php if (!empty($index_productos)) : ?>
+                                                  <?php foreach ($index_productos as $index_productos) : ?>
+                                                    <tr>
+                                                      <td>
+                                                        <?php $split_productos =
+                                                          $index_productos->id_producto . "*" .
+                                                          $index_productos->id_almacen . "*" .
+                                                          $index_productos->ds_almacen . "*" .
+                                                          $index_productos->codigo_producto . "*" .
+                                                          $index_productos->descripcion_producto . "*" .
+                                                          $index_productos->id_unidad_medida . "*" .
+                                                          $index_productos->ds_unidad_medida . "*" .
+                                                          $index_productos->id_marca_producto . "*" .
+                                                          $index_productos->ds_marca_producto . "*" .
+                                                          $index_productos->id_moneda . "*" .
+                                                          $index_productos->ds_moneda . "*" .
+                                                          $index_productos->precio_unitario . "*" .
+                                                          $index_productos->stock;
+                                                        ?>
+                                                        <button type="button" class="btn btn-outline-success btn-sm js_seleccionar_modal_producto" value="<?php echo $split_productos; ?>" data-toggle="modal" data-target="#opcion_target_producto"><span class="fas fa-check"></span></button>
+                                                      </td>
+                                                      <td><?php echo $index_productos->ds_almacen; ?></td>
+                                                      <td><?php echo $index_productos->codigo_producto; ?></td>
+                                                      <td><?php echo $index_productos->descripcion_producto; ?></td>
+                                                      <td><?php echo $index_productos->ds_unidad_medida; ?></td>
+                                                      <td><?php echo $index_productos->ds_marca_producto; ?></td>
+                                                      <td><?php echo $index_productos->ds_grupo; ?></td>
+                                                      <td><?php echo $index_productos->stock; ?></td>
+                                                      <td><?php echo $index_productos->ds_moneda; ?></td>
+                                                      <td><?php echo $index_productos->precio_unitario; ?></td>
+                                                    </tr>
+                                                  <?php endforeach; ?>
+                                                <?php endif; ?>
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                          <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-5">
                                   <label for="">Descripcion</label>
                                   <div class="input-group">
                                     <input type="text" class="form-control" id="descripcion_producto" readonly>
                                   </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                   <label for="">Almacen</label>
                                   <div class="input-group">
                                     <input type="text" class="form-control" id="ds_almacen" readonly>
@@ -306,82 +394,7 @@
                             </div>
                           </div>
                         </div>
-                        <!-- Producto -->
-                        <div class="col-md-2">
-                          <div class="form-check">
-                            <button type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target="#opcion_target_producto">
-                            </button>
-                            <label class="form-check-label">Productos</label>
-                            <div class="modal fade" id="opcion_target_producto" tabindex="-1">
-                              <div class="modal-dialog modal-dialog-centered modal-xl">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h4 class="modal-title">Productos</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <table id="id_datatable_productos" class="table table-bordered table-sm table-hover table-responsive">
-                                      <thead>
-                                        <tr>
-                                          <th></th>
-                                          <th id="dtable_ds_almacen">Almacen</th>
-                                          <th id="dtable_codigo">Codigo</th>
-                                          <th id="dtable_descripcion_producto">Nombre del Producto</th>
-                                          <th id="dtable_ds_unidad_medida">U.M</th>
-                                          <th id="dtable_ds_marca_producto">Marca</th>
-                                          <th id="dtable_ds_grupo">Grupo</th>
-                                          <th id="dtable_stock">Stock</th>
-                                          <th id="dtable_ds_moneda">Moneda</th>
-                                          <th id="dtable_precio_unitario">Precio Unitario</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <?php if (!empty($index_productos)) : ?>
-                                          <?php foreach ($index_productos as $index_productos) : ?>
-                                            <tr>
-                                              <td>
-                                                <?php $split_productos =
-                                                  $index_productos->id_producto . "*" .
-                                                  $index_productos->id_almacen . "*" .
-                                                  $index_productos->ds_almacen . "*" .
-                                                  $index_productos->codigo_producto . "*" .
-                                                  $index_productos->descripcion_producto . "*" .
-                                                  $index_productos->id_unidad_medida . "*" .
-                                                  $index_productos->ds_unidad_medida . "*" .
-                                                  $index_productos->id_marca_producto . "*" .
-                                                  $index_productos->ds_marca_producto . "*" .
-                                                  $index_productos->id_moneda . "*" .
-                                                  $index_productos->ds_moneda . "*" .
-                                                  $index_productos->precio_unitario . "*" .
-                                                  $index_productos->stock;
-                                                ?>
-                                                <button type="button" class="btn btn-outline-success btn-sm js_seleccionar_modal_producto" value="<?php echo $split_productos; ?>" data-toggle="modal" data-target="#opcion_target_producto"><span class="fas fa-check"></span></button>
-                                              </td>
-                                              <td><?php echo $index_productos->ds_almacen; ?></td>
-                                              <td><?php echo $index_productos->codigo_producto; ?></td>
-                                              <td><?php echo $index_productos->descripcion_producto; ?></td>
-                                              <td><?php echo $index_productos->ds_unidad_medida; ?></td>
-                                              <td><?php echo $index_productos->ds_marca_producto; ?></td>
-                                              <td><?php echo $index_productos->ds_grupo; ?></td>
-                                              <td><?php echo $index_productos->stock; ?></td>
-                                              <td><?php echo $index_productos->ds_moneda; ?></td>
-                                              <td><?php echo $index_productos->precio_unitario; ?></td>
-                                            </tr>
-                                          <?php endforeach; ?>
-                                        <?php endif; ?>
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                  <div class="modal-footer justify-content-between">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+
                       </div>
                       <input type="hidden" id="hidden_id_producto">
                       <input type="hidden" id="hidden_id_almacen">

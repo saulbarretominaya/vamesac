@@ -489,9 +489,6 @@
                                     <td><button type='button' class='btn btn-outline-danger btn-sm class_eliminar_detalle'><span class='fas fa-trash-alt'></span></button></td>
                                   </tr>
                                 <?php endforeach; ?>
-
-
-                              </tbody>
                               </tbody>
                             </table>
                           </div>
@@ -556,8 +553,7 @@
 <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script>
 <!-- Select2 -->
 <script src="<?php echo base_url() ?>plantilla/plugins/select2/js/select2.full.min.js"></script>
-<!-- Bootstrap Switch -->
-<script src="<?php echo base_url() ?>plantilla/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+
 <script>
   var base_url = "<?php echo base_url(); ?>";
 </script>

@@ -140,7 +140,7 @@ $("#registrar").on("click", function () {
 });
 $("#actualizar").on("click", function () {
 
-	//validar_registrar();
+	validar_registrar();
 	if (resultado_campo == true) {
 
 		//Cabecera
@@ -499,7 +499,7 @@ $(document).on("click", ".class_eliminar_detalle", function () {
 	$(this).closest("tr").remove();
 	generar_item();
 	calcular_monto_total();
-	// limpiar_campos();
+	limpiar_campos();
 });
 $("#precio_unitario").on("keyup", function () {
 
@@ -698,22 +698,29 @@ function calcular_monto_total() {
 }
 function limpiar_campos() {
 
-	$("#hidden_id_producto").val("");
-	$("#hidden_id_almacen").val("");
-	$("#ds_almacen").val("");
-	$("#hidden_codigo_producto").val("");
-	$("#descripcion_producto").val("");
-	$("#hidden_id_unidad_medida").val("");
-	$("#hidden_ds_unidad_medida").val("");
-	$("#hidden_id_marca_producto").val("");
-	$("#hidden_ds_marca_producto").val("");
-	$("#stock_actual").val("");
-	$("#nueva_cantidad").val("");
-	$("#total_stock").val("");
-	$("#precio_unitario").val("");
-	$("#valor_total").val("");
-	$('#aumentar').prop('checked', false);
-	$('#disminuir').prop('checked', false);
+	var count = $('#id_table_detalle_carga_inicial tr').length;
+
+	if (count == 1) {
+		$("#monto_total").val("");
+	} else {
+		$("#hidden_id_producto").val("");
+		$("#hidden_id_almacen").val("");
+		$("#ds_almacen").val("");
+		$("#hidden_codigo_producto").val("");
+		$("#descripcion_producto").val("");
+		$("#hidden_id_unidad_medida").val("");
+		$("#hidden_ds_unidad_medida").val("");
+		$("#hidden_id_marca_producto").val("");
+		$("#hidden_ds_marca_producto").val("");
+		$("#stock_actual").val("");
+		$("#nueva_cantidad").val("");
+		$("#total_stock").val("");
+		$("#precio_unitario").val("");
+		$("#valor_total").val("");
+		$('#aumentar').prop('checked', false);
+		$('#disminuir').prop('checked', false);
+	}
+
 
 }
 function validar_registrar() {

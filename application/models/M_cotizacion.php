@@ -423,14 +423,14 @@ class M_cotizacion extends CI_Model
 
     public function enlace_actualizar_cabecera($id_cotizacion)
     {
-        $resultados = $this->db->query("
-            SELECT 
-            a.id_cotizacion,
-            a.valor_cambio,
-            DATE_FORMAT(a.fecha_cotizacion,'%d/%m/%Y') AS fecha_cotizacion,
-            (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_moneda) AS ds_moneda,
-            a.ds_nombre_trabajador,
+        $resultados = $this->db->query(
+            "
+            SELECT
             a.fecha_cotizacion,
+            a.validez_oferta_cotizacion,
+            a.fecha_vencimiento_validez_oferta,
+            a.ds_condicion_pago,
+            a.id_cliente_proveedor,
             a.ds_nombre_cliente_proveedor,
             a.ds_departamento_cliente_proveedor,
             a.ds_provincia_cliente_proveedor,
@@ -441,51 +441,46 @@ class M_cotizacion extends CI_Model
             a.lugar_entrega,
             a.nombre_encargado,
             a.observacion,
-            a.ds_condicion_pago,
+            a.valor_venta_total_sin_d,
+            a.descuento_total,
+            a.valor_venta_total_con_d,
+            a.igv,
             a.precio_venta,
-            id_estado_cotizacion,
-            (SELECT abreviatura FROM detalle_multitablas WHERE id_dmultitabla=id_estado_cotizacion) AS ds_estado_valor_cot,
-            (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=a.id_estado_cotizacion) AS ds_estado_cotizacion,
-            b.id_orden_despacho,
-            b.resultado_valor_cambio,
-            DATE_FORMAT(b.fecha_orden_despacho,'%d/%m/%Y') AS fecha_orden_despacho,
-            id_estado_orden_despacho,
-            (SELECT abreviatura FROM detalle_multitablas WHERE id_dmultitabla=id_estado_orden_despacho) AS ds_estado_valor_od,
-            (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=id_estado_orden_despacho) AS ds_estado_orden_despacho,
-            c.id_cliente_proveedor,
-            c.linea_credito_dolares,
-            c.credito_unitario_dolares,
-            c.disponible_dolares,
-            b.linea_credito_uso
+            a.id_condicion_pago
             FROM
             cotizacion a
-            RIGHT JOIN orden_despacho b ON b.id_cotizacion=a.id_cotizacion
-            LEFT JOIN clientes_proveedores c ON c.id_cliente_proveedor=a.id_cliente_proveedor
-            WHERE  a.id_cotizacion ='$id_cotizacion' AND id_estado_orden_despacho='862'
-               ");
+            LEFT JOIN clientes_proveedores b ON b.id_cliente_proveedor=a.id_cliente_proveedor
+            LEFT JOIN trabajadores c ON c.id_trabajador=a.id_trabajador
+            where a.id_cotizacion='$id_cotizacion'
+            "
+        );
         return $resultados->row();
     }
 
     public function enlace_actualizar_detalle($id_cotizacion)
     {
-        $resultados = $this->db->query("
-        SELECT 
-        a.id_cotizacion,
-        b.codigo_producto,
-        b.descripcion_producto,
-        b.ds_unidad_medida,
-        b.ds_marca_producto,
-        b.precio_ganancia,
-        b.cantidad,
-        b.valor_venta,
-        '||',
-        c.stock
-        FROM
-        cotizacion a
-        LEFT JOIN detalle_cotizacion b ON b.id_cotizacion=a.id_cotizacion
-        LEFT JOIN productos c ON c.id_producto=b.id_producto
-        WHERE  a.id_cotizacion ='$id_cotizacion'
-               ");
+        $resultados = $this->db->query(
+            "
+            SELECT
+            a.item,
+            a.codigo_producto,
+            a.descripcion_producto,
+            a.ds_unidad_medida,
+            a.ds_marca_producto,
+            a.precio_ganancia AS precio_u,
+            a.cantidad,
+            a.d,
+            a.d_unidad,
+            a.precio_descuento AS precio_u_d,
+            a.d_cant_total,
+            a.valor_venta_sin_d,
+            a.valor_venta_con_d,
+            a.dias_entrega
+            FROM 
+            detalle_cotizacion a
+            WHERE a.id_cotizacion='$id_cotizacion'
+            "
+        );
         return $resultados->result();
     }
 
