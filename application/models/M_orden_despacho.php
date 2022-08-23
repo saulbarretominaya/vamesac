@@ -44,8 +44,6 @@ class M_orden_despacho extends CI_Model
         return $resultados->result();
     }
 
-
-
     public function aprobar_estado(
         $id_orden_despacho,
         $linea_credito_dolares,
@@ -126,7 +124,6 @@ class M_orden_despacho extends CI_Model
         );
     }
 
-
     public function index_modal_cabecera_productos($id_orden_despacho)
     {
         $resultados = $this->db->query(
@@ -166,9 +163,9 @@ class M_orden_despacho extends CI_Model
             a.precio_descuento AS precio_u_d,
             FORMAT(a.valor_venta_con_d,2) AS valor_venta,
             a.dias_entrega
-            FROM 
+            FROM
             detalle_cotizacion a
-            LEFT JOIN orden_despacho b ON b.id_cotizacion=a.id_cotizacion
+            LEFT JOIN orden_despacho b ON b.id_cotizacion=a.id_cotizacion and a.id_estado_cotizacion='977'
             WHERE b.id_orden_despacho='$id_orden_despacho'
         "
         );

@@ -11,6 +11,13 @@
         </div>
       </div>
     </div>
+    <input type="hidden" id="id_cotizacion" value="<?php echo $enlace_actualizar_cabecera->id_cotizacion ?>">
+    <table id="container_id_dcotizacion_eliminar" style="display: none;">
+      <tbody>
+      </tbody>
+    </table>
+
+
   </section>
 
 
@@ -61,7 +68,7 @@
                         <div class="col-md-2">
                           <label for="cargo">Validez Oferta</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" id="validez_oferta_cotizacion" value="<?php echo $enlace_actualizar_cabecera->validez_oferta_cotizacion; ?>" readonly>
+                            <input type="text" class="form-control" id="validez_oferta_cotizacion" value="<?php echo $enlace_actualizar_cabecera->validez_oferta_cotizacion; ?>">
                           </div>
                         </div>
                         <div class="col-md-3">
@@ -191,7 +198,7 @@
                             <div class="col-md-3">
                               <label for="">Correo Electronico</label>
                               <div class="input-group">
-                                <input type="text" class="form-control" id="email_cliente_proveedor" value="<?php echo $enlace_actualizar_cabecera->email_cliente_proveedor; ?>" readonly>
+                                <input type="text" class="form-control" id="email_cliente_proveedor" value="<?php echo $enlace_actualizar_cabecera->email_cliente_proveedor; ?>">
                               </div>
                             </div>
                             <div class="col-md-3">
@@ -435,7 +442,8 @@
                     </div>
 
                     <div class="col-md-4">
-                      <div class="card collapsed-card">
+                      <!-- <div class="card collapsed-card"> -->
+                      <div class="card">
                         <div class="card-header">
                           <h3 class="card-title">Datos del Producto</h3>
                           <div class="card-tools">
@@ -464,7 +472,8 @@
                     </div>
 
                     <div class="col-md-4">
-                      <div class="card collapsed-card">
+                      <!-- <div class="card collapsed-card"> -->
+                      <div class="card">
                         <div class="card-header">
                           <strong>
                             <h3 class="card-title">El Tipo Cambio es: <?php echo $tipo_cambio->venta; ?></h3>
@@ -481,13 +490,24 @@
                             <div class="col-md-6">
                               <label for="">Moneda</label>
                               <div class="input-group">
-                                <select class="form-select" id="tipo_moneda_cambio">
+                                <select class="form-select" id="tipo_moneda_cambio" disabled>
                                   <option value="0">Seleccionar</option>
                                   <?php foreach ($cbox_moneda as $cbox_moneda) : ?>
-                                    <option value="<?php echo $cbox_moneda->id_dmultitabla; ?>"><?php echo $cbox_moneda->descripcion; ?></option>
+                                    <?php if ($cbox_moneda->id_dmultitabla == $enlace_actualizar_cabecera->id_moneda) : ?>
+                                      <option value="<?php echo $cbox_moneda->id_dmultitabla ?>" selected>
+                                        <?php echo $cbox_moneda->descripcion; ?>
+                                      </option>
+                                    <?php else : ?>
+                                      <option value="<?php echo $cbox_moneda->id_dmultitabla ?>">
+                                        <?php echo $cbox_moneda->descripcion; ?>
+                                      </option>
+                                    <?php endif; ?>
                                   <?php endforeach; ?>
                                 </select>
                               </div>
+
+
+
                             </div>
                             <div class="col-md-6">
                               <label for="">Conver. Unitario</label>
@@ -501,7 +521,8 @@
                     </div>
 
                     <div class="col-md-4">
-                      <div class="card collapsed-card">
+                      <!-- <div class="card collapsed-card"> -->
+                      <div class="card">
                         <div class="card-header">
                           <h3 class="card-title">Salida de Producto</h3>
                           <div class="card-tools">
@@ -546,7 +567,8 @@
                     </div>
 
                     <div class="col-md-6">
-                      <div class="card collapsed-card">
+                      <!-- <div class="card collapsed-card"> -->
+                      <div class="card">
                         <div class="card-header">
                           <h3 class="card-title">Aplicar Ganancia</h3>
                           <div class="card-tools">
@@ -585,7 +607,8 @@
                     </div>
 
                     <div class="col-md-6">
-                      <div class="card collapsed-card">
+                      <!-- <div class="card collapsed-card"> -->
+                      <div class="card">
                         <div class="card-header">
                           <h3 class="card-title">Aplicar Descuento</h3>
                           <div class="card-tools">
@@ -666,7 +689,7 @@
                               <tbody>
                                 <?php foreach ($enlace_actualizar_detalle as $index) : ?>
                                   <tr>
-                                    <td><?php echo $index->item; ?></td>
+                                    <td width='70px'><input type='text' value='<?php echo $index->item; ?>' class='form-control' id='item' readonly=''></td>
                                     <td><?php echo $index->codigo_producto; ?></td>
                                     <td><?php echo $index->descripcion_producto; ?></td>
                                     <td><?php echo $index->ds_unidad_medida; ?></td>
@@ -674,13 +697,16 @@
                                     <td><?php echo $index->precio_u; ?></td>
                                     <td><?php echo $index->cantidad; ?></td>
                                     <td><?php echo $index->d; ?></td>
-                                    <td><?php echo $index->d_unidad; ?></td>
                                     <td><?php echo $index->precio_u_d ?></td>
+                                    <td><?php echo $index->d_unidad; ?></td>
                                     <td><?php echo $index->d_cant_total ?></td>
                                     <td><?php echo $index->valor_venta_sin_d ?></td>
                                     <td><?php echo $index->valor_venta_con_d ?></td>
-                                    <td><?php echo $index->dias_entrega; ?></td>
-                                    <td></td>
+                                    <td><input type='number' value='<?php echo $index->dias_entrega; ?>' class='form-control' id='dias_entrega' readonly=''></td>
+                                    <td>
+                                      <input type="hidden" id="id_dcotizacion_eliminar" name="id_dcotizacion_eliminar[]" value="<?php echo $index->id_dcotizacion; ?>">
+                                      <button type='button' class='btn btn-outline-danger btn-sm class_eliminar_detalle'><span class='fas fa-trash-alt'></span></button>
+                                    </td>
                                   </tr>
                                 <?php endforeach; ?>
                               </tbody>

@@ -187,7 +187,7 @@ class C_cotizacion extends CI_Controller
 		}
 		$id_cotizacion = $this->M_cotizacion->lastID();
 
-		$this->registrar_detalle_cotizacion(
+		$this->registrar_detalle(
 			$id_cotizacion,
 			$id_producto,
 
@@ -246,10 +246,131 @@ class C_cotizacion extends CI_Controller
 		$this->load->view('cotizacion/V_actualizar', $data);
 	}
 
-	protected function registrar_detalle_cotizacion(
+	public function actualizar()
+	{
+
+		//ACTUALIZAR CABECERA
+		$id_cotizacion = $this->input->post("id_cotizacion");
+		$validez_oferta_cotizacion = $this->input->post("validez_oferta_cotizacion");
+		$fecha_vencimiento_validez_oferta = $this->input->post("fecha_vencimiento_validez_oferta");
+		$id_cliente_proveedor = $this->input->post("id_cliente_proveedor");
+		$ds_nombre_cliente_proveedor = $this->input->post("ds_nombre_cliente_proveedor");
+		$ds_departamento_cliente_proveedor = $this->input->post("ds_departamento_cliente_proveedor");
+		$ds_provincia_cliente_proveedor = $this->input->post("ds_provincia_cliente_proveedor");
+		$ds_distrito_cliente_proveedor = $this->input->post("ds_distrito_cliente_proveedor");
+		$direccion_fiscal_cliente_proveedor = $this->input->post("direccion_fiscal_cliente_proveedor");
+		$email_cliente_proveedor = $this->input->post("email_cliente_proveedor");
+		$clausula = $this->input->post("clausula");
+		$lugar_entrega = $this->input->post("lugar_entrega");
+		$nombre_encargado = $this->input->post("nombre_encargado");
+		$observacion = $this->input->post("observacion");
+		$id_condicion_pago = $this->input->post("id_condicion_pago");
+		$ds_condicion_pago = $this->input->post("ds_condicion_pago");
+		$valor_venta_total_sin_d = $this->input->post("valor_venta_total_sin_d");
+		$valor_venta_total_con_d = $this->input->post("valor_venta_total_con_d");
+		$descuento_total = $this->input->post("descuento_total");
+		$igv = $this->input->post("igv");
+		$precio_venta = $this->input->post("precio_venta");
+		$valor_cambio = $this->input->post("valor_cambio");
+		$id_moneda = $this->input->post("id_moneda");
+
+		//ACTUALIZAR DETALLE
+		$id_producto = $this->input->post("id_producto");
+		$id_comodin = $this->input->post("id_comodin");
+		$codigo_producto = $this->input->post("codigo_producto");
+		$descripcion_producto = $this->input->post("descripcion_producto");
+		$id_unidad_medida = $this->input->post("id_unidad_medida");
+		$ds_unidad_medida = $this->input->post("ds_unidad_medida");
+		$id_marca_producto = $this->input->post("id_marca_producto");
+		$ds_marca_producto = $this->input->post("ds_marca_producto");
+		$cantidad = $this->input->post("cantidad");
+		$precio_inicial = $this->input->post("precio_inicial");
+		$precio_ganancia = $this->input->post("precio_ganancia");
+		$g = $this->input->post("g");
+		$g_unidad = $this->input->post("g_unidad");
+		$g_cant_total = $this->input->post("g_cant_total");
+		$precio_descuento = $this->input->post("precio_descuento");
+		$d = $this->input->post("d");
+		$d_unidad = $this->input->post("d_unidad");
+		$d_cant_total = $this->input->post("d_cant_total");
+		$valor_venta_sin_d = $this->input->post("valor_venta_sin_d");
+		$valor_venta_con_d = $this->input->post("valor_venta_con_d");
+		$dias_entrega = $this->input->post("dias_entrega");
+		$item = $this->input->post("item");
+
+		//ELIMINAR POR ID DETALLE
+		$id_dcotizacion_eliminar = $this->input->post("id_dcotizacion_eliminar");
+
+
+
+		//CABECERA
+		$this->M_cotizacion->actualizar(
+			//CABECERA
+			$id_cotizacion,
+			$validez_oferta_cotizacion,
+			$fecha_vencimiento_validez_oferta,
+			$id_cliente_proveedor,
+			$ds_nombre_cliente_proveedor,
+			$ds_departamento_cliente_proveedor,
+			$ds_provincia_cliente_proveedor,
+			$ds_distrito_cliente_proveedor,
+			$direccion_fiscal_cliente_proveedor,
+			$email_cliente_proveedor,
+			$clausula,
+			$lugar_entrega,
+			$nombre_encargado,
+			$observacion,
+			$id_condicion_pago,
+			$ds_condicion_pago,
+			$valor_venta_total_sin_d,
+			$valor_venta_total_con_d,
+			$descuento_total,
+			$igv,
+			$precio_venta,
+			$valor_cambio,
+			$id_moneda
+		);
+
+		//REGISTRAR DETALLE
+		if ($item != "") {
+			$this->registrar_detalle(
+				$id_cotizacion,
+				$id_producto,
+				$id_comodin,
+				$codigo_producto,
+				$descripcion_producto,
+				$id_unidad_medida,
+				$ds_unidad_medida,
+				$id_marca_producto,
+				$ds_marca_producto,
+				$cantidad,
+				$precio_inicial,
+				$precio_ganancia,
+				$g,
+				$g_unidad,
+				$g_cant_total,
+				$precio_descuento,
+				$d,
+				$d_unidad,
+				$d_cant_total,
+				$valor_venta_sin_d,
+				$valor_venta_con_d,
+				$dias_entrega,
+				$item
+			);
+		}
+
+		//ELIMINAR DETALLE
+		if ($id_dcotizacion_eliminar != "") {
+			$this->eliminar_detalle($id_dcotizacion_eliminar);
+		}
+
+		echo json_encode($id_cotizacion);
+	}
+
+	protected function registrar_detalle(
 		$id_cotizacion,
 		$id_producto,
-
 		$id_comodin,
 		$codigo_producto,
 		$descripcion_producto,
@@ -258,26 +379,22 @@ class C_cotizacion extends CI_Controller
 		$id_marca_producto,
 		$ds_marca_producto,
 		$cantidad,
-
 		$precio_inicial,
 		$precio_ganancia,
 		$g,
 		$g_unidad,
 		$g_cant_total,
-
 		$precio_descuento,
 		$d,
 		$d_unidad,
 		$d_cant_total,
-
 		$valor_venta_sin_d,
 		$valor_venta_con_d,
 		$dias_entrega,
 		$item
-
 	) {
 		for ($i = 0; $i < count($id_producto); $i++) {
-			$this->M_cotizacion->registrar_detalle_cotizacion(
+			$this->M_cotizacion->registrar_detalle(
 				$id_cotizacion,
 				$id_producto[$i],
 				$id_comodin[$i],
@@ -309,6 +426,15 @@ class C_cotizacion extends CI_Controller
 		}
 	}
 
+	protected function eliminar_detalle($id_dcotizacion_eliminar)
+	{
+		for ($i = 0; $i < count($id_dcotizacion_eliminar); $i++) {
+			$this->M_cotizacion->eliminar_detalle(
+				$id_dcotizacion_eliminar[$i],
+			);
+		}
+	}
+
 	protected function registrar_detalle_condicion_pago(
 		$id_cotizacion,
 		$fecha_cuota,
@@ -331,6 +457,7 @@ class C_cotizacion extends CI_Controller
 		$cantidad_num_comodin = $this->M_cotizacion->validar_existencia_comodin_registrar($id_cotizacion);
 		echo json_encode($cantidad_num_comodin);
 	}
+
 	public function aprobar_estado()
 	{
 		$id_cotizacion = $this->input->post("id_cotizacion");
@@ -367,8 +494,6 @@ class C_cotizacion extends CI_Controller
 		$this->M_cotizacion->cambiar_estado_pendiente_orden_despacho($id_orden_despacho);
 		echo json_encode($id_cotizacion);
 	}
-
-
 
 	public function index_modal_productos()
 	{

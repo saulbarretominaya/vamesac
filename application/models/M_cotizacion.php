@@ -138,7 +138,7 @@ class M_cotizacion extends CI_Model
         return $this->db->insert_id();
     }
 
-    public function registrar_detalle_cotizacion(
+    public function registrar_detalle(
         $id_cotizacion,
         $id_producto,
         $id_comodin,
@@ -179,7 +179,7 @@ class M_cotizacion extends CI_Model
             precio_inicial,precio_ganancia,g,g_unidad,g_cant_total,
             precio_descuento,d,d_unidad,d_cant_total,
             valor_venta_sin_d,valor_venta_con_d,
-            dias_entrega,item
+            dias_entrega,item,id_estado_cotizacion,fecha_cotizacion
             )
             VALUES
             (
@@ -191,7 +191,7 @@ class M_cotizacion extends CI_Model
             '$precio_inicial','$precio_ganancia','$g','$g_unidad','$g_cant_total',
             '$precio_descuento','$d','$d_unidad','$d_cant_total',
             '$valor_venta_sin_d','$valor_venta_con_d',
-            '$dias_entrega','$item');
+            '$dias_entrega','$item','977',NOW());
         "
         );
     }
@@ -296,7 +296,6 @@ class M_cotizacion extends CI_Model
         ");
         return $resultados->result();
     }
-
 
     public function index_comodin()
     {
@@ -426,6 +425,7 @@ class M_cotizacion extends CI_Model
         $resultados = $this->db->query(
             "
             SELECT
+            a.id_cotizacion,
             a.fecha_cotizacion,
             a.validez_oferta_cotizacion,
             a.fecha_vencimiento_validez_oferta,
@@ -441,12 +441,13 @@ class M_cotizacion extends CI_Model
             a.lugar_entrega,
             a.nombre_encargado,
             a.observacion,
+            a.id_condicion_pago,
+            a.id_moneda,
             a.valor_venta_total_sin_d,
             a.descuento_total,
             a.valor_venta_total_con_d,
             a.igv,
-            a.precio_venta,
-            a.id_condicion_pago
+            a.precio_venta
             FROM
             cotizacion a
             LEFT JOIN clientes_proveedores b ON b.id_cliente_proveedor=a.id_cliente_proveedor
@@ -462,6 +463,7 @@ class M_cotizacion extends CI_Model
         $resultados = $this->db->query(
             "
             SELECT
+            a.id_dcotizacion,
             a.item,
             a.codigo_producto,
             a.descripcion_producto,
@@ -478,10 +480,78 @@ class M_cotizacion extends CI_Model
             a.dias_entrega
             FROM 
             detalle_cotizacion a
-            WHERE a.id_cotizacion='$id_cotizacion'
+            WHERE a.id_cotizacion='$id_cotizacion' and a.id_estado_cotizacion='977'
             "
         );
         return $resultados->result();
+    }
+
+    public function actualizar(
+        $id_cotizacion,
+        $validez_oferta_cotizacion,
+        $fecha_vencimiento_validez_oferta,
+        $id_cliente_proveedor,
+        $ds_nombre_cliente_proveedor,
+        $ds_departamento_cliente_proveedor,
+        $ds_provincia_cliente_proveedor,
+        $ds_distrito_cliente_proveedor,
+        $direccion_fiscal_cliente_proveedor,
+        $email_cliente_proveedor,
+        $clausula,
+        $lugar_entrega,
+        $nombre_encargado,
+        $observacion,
+        $id_condicion_pago,
+        $ds_condicion_pago,
+        $valor_venta_total_sin_d,
+        $valor_venta_total_con_d,
+        $descuento_total,
+        $igv,
+        $precio_venta,
+        $valor_cambio,
+        $id_moneda
+    ) {
+        return $this->db->query(
+            "
+            UPDATE cotizacion SET
+            id_cotizacion='$id_cotizacion',
+            validez_oferta_cotizacion='$validez_oferta_cotizacion',
+            fecha_vencimiento_validez_oferta='$fecha_vencimiento_validez_oferta',
+            id_cliente_proveedor='$id_cliente_proveedor',
+            ds_nombre_cliente_proveedor='$ds_nombre_cliente_proveedor',
+            ds_departamento_cliente_proveedor='$ds_departamento_cliente_proveedor',
+            ds_provincia_cliente_proveedor='$ds_provincia_cliente_proveedor',
+            ds_distrito_cliente_proveedor='$ds_distrito_cliente_proveedor',
+            direccion_fiscal_cliente_proveedor='$direccion_fiscal_cliente_proveedor',
+            email_cliente_proveedor='$email_cliente_proveedor',
+            clausula='$clausula',
+            lugar_entrega='$lugar_entrega',
+            nombre_encargado='$nombre_encargado',
+            observacion='$observacion',
+            id_condicion_pago='$id_condicion_pago',
+            ds_condicion_pago='$ds_condicion_pago',
+            valor_venta_total_sin_d='$valor_venta_total_sin_d',
+            valor_venta_total_con_d='$valor_venta_total_con_d',
+            descuento_total='$descuento_total',
+            igv='$igv',
+            precio_venta='$precio_venta',
+            valor_cambio='$valor_cambio',
+            id_moneda='$id_moneda'
+            WHERE id_cotizacion='$id_cotizacion'
+            "
+        );
+    }
+
+    public function eliminar_detalle($id_dcotizacion_eliminar)
+    {
+        return $this->db->query(
+            "
+            UPDATE detalle_cotizacion SET
+            id_estado_cotizacion='975',
+            fecha_cotizacion=NOW()
+            WHERE id_dcotizacion='$id_dcotizacion_eliminar'
+            "
+        );
     }
 
     public function index_modal_cabecera_productos($id_cotizacion)
@@ -523,7 +593,7 @@ class M_cotizacion extends CI_Model
             a.dias_entrega
             FROM 
             detalle_cotizacion a
-            WHERE a.id_cotizacion='$id_cotizacion'
+            WHERE a.id_cotizacion='$id_cotizacion' and a.id_estado_cotizacion='977'
         "
         );
         return $resultados->result();

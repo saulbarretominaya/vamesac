@@ -278,6 +278,7 @@ class M_carga_inicial extends CI_Model
             "
         );
     }
+
     public function eliminar_detalle($id_dcarga_inicial_eliminar)
     {
         return $this->db->query(

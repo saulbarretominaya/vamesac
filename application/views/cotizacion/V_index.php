@@ -95,12 +95,19 @@
                             <td><button type="button" class="btn btn-outline-info btn-sm js_lupa_cotizacion_productos" value="<?php echo $index->id_cotizacion; ?>" data-toggle="modal" data-target="#id_target_cotizacion_productos"><span class="fas fa-search-plus"></span></button></td>
                             <td><?php echo $index->id_orden_despacho_empresa; ?> </td>
                             <td><?php echo $ds_estado_orden_despacho; ?> </td>
+
                             <?php if ($index->id_orden_despacho != NULL) { ?>
                               <td><button type="button" class="btn btn-outline-info btn-sm js_lupa_orden_despacho_productos" value="<?php echo $index->id_orden_despacho; ?>" data-toggle="modal" data-target="#id_target_orden_despacho_productos"><span class="fas fa-search-plus"></span></button></td>
                             <?php } else { ?>
                               <td></td>
                             <?php } ?>
-                            <td><a href=" <?php echo base_url(); ?>C_cotizacion/enlace_actualizar/<?php echo $index->id_cotizacion; ?>" class="btn btn btn-outline-warning btn-sm"><span class="far fa-edit"></span></a></td>
+
+                            <?php if ($index->ds_estado_orden_despacho == "APROBADO") { ?>
+                              <td><button type="button" class="btn btn btn-outline-secondary btn-sm" disabled><span class="far fa-edit"></span></button></td>
+                            <?php } else { ?>
+                              <td><a href=" <?php echo base_url(); ?>C_cotizacion/enlace_actualizar/<?php echo $index->id_cotizacion; ?>" class="btn btn btn-outline-warning btn-sm"><span class="far fa-edit"></span></a></td>
+                            <?php } ?>
+
                             <input type="hidden" id="id_orden_despacho_empresa" value="<?php echo $this->session->userdata("ds_ruc_empresa") ?>">
                             <td><button type="button" class="btn btn-outline-success btn-sm btn_aprobar_estado" value="<?php echo $index->id_cotizacion; ?>"><span class="fas fa-check-circle"></span></button></td>
                           </tr>
