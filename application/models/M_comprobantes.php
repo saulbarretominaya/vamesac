@@ -33,20 +33,13 @@ class M_comprobantes extends CI_Model
             e.id_num_comprobante AS num_comprobante,
             DATE_FORMAT(e.fecha_emision,'%d/%m/%Y') AS fecha_comprobante,
             d.ds_sucursal_trabajador,
-            h.enlace_del_pdf as enlace_del_pdf_comprobante_emitido,
-            h.enlace_del_xml as enlace_del_xml_comprobante_emitido,
-            h.enlace_del_cdr as enlace_del_cdr_comprobante_emitido,
-            e.id_estado_sunat as ds_estado_sunat,
-            i.enlace_del_pdf as enlace_del_pdf_comprobante_anulado,
-            i.enlace_del_xml as enlace_del_xml_comprobante_anulado
+            e.id_estado_sunat as ds_estado_sunat
             FROM cotizacion a
             LEFT JOIN orden_despacho b ON b.id_cotizacion=a.id_cotizacion
             LEFT JOIN parciales_completas c ON c.id_orden_despacho=b.id_orden_despacho
             RIGHT JOIN guia_remision d ON d.id_parcial_completa=c.id_parcial_completa
             LEFT JOIN comprobantes e ON e.id_guia_remision=d.id_guia_remision
             LEFT JOIN trabajadores f ON f.id_trabajador=a.id_trabajador
-            LEFT JOIN comprobantes_emitidos h ON h.id_comprobante=e.id_comprobante
-            LEFT JOIN comprobantes_anulados i ON i.id_comprobante=e.id_comprobante
             WHERE a.categoria='PRODUCTOS' AND d.id_estado_guia_remision='894' AND d.id_empresa='$id_empresa'
             ORDER BY a.id_cotizacion DESC;
             "
