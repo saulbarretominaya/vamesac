@@ -1,6 +1,4 @@
 
-
-
 $(document).on("click", ".buscar", function () {
 
 	var desde = $("#desde").val();
@@ -10,7 +8,7 @@ $(document).on("click", ".buscar", function () {
 
 	$.ajax({
 		//async: false,
-		url: base_url + "C_nivel_productividad/index_buscar",
+		url: base_url + "reportes/C_nivel_productividad/index_buscar",
 		type: "POST",
 		//dataType: "json",
 		dataType: "html",
@@ -37,7 +35,7 @@ $(document).on("click", ".restablecer", function () {
 
 	$.ajax({
 		//async: false,
-		url: base_url + "C_nivel_productividad/index_restablecer",
+		url: base_url + "reportes/C_nivel_productividad/index_restablecer",
 		type: "POST",
 		//dataType: "json",
 		dataType: "html",

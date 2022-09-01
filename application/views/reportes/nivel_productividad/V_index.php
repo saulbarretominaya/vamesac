@@ -38,18 +38,21 @@
                                                                               echo $hasta;
                                                                             } ?>">
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-4">
                   <label for="">&nbsp;</label>
                   <div class="input-group">
                     <button type="button" class="btn btn-success buscar">BUSCAR</button>
-                  </div>
-                </div>
-                <div class="col-md-1">
-                  <label for="">&nbsp;</label>
-                  <div class="input-group">
+                    <label for="">&nbsp;</label>
                     <button type="button" class="btn btn-secondary restablecer">RESTABLECER</button>
+                    <label for="">&nbsp;</label>
+                    <a href="<?php echo base_url(); ?>reportes/C_nivel_productividad/listar_fechas?desde=<?php if (!empty($desde)) {
+                                                                                                            echo $desde;
+                                                                                                          } ?>&hasta=<?php if (!empty($hasta)) {
+                                                                                                                        echo $hasta;
+                                                                                                                      } ?>" class="btn btn-danger" download="">PDF</a>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -63,9 +66,9 @@
                   <tr>
                     <th>Item</th>
                     <th>Fecha</th>
-                    <th>Total de Ventas diarias</th>
-                    <th>Vendedor por horas trabajas al dia</th>
-                    <th>Productividad en Ventas</th>
+                    <th>Total de Ventas diarias (TVD)</th>
+                    <th>Ventas por horas trabajadas al dia (VHT)</th>
+                    <th>Productividad en ventas (PV)</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -125,7 +128,7 @@
     var base_url = "<?php echo base_url(); ?>";
   </script>
 
-  <script src="<?php echo base_url() ?>application/js/j_nivel_productividad.js"></script>
+  <script src="<?php echo base_url() ?>application/js/reportes/j_nivel_productividad.js"></script>
 
   </body>
 

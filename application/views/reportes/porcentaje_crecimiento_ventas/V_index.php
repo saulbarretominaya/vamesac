@@ -6,7 +6,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <!-- <h1>Nivel de Productividad
+              <!-- <h1>PORCENTAJE DE CRECIMIENTO DE VENTAS
             </h1> -->
             </div>
           </div>
@@ -38,18 +38,22 @@
                                                                               echo $hasta;
                                                                             } ?>">
                 </div>
-                <div class="col-md-1">
+
+                <div class="col-md-4">
                   <label for="">&nbsp;</label>
                   <div class="input-group">
                     <button type="button" class="btn btn-success buscar">BUSCAR</button>
-                  </div>
-                </div>
-                <div class="col-md-1">
-                  <label for="">&nbsp;</label>
-                  <div class="input-group">
+                    <label for="">&nbsp;</label>
                     <button type="button" class="btn btn-secondary restablecer">RESTABLECER</button>
+                    <label for="">&nbsp;</label>
+                    <a href="<?php echo base_url(); ?>reportes/C_porcentaje_crecimiento_ventas/listar_fechas?desde=<?php if (!empty($desde)) {
+                                                                                                                      echo $desde;
+                                                                                                                    } ?>&hasta=<?php if (!empty($hasta)) {
+                                                                                                                                  echo $hasta;
+                                                                                                                                } ?>" class="btn btn-danger" download="">PDF</a>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -63,9 +67,10 @@
                   <tr>
                     <th>Item</th>
                     <th>Fecha</th>
-                    <th>Total de Ventas diarias</th>
-                    <th>Vendedor por horas trabajas al dia</th>
-                    <th>Productividad en Ventas</th>
+                    <th>Valor Reciente (VR)</th>
+                    <th>Fecha</th>
+                    <th>Valor Anterior (VA)</th>
+                    <th>Porcentaje de Venta (PV)</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -73,10 +78,11 @@
                     <?php foreach ($index as $index) : ?>
                       <tr>
                         <td><?php echo $index->item; ?></td>
-                        <td><?php echo $index->fecha_emision; ?></td>
-                        <td><?php echo $index->precio_venta; ?></td>
-                        <td><?php echo $index->horas_trabajadas; ?></td>
-                        <td><?php echo $index->nivel_productividad; ?></td>
+                        <td><?php echo $index->fecha_vr; ?></td>
+                        <td><?php echo $index->valor_reciente_vr; ?></td>
+                        <td><?php echo $index->fecha_va; ?></td>
+                        <td><?php echo $index->valor_reciente_va; ?></td>
+                        <td><?php echo $index->porcentaje_venta; ?></td>
                       </tr>
                     <?php endforeach; ?>
                   <?php endif; ?>
@@ -125,7 +131,7 @@
     var base_url = "<?php echo base_url(); ?>";
   </script>
 
-  <script src="<?php echo base_url() ?>application/js/j_nivel_productividad.js"></script>
+  <script src="<?php echo base_url() ?>application/js/reportes/j_porcentaje_crecimiento_ventas.js"></script>
 
   </body>
 
