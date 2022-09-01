@@ -164,8 +164,8 @@ class M_cotizacion extends CI_Model
         $valor_venta_sin_d,
         $valor_venta_con_d,
         $dias_entrega,
+        $id_moneda_simbolo,
         $item
-
     ) {
         return $this->db->query(
             "
@@ -179,7 +179,7 @@ class M_cotizacion extends CI_Model
             precio_inicial,precio_ganancia,g,g_unidad,g_cant_total,
             precio_descuento,d,d_unidad,d_cant_total,
             valor_venta_sin_d,valor_venta_con_d,
-            dias_entrega,item,id_estado_cotizacion,fecha_cotizacion
+            dias_entrega,id_moneda,item,id_estado_cotizacion,fecha_cotizacion
             )
             VALUES
             (
@@ -191,7 +191,7 @@ class M_cotizacion extends CI_Model
             '$precio_inicial','$precio_ganancia','$g','$g_unidad','$g_cant_total',
             '$precio_descuento','$d','$d_unidad','$d_cant_total',
             '$valor_venta_sin_d','$valor_venta_con_d',
-            '$dias_entrega','$item','977',NOW());
+            '$dias_entrega','$id_moneda_simbolo','$item','977',NOW());
         "
         );
     }
@@ -593,7 +593,7 @@ class M_cotizacion extends CI_Model
             a.dias_entrega
             FROM 
             detalle_cotizacion a
-            WHERE a.id_cotizacion='$id_cotizacion' and a.id_estado_cotizacion='977'
+            WHERE a.id_cotizacion='$id_cotizacion' AND a.id_estado_cotizacion='977'
         "
         );
         return $resultados->result();

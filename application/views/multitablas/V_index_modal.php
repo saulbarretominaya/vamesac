@@ -45,8 +45,8 @@
                                  <tr style="background-color:#B0B0B0">
                                      <th>ID</th>
                                      <th>ID Multitabla</th>
-                                     <th>Nombre</th>
                                      <th>Abreviatura</th>
+                                     <th>Descripcion</th>
                                  </tr>
                              </thead>
                              <tbody>

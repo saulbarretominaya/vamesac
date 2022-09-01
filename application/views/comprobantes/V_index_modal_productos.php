@@ -14,7 +14,7 @@
                              <div class="form-group row">
                                  <div class="col-md-12">
                                      <div class="input-group">
-                                         <label class="col-md-4">FECHA ORDEN</label>
+                                         <label class="col-md-4">FECHA EMISION</label>
                                          <div class="col-md-8">
                                              <?php echo $index_modal_cabecera_productos->fecha_comprobante; ?>
                                          </div>
@@ -24,7 +24,7 @@
                                      <div class="input-group">
                                          <label class="col-md-4">MONEDA</label>
                                          <div class="col-md-8">
-                                             <?php echo $index_modal_cabecera_productos->ds_moneda; ?>
+                                             <?php echo $index_modal_cabecera_productos->ds_moneda_descripcion; ?>
                                          </div>
                                      </div>
                                  </div>
@@ -64,6 +64,12 @@
                                      <label class="col-md-4">LUGAR ENTREGA</label>
                                      <div class="col-md-8">
                                          <?php echo $index_modal_cabecera_productos->lugar_entrega; ?>
+                                     </div>
+                                 </div>
+                                 <div class="input-group">
+                                     <label class="col-md-4">GUIA</label>
+                                     <div class="col-md-8">
+                                         <?php echo '' ?>
                                      </div>
                                  </div>
                              </div>

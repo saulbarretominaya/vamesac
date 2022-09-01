@@ -240,9 +240,9 @@
               </ul>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo base_url() . "C_porcentaje_ventas" ?>" class="nav-link">
+                  <a href="<?php echo base_url() . "C_porcentaje_crecimiento_ventas" ?>" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Porcentaje crecimiento de ventas</p>
+                    <p>% Crec. de ventas</p>
                   </a>
                 </li>
               </ul>

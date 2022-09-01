@@ -99,7 +99,7 @@
                             <?php if ($index->id_orden_despacho != NULL) { ?>
                               <td><button type="button" class="btn btn-outline-info btn-sm js_lupa_orden_despacho_productos" value="<?php echo $index->id_orden_despacho; ?>" data-toggle="modal" data-target="#id_target_orden_despacho_productos"><span class="fas fa-search-plus"></span></button></td>
                             <?php } else { ?>
-                              <td></td>
+                              <td><button type="button" class="btn btn-outline-secondary btn-sm" disabled><span class="fas fa-search-plus"></span></button></td>
                             <?php } ?>
 
                             <?php if ($index->ds_estado_orden_despacho == "APROBADO") { ?>

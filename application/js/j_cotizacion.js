@@ -234,6 +234,8 @@ $("#registrar").on("click", function () {
 		var valor_venta_con_d = Array.prototype.slice.call(document.getElementsByName("valor_venta_con_d[]")).map((o) => o.value);
 
 		var dias_entrega = Array.prototype.slice.call(document.getElementsByName("dias_entrega[]")).map((o) => o.value);
+		var id_moneda_simbolo = Array.prototype.slice.call(document.getElementsByName("id_moneda_simbolo[]")).map((o) => o.value);
+
 		var item = Array.prototype.slice.call(document.getElementsByName("item[]")).map((o) => o.value);
 		//Detalle condicion_pago
 		var fecha_cuota = Array.prototype.slice.call(document.getElementsByName("fecha_cuota[]")).map((o) => o.value);
@@ -305,6 +307,7 @@ $("#registrar").on("click", function () {
 				valor_venta_con_d: valor_venta_con_d,
 
 				dias_entrega: dias_entrega,
+				id_moneda_simbolo: id_moneda_simbolo,
 				item: item,
 				//Detalle condicion pago
 				fecha_cuota: fecha_cuota,
@@ -369,6 +372,8 @@ $("#actualizar").on("click", function () {
 		var valor_venta_sin_d = Array.prototype.slice.call(document.getElementsByName("valor_venta_sin_d[]")).map((o) => o.value);
 		var valor_venta_con_d = Array.prototype.slice.call(document.getElementsByName("valor_venta_con_d[]")).map((o) => o.value);
 		var dias_entrega = Array.prototype.slice.call(document.getElementsByName("dias_entrega[]")).map((o) => o.value);
+		var id_moneda_simbolo = Array.prototype.slice.call(document.getElementsByName("id_moneda_simbolo[]")).map((o) => o.value);
+
 		var item = Array.prototype.slice.call(document.getElementsByName("item[]")).map((o) => o.value);
 
 
@@ -427,6 +432,7 @@ $("#actualizar").on("click", function () {
 				valor_venta_sin_d: valor_venta_sin_d,
 				valor_venta_con_d: valor_venta_con_d,
 				dias_entrega: dias_entrega,
+				id_moneda_simbolo: id_moneda_simbolo,
 				item: item,
 				//ELIMINAR POR ID DETALLE
 				id_dcotizacion_eliminar: id_dcotizacion_eliminar
@@ -778,6 +784,7 @@ $("#id_agregar_cotizacion").on("click", function (e) {
 	var d_cant_total = $("#d_cant_total").val();
 	var valor_venta_sin_d = $("#valor_venta_sin_d").val();
 	var valor_venta_con_d = $("#valor_venta_con_d").val();
+	var id_moneda_simbolo = $("#tipo_moneda_cambio").val();
 
 
 	if (resultado_campo == true) {
@@ -805,6 +812,7 @@ $("#id_agregar_cotizacion").on("click", function (e) {
 		html += "<td><input type='hidden' name='valor_venta_sin_d[]' 		value='" + valor_venta_sin_d + "'>" + valor_venta_sin_d + "</td>";
 		html += "<td><input type='hidden' name='valor_venta_con_d[]' 		value='" + valor_venta_con_d + "'>" + valor_venta_con_d + "</td>";
 		html += "<td><input type='number' name='dias_entrega[]' 			class='form-control'></td>";
+		html += "<input 	type='hidden' name='id_moneda_simbolo[]' 		value='" + id_moneda_simbolo + "'>";
 		html += "<td><button type='button' class='btn btn-outline-danger btn-sm class_eliminar_detalle'><span class='fas fa-trash-alt'></span></button></td>";
 		html += "</tr>";
 		$("#id_table_detalle_cotizacion tbody").append(html);

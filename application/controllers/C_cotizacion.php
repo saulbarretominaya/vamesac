@@ -103,6 +103,7 @@ class C_cotizacion extends CI_Controller
 		$valor_venta_con_d = $this->input->post("valor_venta_con_d");
 
 		$dias_entrega = $this->input->post("dias_entrega");
+		$id_moneda_simbolo = $this->input->post("id_moneda_simbolo");
 		$item = $this->input->post("item");
 
 		//Detalle_condicion pago
@@ -214,8 +215,8 @@ class C_cotizacion extends CI_Controller
 			$valor_venta_sin_d,
 			$valor_venta_con_d,
 			$dias_entrega,
+			$id_moneda_simbolo,
 			$item
-
 		);
 
 		if ($fecha_cuota != "") {
@@ -296,6 +297,7 @@ class C_cotizacion extends CI_Controller
 		$valor_venta_sin_d = $this->input->post("valor_venta_sin_d");
 		$valor_venta_con_d = $this->input->post("valor_venta_con_d");
 		$dias_entrega = $this->input->post("dias_entrega");
+		$id_moneda_simbolo = $this->input->post("id_moneda_simbolo");
 		$item = $this->input->post("item");
 
 		//ELIMINAR POR ID DETALLE
@@ -356,6 +358,7 @@ class C_cotizacion extends CI_Controller
 				$valor_venta_sin_d,
 				$valor_venta_con_d,
 				$dias_entrega,
+				$id_moneda_simbolo,
 				$item
 			);
 		}
@@ -391,6 +394,7 @@ class C_cotizacion extends CI_Controller
 		$valor_venta_sin_d,
 		$valor_venta_con_d,
 		$dias_entrega,
+		$id_moneda_simbolo,
 		$item
 	) {
 		for ($i = 0; $i < count($id_producto); $i++) {
@@ -416,12 +420,11 @@ class C_cotizacion extends CI_Controller
 				$d[$i],
 				$d_unidad[$i],
 				$d_cant_total[$i],
-
 				$valor_venta_sin_d[$i],
 				$valor_venta_con_d[$i],
 				$dias_entrega[$i],
+				$id_moneda_simbolo[$i],
 				$item[$i]
-
 			);
 		}
 	}

@@ -100,9 +100,9 @@ class M_elaborar_pc extends CI_Model
         LEFT JOIN detalle_parciales_completas b ON b.id_dcotizacion=a.id_dcotizacion
         LEFT JOIN orden_despacho c ON c.id_cotizacion=a.id_cotizacion
         LEFT JOIN productos d ON d.id_producto=a.id_producto
-        WHERE c.id_orden_despacho='$id_orden_despacho' AND b.pendiente_prod IS NULL
+        WHERE c.id_orden_despacho='$id_orden_despacho' AND a.id_estado_cotizacion='977' AND b.pendiente_prod IS NULL
         OR 
-        c.id_orden_despacho='$id_orden_despacho' AND b.pendiente_prod > '0'  AND b.id_parcial_completa='$id_parcial_completa'
+        c.id_orden_despacho='$id_orden_despacho' AND b.pendiente_prod > '0'  AND b.id_parcial_completa='$id_parcial_completa' 
         ");
         return $resultados->result();
     }
@@ -351,7 +351,7 @@ class M_elaborar_pc extends CI_Model
             FROM 
             detalle_cotizacion a
             LEFT JOIN orden_despacho b ON b.id_cotizacion=a.id_cotizacion
-            WHERE b.id_orden_despacho='$id_orden_despacho'
+            WHERE b.id_orden_despacho='$id_orden_despacho' and a.id_estado_cotizacion='977'
         "
         );
         return $resultados->result();

@@ -23,7 +23,7 @@ class M_cbox extends CI_Model
         $resultados = $this->db->query("
         SELECT a.*,b.* FROM multitablas a 
         INNER JOIN detalle_multitablas b ON b.id_multitabla=a.id_multitabla 
-        WHERE b.id_multitabla='1' AND b.id_estado_dmultitabla='1' AND abreviatura='FACTURA' OR abreviatura='BOLETA'
+        WHERE b.id_multitabla='1' AND b.id_estado_dmultitabla='1' AND abreviatura='FAC' OR abreviatura='BOL'
         ");
         return $resultados->result();
     }
