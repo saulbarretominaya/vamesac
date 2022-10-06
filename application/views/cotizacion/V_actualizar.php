@@ -704,7 +704,7 @@
                                     <td><?php echo $index->valor_venta_con_d ?></td>
                                     <td><input type='number' value='<?php echo $index->dias_entrega; ?>' class='form-control' id='dias_entrega' readonly=''></td>
                                     <td>
-                                      <input type="hidden" id="id_dcotizacion_eliminar" name="id_dcotizacion_eliminar[]" value="<?php echo $index->id_dcotizacion; ?>">
+                                      <input type="hidden" id="id_dcotizacion_eliminar" value="<?php echo $index->id_dcotizacion; ?>">
                                       <button type='button' class='btn btn-outline-danger btn-sm class_eliminar_detalle'><span class='fas fa-trash-alt'></span></button>
                                     </td>
                                   </tr>

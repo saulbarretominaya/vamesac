@@ -143,7 +143,7 @@ $("#actualizar").on("click", function () {
 	validar_registrar();
 	if (resultado_campo == true) {
 
-		//Cabecera
+		//CABECERA
 		var id_carga_inicial = $("#id_carga_inicial").val();
 		var id_trabajador = $("#id_trabajador").val();
 		var ds_nombre_trabajador = $("#ds_nombre_trabajador").val();
@@ -160,13 +160,11 @@ $("#actualizar").on("click", function () {
 		var num_comprobante = $("#num_comprobante").val();
 		var observacion = $("#observacion").val();
 		var monto_total = $('#monto_total').val();
-		//Empresa
+		//EMPRESA
 		var id_carga_inicial_empresa = $("#id_carga_inicial_empresa").val();
 		var id_empresa = $("#id_empresa").val();
 
-
-		//Detalle
-		debugger;
+		//REGISTRAR DETALLE
 		var item = Array.prototype.slice.call(document.getElementsByName("item[]")).map((o) => o.value);
 		var id_almacen = Array.prototype.slice.call(document.getElementsByName("id_almacen[]")).map((o) => o.value);
 		var ds_almacen = Array.prototype.slice.call(document.getElementsByName("ds_almacen[]")).map((o) => o.value);
@@ -187,11 +185,8 @@ $("#actualizar").on("click", function () {
 		var id_dcarga_inicial_actualizar = Array.prototype.slice.call(document.getElementsByName("id_dcarga_inicial_actualizar[]")).map((o) => o.value);
 		var item_actualizar = Array.prototype.slice.call(document.getElementsByName("item_actualizar[]")).map((o) => o.value);
 
-
 		//ELIMINAR POR ID DETALLE
 		var id_dcarga_inicial_eliminar = Array.prototype.slice.call(document.getElementsByName("id_dcarga_inicial_eliminar[]")).map((o) => o.value);
-
-
 
 		$.ajax({
 			async: false,
@@ -223,8 +218,10 @@ $("#actualizar").on("click", function () {
 				//ACTUALIZAR DETALLE
 				id_dcarga_inicial_actualizar: id_dcarga_inicial_actualizar,
 				item_actualizar: item_actualizar,
+
 				//ELIMINAR DETALLE
 				id_dcarga_inicial_eliminar: id_dcarga_inicial_eliminar,
+
 				//REGISTRAR DETALLE
 				item: item,
 				id_almacen: id_almacen,
@@ -438,7 +435,7 @@ $(document).ready(function () {
 
 
 /*Evento */
-$("#id_agregar_carga_inicial").on("click", function (e) {
+$("#id_agregar_carga_inicial").on("keyup", function (e) {
 
 	validar_detalle_carga_inicial();
 
@@ -787,13 +784,13 @@ function generar_item() {
 		//Campos para actualizar
 		var item_actualizar = $(this).closest('tr').find('#item').val();
 
-
-		html = "<tr>";
-		html += "<input type='hidden' id='id_dcarga_inicial_actualizar' name ='id_dcarga_inicial_actualizar[]' value='" + id_dcarga_inicial_actualizar + "'>";
-		html += "<input type='hidden' id='item_actualizar' name ='item_actualizar[]' value='" + item_actualizar + "'>";
-		html += "</tr>";
-		$("#container_id_dcarga_inicial_actualizar tbody").append(html);
-
+		if (id_dcarga_inicial_actualizar != undefined) {
+			html = "<tr>";
+			html += "<input type='hidden' id='id_dcarga_inicial_actualizar' name ='id_dcarga_inicial_actualizar[]' value='" + id_dcarga_inicial_actualizar + "'>";
+			html += "<input type='hidden' id='item_actualizar' name ='item_actualizar[]' value='" + item_actualizar + "'>";
+			html += "</tr>";
+			$("#container_id_dcarga_inicial_actualizar tbody").append(html);
+		}
 	});
 
 

@@ -51,10 +51,12 @@
             <div class="col-lg-4">
                 <div class="px-lg-5 pt-lg-4 pb-lg-3 p-4 mb-auto w-100">
                     <img src="<?php echo base_url(); ?>plantilla/login/Logo_grupovamesac.png" class="img-fluid" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="<?php echo base_url(); ?>plantilla/login/Logo_alpev.png" class="img-fluid" />
                 </div>
                 <div class="align-self-center w-100 px-lg-5 py-lg-4 p-4">
                     <marquee>
-                        <h1 class="font-weight-bold mb-4">Bienvenidos a la empresa GRUPO VAME SAC</h1>
+                        <h1 class="font-weight-bold mb-4">Bienvenidos a la empresa VAME & ALPEV</h1>
                     </marquee>
                     <form class="mb-5" action="<?php echo base_url(); ?>C_inicio/ingresar" method="post">
                         <div class="mb-4">
