@@ -7,7 +7,7 @@ Logo Dell: https://worldvectorlogo.com/logo/dell-1
 
 :root {
     --dark: #16191C;
-    --dark-x: #1E2126; 
+    --dark-x: #1E2126;
     --light: #ffffff;
 }
 
@@ -17,9 +17,17 @@ body {
     color: var(--light);
 }
 
-.text-light { color: var(--light) !important; }
-.bg-dark { background-color: var(--dark) !important; }
-.bg-dark-x { background-color: var(--dark-x); }
+.text-light {
+    color: var(--light) !important;
+}
+
+.bg-dark {
+    background-color: var(--dark) !important;
+}
+
+.bg-dark-x {
+    background-color: var(--dark-x);
+}
 
 .btn {
     min-height: 3.125rem;
@@ -30,6 +38,7 @@ body {
     min-height: 3.125rem;
     line-height: initial;
 }
+
 .form-control:focus {
     background-color: var(--dark-x);
     outline: none;
