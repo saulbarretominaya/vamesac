@@ -1306,6 +1306,7 @@ function calcular_precio_descuento() {
 }
 function validar_detalle_cotizacion() {
 
+	debugger;
 
 	$("#id_table_detalle_cotizacion tbody tr").each(function () {
 

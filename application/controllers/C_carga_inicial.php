@@ -182,7 +182,7 @@ class C_carga_inicial extends CI_Controller
 	public function actualizar()
 	{
 
-		//Cabecera
+		//CABECERA
 		$id_carga_inicial = $this->input->post("id_carga_inicial");
 		$id_trabajador = $this->input->post("id_trabajador");
 		$ds_nombre_trabajador = $this->input->post("ds_nombre_trabajador");
@@ -202,11 +202,6 @@ class C_carga_inicial extends CI_Controller
 		$id_carga_inicial_empresa = $this->input->post("id_carga_inicial_empresa");
 		$id_empresa = $this->input->post("id_empresa");
 
-		//ACTUALIZAR DETALLE
-		$id_dcarga_inicial_actualizar = $this->input->post("id_dcarga_inicial_actualizar");
-		$item_actualizar = $this->input->post("item_actualizar");
-		//ELIMINAR DETALLE
-		$id_dcarga_inicial_eliminar = $this->input->post("id_dcarga_inicial_eliminar");
 		//REGISTRAR DETALLE
 		$item = $this->input->post("item");
 		$id_almacen = $this->input->post("id_almacen");
@@ -224,7 +219,14 @@ class C_carga_inicial extends CI_Controller
 		$precio_unitario = $this->input->post("precio_unitario");
 		$valor_total = $this->input->post("valor_total");
 
-		// echo "<script>console.log('Imprimiendo: " . json_encode($id_producto) . "');</script>";
+		//ACTUALIZAR DETALLE
+		$id_dcarga_inicial_actualizar = $this->input->post("id_dcarga_inicial_actualizar");
+		$item_actualizar = $this->input->post("item_actualizar");
+
+		//ELIMINAR DETALLE
+		$id_dcarga_inicial_eliminar = $this->input->post("id_dcarga_inicial_eliminar");
+
+
 
 
 		$this->M_carga_inicial->actualizar(

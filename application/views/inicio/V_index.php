@@ -2,92 +2,242 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300;600&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/ffec4ec2ed.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo base_url(); ?>plantilla/login/style.css" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>plantilla/plugins/fontawesome-free/css/all.min.css">
 
+
+    <link rel="stylesheet" href="<?php echo base_url(); ?>plantilla/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>plantilla/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>plantilla/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <script src="<?php echo base_url(); ?>plantilla/plugins/jquery/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>plantilla/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo base_url(); ?>plantilla/dist/js/adminlte.min.js"></script>
+    <script src="<?php echo base_url(); ?>plantilla/plugins/select2/js/select2.full.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<<<<<<< HEAD
     <title>TESIS CHRISTIAN BRANDO VARGAS SERRATO</title>
+=======
+>>>>>>> e3115fad4910c8c0007bc45b69b38ad9b5338350
 </head>
 
-<body class="bg-dark">
+<body>
+
     <section>
         <div class="row g-0">
-            <div class="col-lg-8 d-none d-lg-block">
-                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                    </ol>
+            <div class="col-lg-9 d-none d-lg-block">
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item img-1 min-vh-100 active">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5 class="font-weight-bold">La más potente del mercado</h5>
-                                <a class="text-muted text-decoration-none">Visita nuestra tienda</a>
-                            </div>
-                        </div>
-                        <div class="carousel-item img-2 min-vh-100">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5 class="font-weight-bold">Descubre la nueva generación</h5>
-                                <a class="text-muted text-decoration-none">Visita nuestra tienda</a>
-                            </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="px-lg-5 pt-lg-4 pb-lg-3 p-4 mb-auto w-100">
-                    <img src="<?php echo base_url(); ?>plantilla/login/Logo_grupovamesac.png" class="img-fluid" />
-                </div>
-                <div class="align-self-center w-100 px-lg-5 py-lg-4 p-4">
-                    <marquee>
-                        <h1 class="font-weight-bold mb-4">Bienvenidos a la empresa GRUPO VAME SAC</h1>
-                    </marquee>
-                    <form class="mb-5" action="<?php echo base_url(); ?>C_inicio/ingresar" method="post">
-                        <div class="mb-4">
-                            <label for="exampleInputEmail1" class="form-label font-weight-bold">Usuario</label>
-                            <input type="text" name="usuario" class="form-control bg-dark-x border-0" id="exampleInputEmail1" placeholder="Ingresa tu Usuario" aria-describedby="emailHelp">
+
+            <div class="col-lg-3">
+                <div class="px-lg-5 py-lg-5 p-5">
+                    <h1>Bienvenido</h1>
+                    <form action="<?php echo base_url(); ?>C_inicio/ingresar" method="post">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Usuario</label>
+                            <input type="type" name="usuario" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         </div>
-                        <div class="mb-4">
-                            <label for="exampleInputPassword1" class="form-label font-weight-bold">Contraseña</label>
-                            <input type="password" name="contraseña" class="form-control bg-dark-x border-0 mb-2" placeholder="Ingresa tu contraseña" id="exampleInputPassword1">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                            <input type="password" name="contraseña" class="form-control" id="exampleInputPassword1">
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+                        <button type="submit" class="btn btn-primary w-100">Iniciar Sesion</button>
                     </form>
-                    <p class="font-weight-bold text-center text-muted">&nbsp;</p>
-                    <p class="font-weight-bold text-center text-muted">&nbsp;</p>
-                    <p class="font-weight-bold text-center text-muted">&nbsp;</p>
-                    <p class="font-weight-bold text-center text-muted">&nbsp;</p>
-                    <p class="font-weight-bold text-center text-muted">&nbsp;</p>
-                    <p class="font-weight-bold text-center text-muted">&nbsp;</p>
                 </div>
+
             </div>
         </div>
     </section>
-    <!-- Optional JavaScript -->
-    <!-- Popper.js first, then Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+    <div class="row">
+        <div class="col-md-3">
+            <button type="button" class="btn btn-default back-to-top" data-toggle="modal" data-target="#modal-default">
+                <i class="fas fa-comment-dots" style="font-size:50px;"></i>
+            </button>
+
+            <div class="modal fade" id="modal-default">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary">
+                            <h5 class=" modal-title text-center w-100">Asistente virtual</h5>
+                            <button type=" button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card card-primary card-outline direct-chat direct-chat-primary">
+
+                                <div class="card-body">
+
+                                    <div class="direct-chat-messages class_bot">
+
+                                        <div class="direct-chat-msg">
+                                            <div class="direct-chat-infos clearfix">
+                                            </div>
+                                            <img class="direct-chat-img" src="http://localhost:8080/chatbot/dist/img/user1-128x128.jpg" alt="Message User Image">
+                                            <div class="direct-chat-text" style="font-size: 15px;">
+                                                Hola, mi nombre es boot y tengo estas opciones
+                                            </div>
+                                            <br>
+                                            <div class="col-md-12">
+                                                <div class="form-group row">
+                                                    <button type="button" class="btn btn-block btn-outline-success btn-sm w-100" data-toggle="modal" data-target="#opcion_target_cotizar" id="btn_cotizar">Cotizar</button>
+                                                    <button type="button" class="btn btn-block btn-outline-success btn-sm w-100">Contactanos</button>
+                                                    <button type="button" class="btn btn-block btn-outline-success btn-sm w-100">Otros</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <div class="input-group">
+                                            <input type="text" name="message" placeholder="Escribe algo aquí..." class="form-control" id="campo_entrada">
+                                            <span class="input-group-append">
+                                                <button id="send-btn" class="btn btn-primary">Enviar</button>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal fade" id="opcion_target_cotizar" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <h4 class=" modal-title text-center w-100">Registrar Cotizacion</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+
+                    <div class="modal-body">
+
+                        <div class="col-md-12">
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Nombre</label>
+                                        <input type="text" class="form-control" placeholder="Nombre">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>DNI/RUC</label>
+                                        <input type="text" class="form-control" placeholder="DNI/RUC">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>Tel</label>
+                                        <input type="text" class="form-control" placeholder="Direccion">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Correo</label>
+                                        <input type="text" class="form-control" placeholder="Correo">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Direccion</label>
+                                        <input type="text" class="form-control" placeholder="Tel">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Buscar Productos</label>
+                                        <select class="form-control select2" id="">
+                                            <option value="0">Seleccionar</option>
+                                            <!-- <option value="0">Hola</option> -->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Precio</label>
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Cant</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>Total</label>
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <div class="form-group">
+                                        <label>&nbsp;</label>
+                                        <!-- <input type="text" class="form-control" readonly> -->
+                                        <button type="button" class="btn btn-block btn-outline-success">+</button>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-12 table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Descripcion</th>
+                                        <th>Marca</th>
+                                        <th>UM</th>
+                                        <th>Cant</th>
+                                        <th>Precio</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
-
-<!-- Ninguna de las imagenes son de mi propiedad, a continuación están los links de los autores
-
-Imágenes en Unsplash: https://unsplash.com/@xps
-Logo Dell: https://worldvectorlogo.com/logo/dell-1
-
--->

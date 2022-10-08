@@ -386,7 +386,8 @@
                                 <div class="col-md-1">
                                   <label for="">&nbsp;</label>
                                   <div class="input-group">
-                                    <button type="button" class="btn btn-outline-success" id="id_agregar_carga_inicial"><span class="fas fa-plus"></span></button>
+                                    <!-- <button type="button" class="btn btn-outline-success" id="id_agregar_carga_inicial"><span class="fas fa-plus"></span></button> -->
+                                    <input type="text" class="form-control" id="id_agregar_carga_inicial">
                                   </div>
                                 </div>
                               </div>

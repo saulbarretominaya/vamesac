@@ -275,7 +275,7 @@ class C_cotizacion extends CI_Controller
 		$valor_cambio = $this->input->post("valor_cambio");
 		$id_moneda = $this->input->post("id_moneda");
 
-		//ACTUALIZAR DETALLE
+		//REGISTRAR DETALLE
 		$id_producto = $this->input->post("id_producto");
 		$id_comodin = $this->input->post("id_comodin");
 		$codigo_producto = $this->input->post("codigo_producto");
@@ -303,9 +303,7 @@ class C_cotizacion extends CI_Controller
 		//ELIMINAR POR ID DETALLE
 		$id_dcotizacion_eliminar = $this->input->post("id_dcotizacion_eliminar");
 
-
-
-		//CABECERA
+		//ACTUALIZAR CABECERA
 		$this->M_cotizacion->actualizar(
 			//CABECERA
 			$id_cotizacion,
