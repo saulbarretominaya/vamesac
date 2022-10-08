@@ -475,9 +475,9 @@
                       <!-- <div class="card collapsed-card"> -->
                       <div class="card">
                         <div class="card-header">
-                          <strong>
+                          <!-- <strong>
                             <h3 class="card-title">El Tipo Cambio es: <?php echo $tipo_cambio->venta; ?></h3>
-                          </strong>
+                          </strong> -->
                           <input type="hidden" class="form-control" id="valor_cambio" value="<?php echo $tipo_cambio->venta; ?>">
                           <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">

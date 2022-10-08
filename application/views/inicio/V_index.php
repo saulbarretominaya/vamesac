@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/ffec4ec2ed.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo base_url(); ?>plantilla/login/style.css" />
 
-    <title>Login Figma | Templune</title>
+    <title>TESIS CHRISTIAN BRANDO VARGAS SERRATO</title>
 </head>
 
 <body class="bg-dark">
