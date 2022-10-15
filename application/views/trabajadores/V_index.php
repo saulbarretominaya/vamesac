@@ -51,7 +51,7 @@
                       <td><?php echo $index->ds_empresa; ?></td>
                       <td><?php echo $index->ds_sucursal; ?></td>
                       <td><?php echo $index->ds_cargo_trabajador; ?></td>
-                      <td><button type="button" class="btn btn-outline-info js_lupa_trabajador btn-sm" value="<?php echo $index->id_trabajador; ?>" data-toggle="modal" data-target="#id_target_trabajador"><span class="fa fa-search"></span></button></td>
+                      <td><button type="button" class="btn btn-outline-primary js_lupa_trabajador btn-sm" value="<?php echo $index->id_trabajador; ?>" data-toggle="modal" data-target="#id_target_trabajador"><span class="fa fa-search"></span></button></td>
                       <td><a href="<?php echo base_url(); ?>C_trabajadores/enlace_actualizar/<?php echo $index->id_trabajador; ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit "></span></a></td>
                     </tr>
                   <?php endforeach; ?>
@@ -101,7 +101,9 @@
   <script src="<?php echo base_url() ?>plantilla/plugins/inputmask/jquery.inputmask.min.js"></script>
   <script src="<?php echo base_url(); ?>plantilla/plugins/alertify/alertify.js"></script>
 
-  <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script>
+  <!-- <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script> -->
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 
   <script>
     var base_url = "<?php echo base_url(); ?>";

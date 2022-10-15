@@ -16,9 +16,6 @@
     <section class="content">
       <div class="col-12">
         <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Listar</h3>
-          </div>
           <div class="card-body">
             <table id="id_datatable_tipo_cambio" class="table table-sm table-hover" style="width: 100%;">
               <thead>
@@ -94,8 +91,9 @@
   <script src="<?php echo base_url() ?>plantilla/plugins/inputmask/jquery.inputmask.min.js"></script>
   <script src="<?php echo base_url(); ?>plantilla/plugins/alertify/alertify.js"></script>
 
-  <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script>
-
+  <!-- <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script> -->
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
   <script>
     var base_url = "<?php echo base_url(); ?>";
   </script>

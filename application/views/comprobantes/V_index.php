@@ -119,13 +119,13 @@
 
 
                             <?php if ($index->id_comprobante != "" and $index->ds_estado_comprobante == "APROBADO") { ?>
-                              <td><button type="button" class="btn btn-outline-info btn-sm js_lupa_comprobantes_productos" value="<?php echo $index->id_comprobante; ?>" data-toggle="modal" data-target="#id_target_comprobantes_productos"><span class="fas fa-search-plus"></span></button></td>
+                              <td><button type="button" class="btn btn-outline-primary btn-sm js_lupa_comprobantes_productos" value="<?php echo $index->id_comprobante; ?>" data-toggle="modal" data-target="#id_target_comprobantes_productos"><span class="fas fa-search-plus"></span></button></td>
                               <td><a href="<?php echo base_url(); ?>C_comprobantes/enlace_actualizar/<?php echo $index->id_comprobante; ?>" class="btn btn btn-outline-warning btn-sm"><span class="far fa-edit"></span></a></td>
                               <td><button type="button" class="btn btn btn-outline-danger btn-sm btn_anular_estado"><span class="far fa-trash-alt"></span></button></td>
                               <td><a href="<?php echo base_url(); ?>reportes/C_comprobantes/index_modal_productos/<?php echo $index->id_comprobante; ?>" class="btn btn btn-outline-danger btn-sm" download=""><span class="fas fa-file-pdf"></span></a></td>
 
                             <?php } else if ($index->id_comprobante != "" and $index->ds_estado_comprobante == "ANULADO") { ?>
-                              <td><button type="button" class="btn btn-outline-info btn-sm js_lupa_comprobantes_productos" value="<?php echo $index->id_comprobante; ?>" data-toggle="modal" data-target="#id_target_comprobantes_productos"><span class="fas fa-search-plus"></span></button></td>
+                              <td><button type="button" class="btn btn-outline-primary btn-sm js_lupa_comprobantes_productos" value="<?php echo $index->id_comprobante; ?>" data-toggle="modal" data-target="#id_target_comprobantes_productos"><span class="fas fa-search-plus"></span></button></td>
                               <td><button type="button" class="btn btn btn-outline-secondary btn-sm" disabled><span class="far fa-edit"></span></button></td>
                               <td><button type="button" class="btn btn btn-outline-secondary btn-sm" disabled><span class="far fa-trash-alt"></span></button></td>
                               <td><button type="button" class="btn btn btn-outline-danger btn-sm "><span class="fas fa-file-pdf"></span></button></td>
@@ -202,7 +202,10 @@
   <script src="<?php echo base_url() ?>plantilla/plugins/inputmask/jquery.inputmask.min.js"></script>
   <script src="<?php echo base_url(); ?>plantilla/plugins/alertify/alertify.js"></script>
 
-  <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script>
+  <!-- <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script> -->
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+
   <!-- Select2 -->
   <script src="<?php echo base_url() ?>plantilla/plugins/select2/js/select2.full.min.js"></script>
 

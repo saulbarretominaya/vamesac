@@ -136,7 +136,7 @@
                     <div class="form-group">
                       <div class="col-md-8">
                         <label for="">Empresa</label>
-                        <select class="form-select " id="id_empresa">
+                        <select class="form-control" id="id_empresa">
                           <option value="0" selected>Seleccionar</option>
                           <?php foreach ($cbox_empresa as $cbox_empresa) : ?>
                             <option value="<?php echo $cbox_empresa->id_dmultitabla; ?>">
@@ -149,7 +149,7 @@
                     <div class="form-group">
                       <div class="col-md-8">
                         <label for="">Rol</label>
-                        <select class="form-select" id="id_rol">
+                        <select class="form-control" id="id_rol">
                           <option value="0">Seleccionar</option>
                           <?php foreach ($cbox_roles_usuarios as $cbox_roles_usuarios) : ?>
                             <option value="<?php echo $cbox_roles_usuarios->id_dmultitabla; ?>">
@@ -203,7 +203,10 @@
   <script src="<?php echo base_url() ?>plantilla/plugins/inputmask/jquery.inputmask.min.js"></script>
   <script src="<?php echo base_url(); ?>plantilla/plugins/alertify/alertify.js"></script>
 
-  <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script>
+  <!-- <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script> -->
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+
   <!-- Select2 -->
   <script src="<?php echo base_url() ?>plantilla/plugins/select2/js/select2.full.min.js"></script>
 

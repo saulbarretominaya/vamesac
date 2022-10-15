@@ -15,7 +15,13 @@
 
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url() ?>plantilla/dist/css/adminlte.min.css">
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.css">
+  <!-- Se comento porque hubo un incoveniente con el modal -->
+  <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.css"> -->
+  <link rel="stylesheet" href="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>plantilla/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
+
+
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="<?php echo base_url() ?>plantilla/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- iCheck for checkboxes and radio inputs -->
@@ -30,7 +36,7 @@
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="<?php echo base_url() ?>plantilla/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
-  <link href="<?php echo base_url() ?>plantilla/plugins/bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="<?php echo base_url() ?>plantilla/plugins/bootstrap-5.1.0-dist/css/bootstrap.min.css" rel="stylesheet"> -->
 
   <style>
     table {

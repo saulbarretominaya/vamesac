@@ -53,13 +53,13 @@
                         <div class="col-md-3">
                           <label for="cargo">Tienda</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" id="ds_sucursal_trabajador" value="<?php echo $enlace_registrar_cabecera->ds_sucursal_trabajador ?>" readonly>
+                            <input type="text" class="form-control" id="ds_sucursal_trabajador" value="TIENDA PROCERES" readonly>
                           </div>
                         </div>
                         <div class="col-md-2">
                           <label for="cargo">Serie</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" id="ds_serie_guia_remision" value="<?php echo $enlace_registrar_cabecera->ds_serie_guia_remision ?>" readonly>
+                            <input type="text" class="form-control" id="ds_serie_guia_remision" value="T001" readonly>
                           </div>
                         </div>
                         <div class="col-md-3">
@@ -402,7 +402,9 @@
 <script src="<?php echo base_url() ?>plantilla/plugins/inputmask/jquery.inputmask.min.js"></script>
 <script src="<?php echo base_url(); ?>plantilla/plugins/alertify/alertify.js"></script>
 
-<script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script>
+<!-- <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script> -->
+<script src="<?php echo base_url() ?>plantilla/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <!-- Select2 -->
 <script src="<?php echo base_url() ?>plantilla/plugins/select2/js/select2.full.min.js"></script>
 

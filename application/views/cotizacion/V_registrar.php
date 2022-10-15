@@ -405,7 +405,6 @@
                           </div>
                         </div>
 
-
                       </div>
                       <input type="hidden" id="hidden_id_producto">
                       <input type="hidden" id="hidden_id_general">
@@ -467,7 +466,7 @@
                             <div class="col-md-6">
                               <label for="">Moneda</label>
                               <div class="input-group">
-                                <select class="form-select" id="tipo_moneda_cambio">
+                                <select class="form-control" id="tipo_moneda_cambio">
                                   <option value="0">Seleccionar</option>
                                   <?php foreach ($cbox_moneda as $cbox_moneda) : ?>
                                     <option value="<?php echo $cbox_moneda->id_dmultitabla; ?>"><?php echo $cbox_moneda->descripcion; ?></option>
@@ -743,7 +742,10 @@
 <script src="<?php echo base_url() ?>plantilla/plugins/inputmask/jquery.inputmask.min.js"></script>
 <script src="<?php echo base_url(); ?>plantilla/plugins/alertify/alertify.js"></script>
 
-<script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script>
+<!-- <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script> -->
+<script src="<?php echo base_url() ?>plantilla/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+
 <!-- Select2 -->
 <script src="<?php echo base_url() ?>plantilla/plugins/select2/js/select2.full.min.js"></script>
 

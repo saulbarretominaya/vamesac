@@ -483,6 +483,7 @@ $(document).on("click", ".js_seleccionar_modal_producto", function () {
 		$("#simbolo_moneda").val("$");
 	}
 	$("#precio_unitario").val(split_productos[10]);
+	debugger;
 	$("#opcion_target_producto").modal("hide");
 	aplicar_tipo_cambio();
 });

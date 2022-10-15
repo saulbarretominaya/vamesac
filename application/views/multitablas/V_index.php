@@ -30,7 +30,7 @@
                     <tr>
                       <td><?php echo $index->id_multitabla; ?></td>
                       <td><?php echo $index->nombre_tabla; ?></td>
-                      <td><button type="button" class="btn btn-outline-info js_lupa_multitabla btn-sm" value="<?php echo $index->id_multitabla; ?>" data-toggle="modal" data-target="#id_target_multitablas"><span class="fa fa-search"></span></button></td>
+                      <td><button type="button" class="btn btn-outline-primary js_lupa_multitabla btn-sm" value="<?php echo $index->id_multitabla; ?>" data-toggle="modal" data-target="#id_target_multitablas"><span class="fa fa-search"></span></button></td>
                       <td><a href="<?php echo base_url(); ?>C_multitablas/enlace_actualizar/<?php echo $index->id_multitabla; ?>" class="btn btn-outline-warning btn-sm"><span class="fas fa-edit "></span></a></td>
                     </tr>
                   <?php endforeach; ?>
@@ -84,7 +84,9 @@
   <script src="<?php echo base_url() ?>plantilla/plugins/inputmask/jquery.inputmask.min.js"></script>
   <script src="<?php echo base_url(); ?>plantilla/plugins/alertify/alertify.js"></script>
 
-  <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script>
+  <!-- <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script> -->
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
   <!-- Select2 -->
   <script src="<?php echo base_url() ?>plantilla/plugins/select2/js/select2.full.min.js"></script>
 
