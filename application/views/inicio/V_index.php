@@ -26,6 +26,10 @@
     <!-- <script src="<?php echo base_url() ?>plantilla/plugins/datatables/jquery.dataTables.min.js"></script> -->
     <!-- <script src="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script> -->
 
+<<<<<<< HEAD
+    <title>TESIS CHRISTIAN BRANDO VARGAS SERRATO</title>
+=======
+>>>>>>> e3115fad4910c8c0007bc45b69b38ad9b5338350
 </head>
 
 <body>

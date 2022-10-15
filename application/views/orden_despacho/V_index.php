@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Orden Despacho / Linea Credito
+            <h1>Orden Despacho
             </h1>
           </div>
         </div>
@@ -17,7 +17,7 @@
       <div class="col-md-12">
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Listar Productos</h3>
+            <h3 class="card-title">Listar Orden de despacho</h3>
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-plus"></i>
@@ -37,8 +37,8 @@
                         <th>Fecha O. Despacho</th>
                         <th>Cliente</th>
                         <th>Condicion Pago</th>
-                        <th>Tipo Cambio</th>
-                        <th>Resultado Valor $</th>
+                        <th></th>
+                        <th></th> 
                         <th>Moneda</th>
                         <th>Precio Venta</th>
                         <th>Vendedor</th>
@@ -74,14 +74,15 @@
                             <input type="hidden" value="<?php echo $index->linea_credito_dolares; ?>" name="linea_credito_dolares">
                             <input type="hidden" value="<?php echo $index->credito_unitario_dolares; ?>" name="credito_unitario_dolares">
                             <input type="hidden" value="<?php echo $index->disponible_dolares; ?>" name="disponible_dolares">
+                            
                             <td><?php echo $index->id_cotizacion_empresa; ?></td>
                             <td><?php echo $index->fecha_cotizacion; ?></td>
                             <td><?php echo $index->id_orden_despacho_empresa; ?> </td>
                             <td><?php echo $index->fecha_orden_despacho; ?></td>
                             <td><?php echo $index->ds_nombre_cliente_proveedor; ?></td>
                             <td><?php echo $index->ds_condicion_pago; ?></td>
-                            <td><?php echo $index->valor_cambio; ?></td>
-                            <td><?php echo $index->resultado_valor_cambio; ?></td>
+                            <td></td>
+                            <td></td>
                             <td><?php echo $index->ds_moneda; ?></td>
                             <td><?php echo $index->precio_venta; ?></td>
                             <td><?php echo $index->ds_nombre_trabajador; ?></td>

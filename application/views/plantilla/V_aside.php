@@ -78,7 +78,7 @@
                   </a>
                 </li>
 
-                <li class="nav-item">
+                 <li class="nav-item">
                   <a href="<?php echo base_url() . "C_carga_inicial" ?>" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Carga Inicial</p>
@@ -88,7 +88,7 @@
             </li>
           <?php } ?>
 
-          <?php if ($this->session->userdata('ds_rol_usuario') == 'ADMINISTRADOR') { ?>
+          <!-- <?php if ($this->session->userdata('ds_rol_usuario') == 'ADMINISTRADOR') { ?>
             <li class="nav-item">
               <a href="" class="nav-link">
                 <i class="fas fa-dollar-sign"></i>
@@ -106,7 +106,7 @@
                 </li>
               </ul>
             </li>
-          <?php } ?>
+          <?php } ?> -->
 
           <?php if ($this->session->userdata('ds_rol_usuario') == 'ADMINISTRADOR' or $this->session->userdata('ds_rol_usuario') == 'VENDEDORES') { ?>
             <li class="nav-item">
@@ -133,7 +133,7 @@
                     <p>Cotizacion</p>
                   </a>
                 </li>
-              </ul>
+              </ul> 
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="<?php echo base_url() . "C_comodin" ?>" class="nav-link">
@@ -145,7 +145,7 @@
             </li>
           <?php } ?>
 
-          <?php if ($this->session->userdata('ds_rol_usuario') == 'ADMINISTRADOR' or $this->session->userdata('ds_rol_usuario') == 'ASISTENTE') { ?>
+           <?php if ($this->session->userdata('ds_rol_usuario') == 'ADMINISTRADOR' or $this->session->userdata('ds_rol_usuario') == 'ASISTENTE') { ?>
             <li class="nav-item">
               <a href="" class="nav-link">
                 <i class="fas fa-paste"></i>
@@ -247,7 +247,7 @@
                 </li>
               </ul>
             </li>
-          <?php } ?>
+          <?php } ?> 
 
           <?php if ($this->session->userdata('ds_rol_usuario') == 'ADMINISTRADOR') { ?>
             <li class="nav-item">
