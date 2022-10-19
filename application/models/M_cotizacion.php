@@ -558,6 +558,7 @@ class M_cotizacion extends CI_Model
         $resultados = $this->db->query(
             "
             SELECT
+            a.id_cotizacion_empresa,
             DATE_FORMAT(a.fecha_cotizacion,'%d/%m/%Y') AS fecha_emision,a.validez_oferta_cotizacion,
             DATE_FORMAT(a.fecha_vencimiento_validez_oferta,'%d/%m/%Y') AS fecha_vencimiento_validez_oferta,
             (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=id_moneda) AS ds_moneda,

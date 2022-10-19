@@ -23,13 +23,10 @@
     <!-- Enlace de Admin-ultimo modificacion -->
     <!-- <link rel="stylesheet" href="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>plantilla/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"> -->
-    <!-- <script src="<?php echo base_url() ?>plantilla/plugins/datatables/jquery.dataTables.min.js"></script> -->
-    <!-- <script src="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script> -->
+    <script src="<?php echo base_url() ?>plantilla/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 
-<<<<<<< HEAD
     <title>TESIS CHRISTIAN BRANDO VARGAS SERRATO</title>
-=======
->>>>>>> e3115fad4910c8c0007bc45b69b38ad9b5338350
 </head>
 
 <body>
@@ -87,31 +84,33 @@
 
                                     <div class="direct-chat-messages class_bot">
 
+
+
                                         <div class="direct-chat-msg">
-                                            <div class="direct-chat-infos clearfix">
-                                            </div>
-                                            <img class="direct-chat-img" src="http://localhost:8080/chatbot/dist/img/user1-128x128.jpg" alt="Message User Image">
-                                            <div class="direct-chat-text" style="font-size: 15px;">
-                                                Hola, mi nombre es boot y tengo estas opciones
-                                            </div>
-                                            <br>
                                             <div class="col-md-12">
-                                                <div class="form-group row">
-                                                    <button type="button" class="btn btn-block btn-outline-success btn-sm w-100" data-toggle="modal" data-target="#opcion_target_cotizacion" id="btn_cotizar">Cotizar</button>
-                                                    <button type="button" class="btn btn-block btn-outline-success btn-sm w-100">Contactanos</button>
-                                                    <button type="button" class="btn btn-block btn-outline-success btn-sm w-100">Otros</button>
+                                                <div class="form-group">
+                                                    <img class="direct-chat-img" src="<?php echo base_url(); ?>plantilla/dist/img/img_bot.jpeg" alt="Message User Image">
+                                                    <div class="direct-chat-text">
+                                                        Hola, mi nombre es <b>boot</b> y tengo estas opciones
+                                                    </div>
                                                 </div>
                                             </div>
-
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <button type="button" class="btn btn-block btn-outline-success btn-sm" data-toggle="modal" data-target="#opcion_target_cotizacion" id="btn_cotizar">Cotizar</button>
+                                                    <button type="button" class="btn btn-block btn-outline-success btn-sm" id="btn_medio_pago">Medio Pago</button>
+                                                    <button type="button" class="btn btn-block btn-outline-success btn-sm" id="btn_contactanos">Contactanos</button>
+                                                </div>
+                                            </div>
                                         </div>
 
                                     </div>
 
                                     <div class="card-footer">
                                         <div class="input-group">
-                                            <input type="text" name="message" placeholder="Escribe algo aquí..." class="form-control" id="campo_entrada">
+                                            <input type="text" name="message" placeholder="Consultas" class="form-control" id="campo_entrada">
                                             <span class="input-group-append">
-                                                <button id="send-btn" class="btn btn-primary">Enviar</button>
+                                                <button id="send-btn" class="btn btn-primary btn-sm">Enviar</button>
                                             </span>
                                         </div>
                                     </div>
@@ -125,15 +124,15 @@
             </div>
         </div>
 
-        <div class="modal fade" id="opcion_target_cotizacion" tabindex="-1">
+        <div class="modal fade" id="opcion_target_cotizacion" tabindex="-1" data-keyboard="false" data-backdrop="static">
 
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
                         <h4 class=" modal-title text-center w-100">Registrar Cotizacion</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                        </button>
+                        </button> -->
                     </div>
 
 
@@ -186,14 +185,14 @@
                                         <span class="input-group-append">
                                             <div class="form-group">
                                                 <button type="button" class="btn btn-block btn-outline-success btn-sm w-100" data-toggle="modal" data-target="#opcion_target_producto">Buscar</button>
-                                                <div class="modal fade" id="opcion_target_producto" tabindex="-1">
+                                                <div class="modal fade" id="opcion_target_producto" tabindex="-1" data-keyboard="false" data-backdrop="static">
                                                     <div class="modal-dialog modal-dialog-centered ">
                                                         <div class="modal-content">
                                                             <div class="modal-header bg-primary">
                                                                 <h4 class=" modal-title text-center w-100">Seleccionar Cotizacion</h4>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
-                                                                </button>
+                                                                </button> -->
                                                             </div>
 
                                                             <div class="modal-body" style="font-size: 12px;">
@@ -243,7 +242,7 @@
                                                             </div>
 
                                                             <div class="modal-footer justify-content-between">
-                                                                <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cerrar</button>
+                                                                <button type="button" class="btn btn-outline-danger btn-sm js_seleccionar_modal_producto_cerrar">Cerrar</button>
                                                             </div>
 
                                                         </div>
@@ -336,13 +335,14 @@
                     </div>
 
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-outline-success js_seleccionar_modal_cotizacion">Registrar</button>
+                        <button type="button" class="btn btn-outline-success btn-sm js_seleccionar_modal_cotizacion">Registrar</button>
                         <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Cerrar</button>
                     </div>
 
                 </div>
             </div>
         </div>
+
     </div>
 
     <script>

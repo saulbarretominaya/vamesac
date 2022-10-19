@@ -39,10 +39,6 @@ class C_inicio extends CI_Controller
         $valor_venta_t = $this->input->post("valor_venta_t");
         $precio_venta = $this->input->post("precio_venta");
 
-
-
-
-
         //DETALLE
         $item = $this->input->post("item");
         $id_producto = $this->input->post("id_producto");
@@ -88,7 +84,13 @@ class C_inicio extends CI_Controller
             $valor_venta
         );
 
-        echo json_encode($nombre);
+
+        $data = array(
+            'datos_bot' => $this->M_inicio->datos_bot($id_cotizacion),
+            'pruebas' => $this->M_inicio->datos_bot($id_cotizacion), //Se deja este campo para pruebas en pasar varios objetos
+        );
+
+        echo json_encode($data);
     }
 
     protected function registrar_detalle(

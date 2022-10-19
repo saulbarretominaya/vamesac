@@ -148,4 +148,31 @@ class M_inicio extends CI_Model
         "
     );
   }
+
+  public function datos_bot($id_cotizacion)
+  {
+    $resultados = $this->db->query(
+      "
+            SELECT
+            a.id_cotizacion,
+            a.id_cotizacion_empresa,
+            DATE_FORMAT(a.fecha_cotizacion,'%d/%m/%Y') AS fecha_emision,a.validez_oferta_cotizacion,
+            DATE_FORMAT(a.fecha_vencimiento_validez_oferta,'%d/%m/%Y') AS fecha_vencimiento_validez_oferta,
+            (SELECT descripcion FROM detalle_multitablas WHERE id_dmultitabla=id_moneda) AS ds_moneda,
+            a.ds_condicion_pago,a.ds_nombre_cliente_proveedor,
+            (CASE 
+            WHEN a.num_documento  IS NOT NULL THEN a.num_documento 
+            WHEN a.num_documento IS NULL THEN b.num_documento END) AS num_documento,      
+            a.direccion_fiscal_cliente_proveedor as direccion_fiscal,
+            lugar_entrega,a.ds_nombre_trabajador,
+            c.celular,c.email,a.observacion,a.valor_venta_total_sin_d,a.valor_venta_total_con_d,a.descuento_total,a.igv,a.precio_venta,a.clausula,a.nombre_encargado
+            FROM
+            cotizacion a
+            LEFT JOIN clientes_proveedores b ON b.id_cliente_proveedor=a.id_cliente_proveedor
+            LEFT JOIN trabajadores c ON c.id_trabajador=a.id_trabajador
+            where a.id_cotizacion='$id_cotizacion'
+        "
+    );
+    return $resultados->row();
+  }
 }

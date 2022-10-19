@@ -22,38 +22,38 @@ $("#id_datatable_productos thead #dtable_precio_unitario").each(function () {
     var title = $(this).text();
     $(this).html('<input type="text" class="border-0" style="width:90px;" placeholder="' + title + '" /> ');
 });
-// $("#id_datatable_productos").dataTable({
+$("#id_datatable_productos").dataTable({
 
-//     initComplete: function () {
-//         this.api()
-//             .columns()
-//             .every(function () {
-//                 var that = this;
+    initComplete: function () {
+        this.api()
+            .columns()
+            .every(function () {
+                var that = this;
 
-//                 $("input", this.header()).on("keyup change clear", function () {
-//                     if (that.search() !== this.value) {
-//                         that.search(this.value).draw();
-//                     }
-//                 });
-//             });
-//     },
-//     language: {
-//         lengthMenu: "Mostrar _MENU_ registros por pagina",
-//         zeroRecords: "No se encontraron resultados en su busqueda",
-//         searchPlaceholder: "Buscar registros",
-//         info: "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
-//         infoEmpty: "No existen registros",
-//         infoFiltered: "(filtrado de un total de _MAX_ registros)",
-//         search: "Buscar:",
-//         paginate: {
-//             first: "Primero",
-//             last: "Último",
-//             next: "Siguiente",
-//             previous: "Anterior",
-//         },
-//     },
-//     "ordering": false
-// });
+                $("input", this.header()).on("keyup change clear", function () {
+                    if (that.search() !== this.value) {
+                        that.search(this.value).draw();
+                    }
+                });
+            });
+    },
+    language: {
+        lengthMenu: "Mostrar _MENU_ registros por pagina",
+        zeroRecords: "No se encontraron resultados en su busqueda",
+        searchPlaceholder: "Buscar registros",
+        info: "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
+        infoEmpty: "No existen registros",
+        infoFiltered: "(filtrado de un total de _MAX_ registros)",
+        search: "Buscar:",
+        paginate: {
+            first: "Primero",
+            last: "Último",
+            next: "Siguiente",
+            previous: "Anterior",
+        },
+    },
+    "ordering": false
+});
 /*Fin Modal 1 */
 
 $(document).on("click", ".js_seleccionar_modal_producto", function () {
@@ -79,10 +79,15 @@ $(document).on("click", ".js_seleccionar_modal_producto", function () {
     $("#opcion_target_producto").modal("hide");
 });
 
+$(document).on("click", ".js_seleccionar_modal_producto_cerrar", function () {
+
+    debugger;
+    $("#opcion_target_producto").modal("hide");
+});
+
 $("#id_agregar_cotizacion").on("click", function (e) {
 
     validar_detalle_cotizacion();
-    debugger
     var resume_table = document.getElementById("id_table_detalle_cotizacion");
     for (var i = 0, row; row = resume_table.rows[i]; i++) {
         console.log(`Fila': ${i}`);
@@ -126,7 +131,6 @@ $("#id_agregar_cotizacion").on("click", function (e) {
 
 $(document).on("click", ".js_seleccionar_modal_cotizacion", function () {
 
-    debugger;
 
     validar_registrar();
     if (resultado_campo == true) {
@@ -156,7 +160,6 @@ $(document).on("click", ".js_seleccionar_modal_cotizacion", function () {
         var precio_unitario = Array.prototype.slice.call(document.getElementsByName("precio_unitario[]")).map((o) => o.value);
         var valor_venta = Array.prototype.slice.call(document.getElementsByName("valor_venta[]")).map((o) => o.value);
 
-        debugger;
 
         $.ajax({
             async: false,
@@ -190,12 +193,158 @@ $(document).on("click", ".js_seleccionar_modal_cotizacion", function () {
 
             },
             success: function (data) {
-                debugger;
-                alert("COTIZACION REGISTRADA EXITOSA")
+
+                limpiar_campos_despues_generar_cotizacion();
+                var registros = JSON.stringify(data);
+                var nombres_obj_parseado = $.parseJSON(registros);
+                var datos_bot = nombres_obj_parseado["datos_bot"];
+                var pruebas = nombres_obj_parseado["pruebas"];
+
                 $("#opcion_target_cotizacion").modal("hide");
+                var mensaje_respuesta =
+                    '<div class="direct-chat-msg">' +
+
+                    '<div class="col-md-12">' +
+                    '<div class="form-group">' +
+                    '<img class="direct-chat-img" src="' + base_url + 'plantilla/dist/img/img_bot.jpeg" alt="Message User Image">' +
+                    '<div class="direct-chat-text">' +
+                    'Hola <b>' + datos_bot["ds_nombre_cliente_proveedor"] + '</b> 👨🏻‍💻 tu cotizacion fue creado con éxito ✅ <a href="' + base_url + 'reportes/C_cotizacion/index_modal_productos/' + datos_bot["id_cotizacion"] + '" download="">Puedes descargarlo aquí</a> <b>COT-' + datos_bot["id_cotizacion_empresa"] + '</b> ¿Deseas continuar?' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+
+                    '<div class="col-md-12">' +
+                    '<div class="form-group row">' +
+
+                    '<div class="col-md-6">' +
+                    '<button type="button" class="btn btn-block btn-outline-success btn-sm" id="id_rpt_si">Si</button>' +
+                    '</div>' +
+
+                    '<div class="col-md-6">' +
+                    '<button type="button" class="btn btn-block btn-outline-success btn-sm" id="id_rpt_no">No</button>' +
+                    '</div>' +
+
+                    '</div>' +
+                    '</div>' +
+
+                    '</div>';
+                $(".class_bot").append(mensaje_respuesta);
             },
         });
     };
+    /*var mensaje_respuesta =
+        '<div class="direct-chat-msg">' +
+
+        '<div class="col-md-12">' +
+        '<div class="form-group">' +
+        '<img class="direct-chat-img" src="' + base_url + 'plantilla/dist/img/img_bot.jpeg" alt="Message User Image">' +
+        '<div class="direct-chat-text">' +
+        'Hola Peter Parker 👨🏻‍💻 tu cotizacion fue creado con éxito ✅ <a href="' + base_url + 'reportes/C_cotizacion/index_modal_productos/31" Target="_blank">Puedes descargarlo aquí</a> COT-0001, ¿Deseas continuar?' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        '<div class="col-md-12">' +
+        '<div class="form-group row">' +
+
+        '<div class="col-md-6">' +
+        '<button type="button" class="btn btn-block btn-outline-success btn-sm" id="id_rpt_si">Si</button>' +
+        '</div>' +
+
+        '<div class="col-md-6">' +
+        '<button type="button" class="btn btn-block btn-outline-success btn-sm" id="id_rpt_no">No</button>' +
+        '</div>' +
+
+        '</div>' +
+        '</div>' +
+
+        '</div>';
+    $(".class_bot").append(mensaje_respuesta);*/
+
+});
+
+$(document).on("click", "#id_rpt_no", function () {
+
+    var mensaje_respuesta =
+        '<div class="direct-chat-msg">' +
+
+        '<div class="col-md-12">' +
+        '<div class="form-group">' +
+        '<img class="direct-chat-img" src="' + base_url + 'plantilla/dist/img/img_bot.jpeg" alt="Message User Image">' +
+        '<div class="direct-chat-text">' +
+        'Gracias por tu visita 🤗, Te esperamos pronto !!!' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        '</div>';
+    $(".class_bot").append(mensaje_respuesta);
+
+});
+
+$(document).on("click", "#id_rpt_si", function () {
+
+    var mensaje_respuesta =
+        '<div class="direct-chat-msg">' +
+
+        '<div class="col-md-12">' +
+        '<div class="form-group">' +
+        '<img class="direct-chat-img" src="' + base_url + 'plantilla/dist/img/img_bot.jpeg" alt="Message User Image">' +
+        '<div class="direct-chat-text">' +
+        'Tengo estas siguientes opciones' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        '<div class="col-md-12">' +
+        '<div class="form-group">' +
+        '<button type="button" class="btn btn-block btn-outline-success btn-sm" data-toggle="modal" data-target="#opcion_target_cotizacion" id="btn_cotizar">Cotizar</button>' +
+        '<button type="button" class="btn btn-block btn-outline-success btn-sm" id="btn_medio_pago">Medio Pago</button>' +
+        '<button type="button" class="btn btn-block btn-outline-success btn-sm" id="btn_contactanos">Contactanos</button>' +
+        '</div>' +
+        '</div>' +
+
+        '</div>';
+    $(".class_bot").append(mensaje_respuesta);
+
+});
+
+$(document).on("click", "#btn_medio_pago", function () {
+
+    var mensaje_respuesta =
+        '<div class="direct-chat-msg">' +
+
+        '<div class="col-md-12">' +
+        '<div class="form-group">' +
+        '<img class="direct-chat-img" src="' + base_url + 'plantilla/dist/img/img_bot.jpeg" alt="Message User Image">' +
+        '<div class="direct-chat-text">' +
+        'Agradecemos realizar el pago en las siguiente cuenta BCP Soles 191-04636947-0-83 / CCI 002-191-104636947083-58 Enviar el numero de cot, asunto, nombre del cliente y el voucher al siguiente correo finanzas @vamesac.pe o al numero 999999999.' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        '</div>';
+    $(".class_bot").append(mensaje_respuesta);
+
+});
+
+$(document).on("click", "#btn_contactanos", function () {
+
+    var mensaje_respuesta =
+        '<div class="direct-chat-msg">' +
+
+        '<div class="col-md-12">' +
+        '<div class="form-group">' +
+        '<img class="direct-chat-img" src="' + base_url + 'plantilla/dist/img/img_bot.jpeg" alt="Message User Image">' +
+        '<div class="direct-chat-text">' +
+        'Puedes contactarnos al siguiente numero 9999999999' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+
+        '</div>';
+    $(".class_bot").append(mensaje_respuesta);
+
 });
 
 function valor_venta_t() {
@@ -240,6 +389,41 @@ function limpiar_campos() {
         $("#valor_venta_t").val("");
         $("#igv").val("");
     }
+}
+
+function limpiar_campos_despues_generar_cotizacion() {
+
+    debugger;
+    //Limpiando cabecera
+    $("#nombre").val("");
+    $("#num_documento").val("");
+    $("#telefono").val("");
+    $("#correo").val("");
+    $("#direccion").val("");
+    //Limpiando campos de operacion
+    $("#hidden_id_producto").val("");
+    $("#hidden_codigo_producto").val("");
+    $("#descripcion_producto").val("");
+    $("#hidden_id_unidad_medida").val("");
+    $("#hidden_ds_unidad_medida").val("");
+    $("#hidden_id_marca_producto").val("");
+    $("#hidden_ds_marca_producto").val("");
+    $("#precio_unitario").val("");
+    $("#cantidad").val("");
+    $("#valor_venta").val("");
+    //Limpiando importes totales
+    $("#valor_venta_t").val("");
+    $("#igv").val("");
+    $("#precio_venta").val("");
+
+    $("#id_table_detalle_cotizacion tbody").append();
+
+    $("#id_table_detalle_cotizacion tbody tr").each(function () {
+        debugger;
+        $(this).closest("tr").remove();
+    });
+
+
 }
 
 $(document).on("click", ".class_eliminar_detalle", function () {
@@ -368,7 +552,6 @@ function validar_registrar() {
 
 $("#nombre").on("keyup", function (e) {
 
-    debugger;
     var c = (e.keyCode ? e.keyCode : e.which);
     if ((c >= 65 & c <= 90) || c == 8 || c == 13 || c == 32 || c == 16 || c == 20 | c == 192) {
     } else {
