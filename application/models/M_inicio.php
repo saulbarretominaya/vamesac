@@ -175,4 +175,14 @@ class M_inicio extends CI_Model
     );
     return $resultados->row();
   }
+
+  public function consultar($pregunta)
+  {
+    $resultados = $this->db->query(
+      "
+      SELECT * FROM chatbot WHERE pregunta LIKE '%$pregunta%'
+      "
+    );
+    return $resultados->row();
+  }
 }

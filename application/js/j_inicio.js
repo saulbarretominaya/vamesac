@@ -199,7 +199,7 @@ $(document).on("click", ".js_seleccionar_modal_cotizacion", function () {
                 var nombres_obj_parseado = $.parseJSON(registros);
                 var datos_bot = nombres_obj_parseado["datos_bot"];
                 var pruebas = nombres_obj_parseado["pruebas"];
-
+                debugger;
                 $("#opcion_target_cotizacion").modal("hide");
                 var mensaje_respuesta =
                     '<div class="direct-chat-msg">' +
@@ -344,6 +344,78 @@ $(document).on("click", "#btn_contactanos", function () {
 
         '</div>';
     $(".class_bot").append(mensaje_respuesta);
+
+});
+
+$("#btn_consultar").on("click", function () {
+
+    var pregunta = $("#pregunta").val();
+
+    var mensaje_pregunta =
+        '<div class="direct-chat-msg right">' +
+        '<div class="col-md-12">' +
+        '<img class="direct-chat-img" src="' + base_url + 'plantilla/dist/img/img_user.jpeg" alt="Message User Image">' +
+        '<div class="direct-chat-text">' +
+        '' + pregunta + '' +
+        '</div>' +
+        '</div>' +
+        '</div>';
+    //Pintamos la pregunta
+    $(".class_bot").append(mensaje_pregunta);
+
+
+    $.ajax({
+        async: false,
+        url: base_url + "C_inicio/consultar",
+        type: "POST",
+        dataType: "json",
+        data: {
+            pregunta: pregunta
+        },
+        success: function (data) {
+
+            debugger;
+
+            var registros = JSON.stringify(data);
+            var nombres_obj_parseado = $.parseJSON(registros);
+            var datos_bot = nombres_obj_parseado["respuesta_bd"];
+
+            if (datos_bot == null) {
+                var mensaje_respuesta =
+                    '<div class="direct-chat-msg">' +
+
+                    '<div class="col-md-12">' +
+                    '<div class="form-group">' +
+                    '<img class="direct-chat-img" src="' + base_url + 'plantilla/dist/img/img_bot.jpeg" alt="Message User Image">' +
+                    '<div class="direct-chat-text">' +
+                    'Lo siento, no te entiendo... me podrias formular otra pregunta' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+
+                    '</div>';
+            } else {
+                var mensaje_respuesta =
+                    '<div class="direct-chat-msg">' +
+
+                    '<div class="col-md-12">' +
+                    '<div class="form-group">' +
+                    '<img class="direct-chat-img" src="' + base_url + 'plantilla/dist/img/img_bot.jpeg" alt="Message User Image">' +
+                    '<div class="direct-chat-text">' +
+                    datos_bot["respuesta"] +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+
+                    '</div>';
+            }
+
+            $(".class_bot").append(mensaje_respuesta);
+            $("#pregunta").val("");
+
+        },
+    });
+
 
 });
 

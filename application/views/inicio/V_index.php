@@ -84,8 +84,6 @@
 
                                     <div class="direct-chat-messages class_bot">
 
-
-
                                         <div class="direct-chat-msg">
                                             <div class="col-md-12">
                                                 <div class="form-group">
@@ -104,13 +102,22 @@
                                             </div>
                                         </div>
 
+                                        <!-- <div class="direct-chat-msg right">
+                                            <div class="col-md-12">
+                                                <img class="direct-chat-img" src="<?php echo base_url(); ?>plantilla/dist/img/img_user.jpeg" alt="message user image">
+                                                <div class="direct-chat-text">
+                                                    You better believe it!
+                                                </div>
+                                            </div>
+                                        </div> -->
+
                                     </div>
 
                                     <div class="card-footer">
                                         <div class="input-group">
-                                            <input type="text" name="message" placeholder="Consultas" class="form-control" id="campo_entrada">
+                                            <input type="text" name="message" placeholder="Consultas" class="form-control" id="pregunta">
                                             <span class="input-group-append">
-                                                <button id="send-btn" class="btn btn-primary btn-sm">Enviar</button>
+                                                <button id="btn_consultar" class="btn btn-primary btn-sm">Enviar</button>
                                             </span>
                                         </div>
                                     </div>

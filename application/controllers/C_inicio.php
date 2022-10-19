@@ -93,6 +93,17 @@ class C_inicio extends CI_Controller
         echo json_encode($data);
     }
 
+    public function consultar()
+    {
+        $pregunta = $this->input->post("pregunta");
+
+        $data = array(
+            'respuesta_bd' => $this->M_inicio->consultar($pregunta)
+        );
+
+        echo json_encode($data);
+    }
+
     protected function registrar_detalle(
         $id_cotizacion,
         $item,
