@@ -17,10 +17,7 @@
     <script src="<?php echo base_url(); ?>plantilla/plugins/select2/js/select2.full.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<<<<<<< HEAD
     <title>TESIS CHRISTIAN BRANDO VARGAS SERRATO</title>
-=======
->>>>>>> e3115fad4910c8c0007bc45b69b38ad9b5338350
 </head>
 
 <body>
@@ -81,7 +78,7 @@
                                         <div class="direct-chat-msg">
                                             <div class="direct-chat-infos clearfix">
                                             </div>
-                                            <img class="direct-chat-img" src="http://localhost:8080/chatbot/dist/img/user1-128x128.jpg" alt="Message User Image">
+                                            <img class="direct-chat-img" src="<?php echo base_url(); ?>plantilla/dist/img/128x128-px-rombos.png" alt="Message User Image">
                                             <div class="direct-chat-text" style="font-size: 15px;">
                                                 Hola, mi nombre es boot y tengo estas opciones
                                             </div>
@@ -147,7 +144,7 @@
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <label>Tel</label>
-                                        <input type="text" class="form-control" placeholder="Direccion">
+                                        <input type="text" class="form-control" placeholder="Tel">
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +159,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Direccion</label>
-                                        <input type="text" class="form-control" placeholder="Tel">
+                                        <input type="text" class="form-control" placeholder="Direccion">
                                     </div>
                                 </div>
                             </div>
