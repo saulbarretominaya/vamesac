@@ -10,14 +10,12 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>plantilla/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <!-- No se habilita el bootrap5 porque tiene conflictos con bundle.min.js -->
+     <!-- No se habilita el bootrap5 porque tiene conflictos con bundle.min.js -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
     <script src="<?php echo base_url(); ?>plantilla/plugins/jquery/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>plantilla/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo base_url(); ?>plantilla/dist/js/adminlte.min.js"></script>
 
-<<<<<<< HEAD
-=======
 
     <!-- <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script> -->
 
@@ -28,7 +26,6 @@
     <script src="<?php echo base_url() ?>plantilla/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 
->>>>>>> 93801da9f7b7dc398d199d22c7a5fedf469a6cc9
     <title>TESIS CHRISTIAN BRANDO VARGAS SERRATO</title>
 </head>
 
@@ -88,16 +85,6 @@
                                     <div class="direct-chat-messages class_bot">
 
                                         <div class="direct-chat-msg">
-<<<<<<< HEAD
-                                            <div class="direct-chat-infos clearfix">
-                                            </div>
-                                            <img class="direct-chat-img" src="<?php echo base_url(); ?>plantilla/dist/img/128x128-px-rombos.png" alt="Message User Image">
-                                            <div class="direct-chat-text" style="font-size: 15px;">
-                                                Hola, mi nombre es boot y tengo estas opciones
-                                            </div>
-                                            <br>
-=======
->>>>>>> 93801da9f7b7dc398d199d22c7a5fedf469a6cc9
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <img class="direct-chat-img" src="<?php echo base_url(); ?>plantilla/dist/img/img_bot.jpeg" alt="Message User Image">
@@ -175,13 +162,8 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-<<<<<<< HEAD
-                                        <label>Tel</label>
-                                        <input type="text" class="form-control" placeholder="Tel">
-=======
                                         <label>Celular</label>
                                         <input type="text" class="form-control form-control-sm" placeholder="Cel" id="telefono">
->>>>>>> 93801da9f7b7dc398d199d22c7a5fedf469a6cc9
                                     </div>
                                 </div>
                             </div>
@@ -196,11 +178,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Direccion</label>
-<<<<<<< HEAD
-                                        <input type="text" class="form-control" placeholder="Direccion">
-=======
                                         <input type="text" class="form-control form-control-sm" placeholder="Direccion" id="direccion">
->>>>>>> 93801da9f7b7dc398d199d22c7a5fedf469a6cc9
                                     </div>
                                 </div>
                             </div>
