@@ -57,10 +57,15 @@ class C_guia_remision extends CI_Controller
 		$punto_llegada = $this->input->post("punto_llegada");
 		$contenedor = $this->input->post("contenedor");
 		$embarque = $this->input->post("embarque");
-		$ds_sucursal_trabajador = $this->input->post("ds_sucursal_trabajador");
-		$ds_serie_guia_remision = $this->input->post("ds_serie_guia_remision");
+		// $ds_sucursal_trabajador = $this->input->post("ds_sucursal_trabajador");
+		$ds_sucursal_trabajador = "TIENDA PROCERES";
+		// $ds_serie_guia_remision = $this->input->post("ds_serie_guia_remision");
+		$ds_serie_guia_remision = "T001";
+
 		$id_parcial_completa = $this->input->post("id_parcial_completa");
-		$id_guia_remision_empresa = $this->input->post("id_guia_remision_empresa");
+		// $id_guia_remision_empresa = $this->input->post("id_guia_remision_empresa");
+		$id_guia_remision_empresa = "100";
+
 		$id_trabajador = $this->input->post("id_trabajador");
 		$ds_nombre_trabajador = $this->input->post("ds_nombre_trabajador");
 		$id_empresa = $this->input->post("id_empresa");

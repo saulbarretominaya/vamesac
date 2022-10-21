@@ -21,9 +21,9 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <div class="card card-info">
+            <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Registro de comodin</h3>
+                <h3 class="card-title">Registra comodin</h3>
               </div>
               <form class="form-horizontal">
                 <div class="card-body">
@@ -75,7 +75,7 @@
                     </div>
                     <div class="col-sm-3">
                       <label>Moneda</label>
-                      <select class="form-select select2" id="id_moneda">
+                      <select class="form-select select2" id="id_moneda" style="width: 100%;">
                         <option value="0">Seleccionar</option>
                         <?php foreach ($cbox_moneda as $cbox_moneda) : ?>
                           <option value="<?php echo $cbox_moneda->id_dmultitabla; ?>">
@@ -131,7 +131,9 @@
   <script src="<?php echo base_url() ?>plantilla/plugins/inputmask/jquery.inputmask.min.js"></script>
   <script src="<?php echo base_url(); ?>plantilla/plugins/alertify/alertify.js"></script>
 
-  <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script>
+  <!-- <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script> -->
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
   <!-- Select2 -->
   <script src="<?php echo base_url() ?>plantilla/plugins/select2/js/select2.full.min.js"></script>
 

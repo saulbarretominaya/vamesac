@@ -19,6 +19,7 @@ STR_TO_DATE('$fecha_vencimiento_validez_oferta','%d/%m/%Y') formatea fecha
 SELECT CURDATE() => Te devuelve solo Fecha sin la hora
 SELECT NOW() => Devuelve fecha y hora del sistema
 ALTER TABLE nombre_tabla MODIFY nombre_campo DATETIME(3); => Modifica los nombres de los campos creados
+ROUND(a.precio_unitario,2) as precio_unitario, convierte a 2 decimales
 
 
 

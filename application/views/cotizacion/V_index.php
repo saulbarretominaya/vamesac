@@ -6,6 +6,7 @@
           <div class="col-sm-6">
             <h1>Cotizacion
               <a href="<?php echo base_url(); ?>C_cotizacion/enlace_registrar" class="btn btn-primary btn-sm">REGISTRAR</a>
+              <!-- <a href="<?php echo base_url(); ?>reportes/C_cotizacion/index_modal_productos" class="btn btn-danger btn-sm" download="">REPORTE</a> -->
             </h1>
           </div>
         </div>
@@ -92,12 +93,12 @@
                             <td><?php echo $index->precio_venta; ?></td>
                             <td><?php echo $index->ds_nombre_trabajador; ?></td>
                             <td><?php echo $ds_estado_cotizacion; ?> </td>
-                            <td><button type="button" class="btn btn-outline-info btn-sm js_lupa_cotizacion_productos" value="<?php echo $index->id_cotizacion; ?>" data-toggle="modal" data-target="#id_target_cotizacion_productos"><span class="fas fa-search-plus"></span></button></td>
+                            <td><button type="button" class="btn btn-outline-primary btn-sm js_lupa_cotizacion_productos" value="<?php echo $index->id_cotizacion; ?>" data-toggle="modal" data-target="#id_target_cotizacion_productos"><span class="fas fa-search-plus"></span></button></td>
                             <td><?php echo $index->id_orden_despacho_empresa; ?> </td>
                             <td><?php echo $ds_estado_orden_despacho; ?> </td>
 
                             <?php if ($index->id_orden_despacho != NULL) { ?>
-                              <td><button type="button" class="btn btn-outline-info btn-sm js_lupa_orden_despacho_productos" value="<?php echo $index->id_orden_despacho; ?>" data-toggle="modal" data-target="#id_target_orden_despacho_productos"><span class="fas fa-search-plus"></span></button></td>
+                              <td><button type="button" class="btn btn-outline-primary btn-sm js_lupa_orden_despacho_productos" value="<?php echo $index->id_orden_despacho; ?>" data-toggle="modal" data-target="#id_target_orden_despacho_productos"><span class="fas fa-search-plus"></span></button></td>
                             <?php } else { ?>
                               <td><button type="button" class="btn btn-outline-secondary btn-sm" disabled><span class="fas fa-search-plus"></span></button></td>
                             <?php } ?>
@@ -175,7 +176,15 @@
   <script src="<?php echo base_url() ?>plantilla/plugins/inputmask/jquery.inputmask.min.js"></script>
   <script src="<?php echo base_url(); ?>plantilla/plugins/alertify/alertify.js"></script>
 
-  <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script>
+  <!-- <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script> -->
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+
+
+
   <!-- Select2 -->
   <script src="<?php echo base_url() ?>plantilla/plugins/select2/js/select2.full.min.js"></script>
 

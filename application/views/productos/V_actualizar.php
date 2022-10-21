@@ -18,7 +18,7 @@
         <div class="row">
 
           <div class="col-md-12">
-            <div class="card card-info collapsed-card">
+            <div class="card card-primary collapsed-card">
               <div class="card-header">
                 <h3 class="card-title">Dato de Producto</h3>
                 <div class="card-tools">
@@ -113,7 +113,7 @@
           </div>
 
           <div class="col-md-12">
-            <div class="card card-info collapsed-card">
+            <div class="card card-primary collapsed-card">
               <div class="card-header">
                 <h3 class="card-title">Precio de Producto</h3>
                 <div class="card-tools">
@@ -126,7 +126,7 @@
                 <div class="form-group row">
                   <div class="col-sm-4">
                     <label>Moneda</label>
-                    <select class="form-select" id="id_moneda">
+                    <select class="form-control" id="id_moneda">
                       <option value="0">Seleccionar</option>
                       <?php foreach ($cbox_moneda as $cbox_moneda) : ?>
                         <?php if ($cbox_moneda->id_dmultitabla == $enlace_actualizar->id_moneda) : ?>
@@ -170,7 +170,7 @@
           </div>
 
           <div class="col-md-12">
-            <div class="card card-info collapsed-card">
+            <div class="card card-primary collapsed-card">
               <div class="card-header">
                 <h3 class="card-title">Caracteristica del Producto</h3>
                 <div class="card-tools">
@@ -275,7 +275,9 @@
   <script src="<?php echo base_url() ?>plantilla/plugins/inputmask/jquery.inputmask.min.js"></script>
   <script src="<?php echo base_url(); ?>plantilla/plugins/alertify/alertify.js"></script>
 
-  <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script>
+  <!-- <script type="text/javascript" charset="utf8" src="<?php echo base_url() ?>plantilla/plugins/DataTables/datatables.js"></script> -->
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url() ?>plantilla/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
   <!-- Select2 -->
   <script src="<?php echo base_url() ?>plantilla/plugins/select2/js/select2.full.min.js"></script>
 
