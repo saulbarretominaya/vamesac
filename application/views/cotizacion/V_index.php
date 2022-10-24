@@ -38,7 +38,7 @@
                         <th>Condicion Pago</th>
                         <th>Moneda</th>
                         <th>Precio Venta</th>
-                        <th>Vendedor</th>
+                        <!-- <th>Vendedor</th> -->
                         <th>Estado Cotizacion</th>
                         <th></th>
                         <th>Num. O. Despacho</th>
@@ -91,7 +91,7 @@
                             <td><?php echo $index->ds_condicion_pago; ?></td>
                             <td><?php echo $index->ds_moneda; ?></td>
                             <td><?php echo $index->precio_venta; ?></td>
-                            <td><?php echo $index->ds_nombre_trabajador; ?></td>
+                            <!-- <td><?php echo $index->ds_nombre_trabajador; ?></td> -->
                             <td><?php echo $ds_estado_cotizacion; ?> </td>
                             <td><button type="button" class="btn btn-outline-primary btn-sm js_lupa_cotizacion_productos" value="<?php echo $index->id_cotizacion; ?>" data-toggle="modal" data-target="#id_target_cotizacion_productos"><span class="fas fa-search-plus"></span></button></td>
                             <td><?php echo $index->id_orden_despacho_empresa; ?> </td>

@@ -8,7 +8,7 @@ class C_porcentaje_crecimiento_ventas extends CI_Controller
 
 	{
 		parent::__construct();
-		$this->load->model("reportes/M_porcentaje_crecimiento_ventas");
+		$this->load->model("reportes/M_porcentaje_crecimiento_vents");
 		$this->load->model("M_cbox");
 	}
 

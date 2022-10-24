@@ -300,7 +300,7 @@ $(document).on("click", "#id_rpt_si", function () {
         '<div class="form-group">' +
         '<button type="button" class="btn btn-block btn-outline-success btn-sm" data-toggle="modal" data-target="#opcion_target_cotizacion" id="btn_cotizar">Cotizar</button>' +
         '<button type="button" class="btn btn-block btn-outline-success btn-sm" id="btn_medio_pago">Medio Pago</button>' +
-        '<button type="button" class="btn btn-block btn-outline-success btn-sm" id="btn_contactanos">Contactanos</button>' +
+        '<button type="button" class="btn btn-block btn-outline-success btn-sm" id="btn_consultar">Consultar</button>' +
         '</div>' +
         '</div>' +
 
@@ -318,7 +318,7 @@ $(document).on("click", "#btn_medio_pago", function () {
         '<div class="form-group">' +
         '<img class="direct-chat-img" src="' + base_url + 'plantilla/dist/img/img_bot.jpeg" alt="Message User Image">' +
         '<div class="direct-chat-text">' +
-        'Agradecemos realizar el pago en las siguiente cuenta BCP Soles 191-04636947-0-83 / CCI 002-191-104636947083-58 Enviar el numero de cot, asunto, nombre del cliente y el voucher al siguiente correo finanzas @vamesac.pe o al numero 999999999.' +
+        'Agradecemos realizar el pago en las siguiente cuenta BCP Soles 191-04636947-0-83 / CCI 002-191-104636947083-58 Enviar el numero de cot, asunto, nombre del cliente y el voucher al siguiente correo <a href="mailto:finanzas@vamesac.pe">finanzas@vamesac.pe</a> o al número <a href="https://wa.pe/RLXKbmPZAM" target="_blank"><img src="https://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c543.png" width="30" height="30" alt="Chatear a través de WhatsApp">961768215</a>.' +
         '</div>' +
         '</div>' +
         '</div>' +
@@ -337,7 +337,7 @@ $(document).on("click", "#btn_contactanos", function () {
         '<div class="form-group">' +
         '<img class="direct-chat-img" src="' + base_url + 'plantilla/dist/img/img_bot.jpeg" alt="Message User Image">' +
         '<div class="direct-chat-text">' +
-        'Puedes contactarnos al siguiente numero 9999999999' +
+        'Puedes contactarnos al siguiente numero 961768215 o a la pagina web https://www.vamesac.pe/' +
         '</div>' +
         '</div>' +
         '</div>' +
