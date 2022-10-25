@@ -11,33 +11,40 @@ class M_porcentaje_crecimiento_ventas extends CI_Model
         $resultados = $this->db->query(
             "
             SELECT (@rownum:=@rownum+1) AS item,
-            id_comprobante_vr,
-            fecha_vr,
-            valor_reciente_vr,
-            id_comprobante_va,
-            fecha_va,
-            valor_reciente_va,
-            round(((valor_reciente_vr/valor_reciente_va)-1)*100,2) as porcentaje_venta
-            FROM
-            (
-            SELECT 
+            a.* FROM (
+            SELECT
             @rownum:=0,
-
-            e.id_comprobante AS id_comprobante_vr,
-            CAST(e.fecha_emision AS DATE) fecha_vr,
-            SUM(c.precio_venta) AS valor_reciente_vr,
-
-            (SELECT id_comprobante FROM comprobantes WHERE id_comprobante=e.id_comprobante-1) AS id_comprobante_va,
-            (SELECT CAST(fecha_emision AS DATE) FROM comprobantes WHERE id_comprobante=e.id_comprobante-1) AS fecha_va,
-            (SELECT SUM(precio_venta) FROM parciales_completas WHERE id_parcial_completa=c.id_parcial_completa-1) AS valor_reciente_va
-
-
+            e.fecha_emision,
+            SUM(c.precio_venta) precio_venta
             FROM parciales_completas c
             RIGHT JOIN guia_remision d ON d.id_parcial_completa=c.id_parcial_completa
             LEFT JOIN comprobantes e ON e.id_guia_remision=d.id_guia_remision
-            GROUP BY CAST(e.fecha_emision AS DATE)
+            GROUP BY e.fecha_emision
+            HAVING e.fecha_emision >='$desde' AND e.fecha_emision <='$hasta'
             )a
-            HAVING fecha_vr >='$desde' AND fecha_vr <='$hasta'
+            "
+        );
+
+        return $resultados->result();
+    }
+
+    public function index_buscar2($desde2, $hasta2)
+    {
+
+        $resultados = $this->db->query(
+            "
+            SELECT (@rownum:=@rownum+1) AS item,
+            a.* FROM (
+            SELECT
+            @rownum:=0,
+            e.fecha_emision,
+            SUM(c.precio_venta) precio_venta
+            FROM parciales_completas c
+            RIGHT JOIN guia_remision d ON d.id_parcial_completa=c.id_parcial_completa
+            LEFT JOIN comprobantes e ON e.id_guia_remision=d.id_guia_remision
+            GROUP BY e.fecha_emision
+            HAVING e.fecha_emision >='$desde2' AND e.fecha_emision <='$hasta2'
+            )a
             "
         );
 
@@ -49,36 +56,95 @@ class M_porcentaje_crecimiento_ventas extends CI_Model
 
         $resultados = $this->db->query(
             "
-             SELECT (@rownum:=@rownum+1) AS item,
-            id_comprobante_vr,
-            fecha_vr,
-            valor_reciente_vr,
-            id_comprobante_va,
-            fecha_va,
-            valor_reciente_va,
-            round(((valor_reciente_vr/valor_reciente_va)-1)*100,2) as porcentaje_venta
-            FROM
-            (
-            SELECT 
+            SELECT (@rownum:=@rownum+1) AS item,
+            a.* FROM (
+            SELECT
             @rownum:=0,
-
-            e.id_comprobante AS id_comprobante_vr,
-            CAST(e.fecha_emision AS DATE) fecha_vr,
-            SUM(c.precio_venta) AS valor_reciente_vr,
-
-            (SELECT id_comprobante FROM comprobantes WHERE id_comprobante=e.id_comprobante-1) AS id_comprobante_va,
-            (SELECT CAST(fecha_emision AS DATE) FROM comprobantes WHERE id_comprobante=e.id_comprobante-1) AS fecha_va,
-            (SELECT SUM(precio_venta) FROM parciales_completas WHERE id_parcial_completa=c.id_parcial_completa-1) AS valor_reciente_va
-
-
+            e.fecha_emision,
+            SUM(c.precio_venta) precio_venta
             FROM parciales_completas c
             RIGHT JOIN guia_remision d ON d.id_parcial_completa=c.id_parcial_completa
             LEFT JOIN comprobantes e ON e.id_guia_remision=d.id_guia_remision
-            GROUP BY CAST(e.fecha_emision AS DATE)
+            GROUP BY e.fecha_emision
+            HAVING e.fecha_emision >='$desde' AND e.fecha_emision <='$hasta'
             )a
-            HAVING fecha_vr >='$desde' AND fecha_vr <='$hasta'
         "
         );
+        return $resultados->result();
+    }
+
+    public function listar_fechas2($desde2, $hasta2)
+    {
+
+        $resultados = $this->db->query(
+            "
+            SELECT (@rownum:=@rownum+1) AS item,
+            a.* FROM (
+            SELECT
+            @rownum:=0,
+            e.fecha_emision,
+            SUM(c.precio_venta) precio_venta
+            FROM parciales_completas c
+            RIGHT JOIN guia_remision d ON d.id_parcial_completa=c.id_parcial_completa
+            LEFT JOIN comprobantes e ON e.id_guia_remision=d.id_guia_remision
+            GROUP BY e.fecha_emision
+            HAVING e.fecha_emision >='$desde2' AND e.fecha_emision <='$hasta2'
+            )a
+        "
+        );
+        return $resultados->result();
+    }
+
+    public function eliminar_temporal()
+    {
+        return $this->db->query("delete FROM temporal");
+    }
+
+    public function insertar_temporal_det(
+        $item,
+        $fecha_emision,
+        $precio_venta,
+        $fecha_emision2,
+        $precio_venta2
+    ) {
+        return $this->db->query(
+            "
+            INSERT INTO temporal
+            (
+            item,
+            fecha_emision,
+            precio_venta,
+            fecha_emision2,
+            precio_venta2
+            )
+            VALUES
+            (
+            '$item',
+            '$fecha_emision',
+            '$precio_venta',
+            '$fecha_emision2',
+            '$precio_venta2'
+            )
+        "
+        );
+    }
+
+    public function listar()
+    {
+
+        $resultados = $this->db->query(
+            "
+            select 
+            item,
+            fecha_emision,
+            precio_venta,
+            fecha_emision2,
+            precio_venta2,
+            ROUND(((precio_venta/precio_venta2)-1)*100,2) AS porcentaje_venta
+            from temporal;
+            "
+        );
+
         return $resultados->result();
     }
 }

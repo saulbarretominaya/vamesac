@@ -14,80 +14,128 @@
       </section>
 
       <section class="content">
-        <div class="col-md-12">
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">PORCENTAJE DE CRECIMIENTO DE VENTAS</h3>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                  <i class="fas fa-plus"></i>
-                </button>
+
+        <div class="row">
+
+          <div class="col-md-12">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">PORCENTAJE DE CRECIMIENTO DE VENTAS</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
               </div>
-            </div>
-            <div class="card-body">
-              <div class="form-group row">
-                <div class="col-sm-2">
-                  <label>DESDE</label>
-                  <input type="date" class="form-control" id="desde" value="<?php if (!empty($desde)) {
-                                                                              echo $desde;
-                                                                            } ?>">
-                </div>
-                <div class="col-sm-2">
-                  <label>HASTA</label>
-                  <input type="date" class="form-control" id="hasta" value="<?php if (!empty($hasta)) {
-                                                                              echo $hasta;
-                                                                            } ?>">
-                </div>
-
-                <div class="col-md-4">
-                  <label for="">&nbsp;</label>
-                  <div class="input-group">
-                    <button type="button" class="btn btn-success buscar">BUSCAR</button>
-                    <label for="">&nbsp;</label>
-                    <button type="button" class="btn btn-secondary restablecer">RESTABLECER</button>
-                    <label for="">&nbsp;</label>
-                    <a href="<?php echo base_url(); ?>reportes/C_porcentaje_crecimiento_ventas/listar_fechas?desde=<?php if (!empty($desde)) {
-                                                                                                                      echo $desde;
-                                                                                                                    } ?>&hasta=<?php if (!empty($hasta)) {
-                                                                                                                                  echo $hasta;
-                                                                                                                                } ?>" class="btn btn-danger" download="">PDF</a>
+              <div class="card-body">
+                <div class="form-group row">
+                  <div class="col-sm-2">
+                    <label>DESDE</label>
+                    <input type="date" class="form-control" id="desde" value="<?php if (!empty($desde)) {
+                                                                                echo $desde;
+                                                                              } ?>">
                   </div>
-                </div>
+                  <div class="col-sm-2">
+                    <label>HASTA</label>
+                    <input type="date" class="form-control" id="hasta" value="<?php if (!empty($hasta)) {
+                                                                                echo $hasta;
+                                                                              } ?>">
+                  </div>
 
+                  <div class="col-sm-2">
+                    <label>DESDE</label>
+                    <input type="date" class="form-control" id="desde2" value="<?php if (!empty($desde2)) {
+                                                                                  echo $desde2;
+                                                                                } ?>">
+                  </div>
+                  <div class="col-sm-2">
+                    <label>HASTA</label>
+                    <input type="date" class="form-control" id="hasta2" value="<?php if (!empty($hasta2)) {
+                                                                                  echo $hasta2;
+                                                                                } ?>">
+                  </div>
+
+                  <div class="col-md-2">
+                    <label for="">&nbsp;</label>
+                    <div class="input-group">
+                      <button type="button" class="btn btn-success buscar w-100">BUSCAR</button>
+                      <!-- <label for="">&nbsp;</label>
+                       <button type="button" class="btn btn-secondary restablecer">RESTABLECER</button>
+                      <label for="">&nbsp;</label>
+                      <a href="<?php echo base_url(); ?>reportes/C_porcentaje_crecimiento_ventas/listar_fechas?desde=<?php if (!empty($desde)) {
+                                                                                                                        echo $desde;
+                                                                                                                      } ?>&hasta=<?php if (!empty($hasta)) {
+                                                                                                                                    echo $hasta;
+                                                                                                                                  } ?>" class="btn btn-danger" download="">PDF</a> -->
+                    </div>
+                  </div>
+
+                  <div class="col-md-2">
+                    <label for="">&nbsp;</label>
+                    <div class="input-group">
+                      <button type="button" class="btn btn-primary calcular w-100">CALCULAR</button>
+                    </div>
+                  </div>
+
+                </div>
               </div>
             </div>
           </div>
+
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Fecha</th>
+                      <th>Venta Actual (VA)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php if (!empty($index)) : ?>
+                      <?php foreach ($index as $index) : ?>
+                        <tr>
+                          <td><input name="item[]" type="hidden" value="<?php echo $index->item; ?>"><?php echo $index->item; ?></td>
+                          <td><input name="fecha_emision[]" type="hidden" value="<?php echo $index->fecha_emision; ?>"><?php echo $index->fecha_emision; ?></td>
+                          <td><input name="precio_venta[]" type="hidden" value="<?php echo $index->precio_venta; ?>"><?php echo $index->precio_venta; ?></td>
+                        </tr>
+                      <?php endforeach; ?>
+                    <?php endif; ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Fecha</th>
+                      <th>Venta Anterior (VA)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php if (!empty($index2)) : ?>
+                      <?php foreach ($index2 as $index) : ?>
+                        <tr>
+                          <td><input name="fecha_emision2[]" type="hidden" value="<?php echo $index->fecha_emision; ?>"><?php echo $index->fecha_emision; ?></td>
+                          <td><input name="precio_venta2[]" type="hidden" value="<?php echo $index->precio_venta; ?>"><?php echo $index->precio_venta; ?></td>
+                        </tr>
+                      <?php endforeach; ?>
+                    <?php endif; ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <div class="col-12">
-          <div class="card">
-            <div class="card-body">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Item</th>
-                    <th>Fecha</th>
-                    <th>Valor Reciente (VR)</th>
-                    <th>Fecha</th>
-                    <th>Valor Anterior (VA)</th>
-                    <th>Porcentaje de Venta (PV)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php if (!empty($index)) : ?>
-                    <?php foreach ($index as $index) : ?>
-                      <tr>
-                        <td><?php echo $index->item; ?></td>
-                        <td><?php echo $index->fecha_vr; ?></td>
-                        <td><?php echo $index->valor_reciente_vr; ?></td>
-                        <td><?php echo $index->fecha_va; ?></td>
-                        <td><?php echo $index->valor_reciente_va; ?></td>
-                        <td><?php echo $index->porcentaje_venta; ?></td>
-                      </tr>
-                    <?php endforeach; ?>
-                  <?php endif; ?>
-                </tbody>
-              </table>
       </section>
     </div>
 

@@ -137,13 +137,13 @@ $fpdf->Ln(8);
 $fpdf->SetFont('Arial', '', 9);
 $fpdf->setFillColor(255, 255, 255); //Para poner relleno
 $fpdf->setDrawColor(255, 255, 255); //Color del borde, va de la mano que el relleno
-foreach ($listar_fechas as $index) {
+foreach ($index as $index) {
     $fpdf->Row(array(
         $index->item,
-        $index->fecha_vr,
-        $index->valor_reciente_vr,
-        $index->fecha_va,
-        $index->valor_reciente_va,
+        $index->fecha_emision,
+        $index->precio_venta,
+        $index->fecha_emision2,
+        $index->precio_venta2,
         $index->porcentaje_venta
     ));
 }
